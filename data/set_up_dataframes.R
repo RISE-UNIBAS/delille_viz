@@ -14,8 +14,6 @@ library(tidyr)
 
 rm(list=ls()) # cleans the environment to make everything a bit less busy
 
-setwd("/Users/antheaalberto/Desktop/RISE/Marchal/delille_file_system_layer_20210410/dataViz/data") # set working directory to access data
-
 # I generally prefer to work with "standard" data frames instead of lists
 # So chapters 1-4 (amend that) will read the json in form of a list and then transform them into a data frame
 # The logic is essentially the same for every separate data frame
