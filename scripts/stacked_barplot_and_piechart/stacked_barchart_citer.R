@@ -1,3 +1,4 @@
+# a static version of another plot I created with shiny
 library(rjson)
 library(ggplot2)
 library(dplyr)
@@ -6,7 +7,6 @@ library(tidyr)
 
 setwd("/Users/antheaalberto/Desktop/RISE/Marchal/delille_file_system_layer_20210410/dataViz/data")
 
-#rm(list = ls())
 
 citers <- fromJSON(file="citations-per-verse-per-citer-type_count.json")
 names(citers$results$bindings[[1]])

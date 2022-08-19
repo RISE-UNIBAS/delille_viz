@@ -1,21 +1,14 @@
-## This app creates a dynamic viz of when a certain verse was cited
-## should I do an input that is not a slider?
-
-
+## This app creates a dynamic viz of the period when a certain verse was cited
 
 library(shiny)
 
-# Define UI for application that draws a histogram
-# Define UI for slider demo app ----
 ui <- fluidPage(
   
   # App title ----
   titlePanel("Sliders"),
   
-  # Sidebar layout with input and output definitions ----
   sidebarLayout(
     
-    # Sidebar to demonstrate various slider options ----
     sidebarPanel(
       
       
@@ -31,7 +24,6 @@ ui <- fluidPage(
     # Main panel for displaying outputs ----
     mainPanel(
       
-      # Output: Table summarizing the values entered ----
       plotOutput("citePlot")
       
     )
@@ -44,7 +36,7 @@ server <- function(input, output) {
     long_period %>%
       filter(
         verse >= input$verse[1],
-        verse <= input$verse[2] # update 16.6.22: it works, but I still don't know what this does
+        verse <= input$verse[2] 
       )
   })
   
@@ -57,7 +49,5 @@ server <- function(input, output) {
       labs(x ="Verse", y = "Citations") + scale_x_continuous(labels = scales::number_format(accuracy=1))
   })
 }
-## update: changed y = "citation" and deleted selectInput
-## before it was input$y and selectInput included (i.e. not commented out)
-# Run the application 
+
 shinyApp(ui = ui, server = server)

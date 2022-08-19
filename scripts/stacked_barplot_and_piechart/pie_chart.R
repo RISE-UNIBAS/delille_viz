@@ -1,11 +1,12 @@
+# Creating various pie charts with plotly of articles types that cited Delille's verses
 library(rjson)
 library(ggplot2)
 library(dplyr)
 library(plotly)
 library(tidyr)
-setwd("/Users/antheaalberto/Desktop/RISE/Marchal/delille_file_system_layer_20210410/dataViz/data")
-
-cite_verse_type <- fromJSON(file="citations-per-verse-per-article-type_count.json")
+#setwd("/Users/antheaalberto/Desktop/RISE/Marchal/delille_file_system_layer_20210410/dataViz/data")
+# adapt file path!
+cite_verse_type <- fromJSON(file="citations-per-verse-per-article-type_count.json") # load data
 
 names(cite_verse_type$results$bindings[[1]])
 
@@ -67,32 +68,10 @@ long_type <- long_type[long_type$type!="allCitingArticle",]
 
 long_type$type <- as.factor(long_type$type)
 
-stacked_type <- ggplot(long_type, aes(x=verse, y=citations, fill = type)) + 
-  geom_bar(position = "stack", stat = "identity") + 
-#  scale_fill_manual(values = c("green4", "olivedrab2", "royalblue3", "lightsteelblue2"), 
-#                    labels = c("Autres", "Artistes", "Savants ou vulgarisateurs", "Gens de lettres"),
-#                    name = "") + scale_x_continuous(labels = scales::number_format(accuracy=1)) + 
-  labs(x = "Verse", y = "Citations") +
-  theme_classic()
-
-stacked_type
 
 long_agg <- long_type %>% 
   group_by(type) %>% 
   summarise(total_citations=sum(citations))
-
-stacked_aggregated <- ggplot(long_agg, aes(x="", y=total_citations, fill=type)) + geom_bar(width = 1, stat = "identity")
-stacked_aggregated
-
-pie <- stacked_aggregated + coord_polar("y", start=0) +
-  scale_fill_manual(values = c("#83B692", "#F9ADA0", "#F9627D", "#C65B7C", "#5B3758",
-                               "#413C58", "#A3C4BC", "#BFD7B5", "#E7EFC5", "#F2E7C9",
-                               "#3AB795", "#A0E8AF", "#86BAA1"),
-                    labels = c("Essay", "Review", "Translation Review", "Literary", "Literary News",
-                               "Literary Nonfiction", "Literary Pedagogic", "Literary Scientific", "Novel",
-                               "Other Expression", "Poem or Verse", "Scientific or Vulgarized", "Translation"),
-                    name = "Article Type") + theme_bw() + labs(x="", y="", title = "Total citations by article type")
-pie
 
 colors <- c("#83B692", "#F9ADA0", "#F9627D", "#C65B7C", "#5B3758",
             "#413C58", "#A3C4BC", "#BFD7B5", "#E7EFC5", "#F2E7C9",
@@ -101,8 +80,7 @@ labels = c("Essay", "Review", "Translation Review", "Literary", "Literary News",
            "Literary Nonfiction", "Literary Pedagogic", "Literary Scientific", "Novel",
            "Other Expression", "Poem or Verse", "Scientific or Vulgarized", "Translation")
 long_agg$type_new <- labels
-## maybe this could be a job for plotly (i.e. hover over a slice to see percentage)
-## also delete novel since there are 0 observations for that?
+
 fig <- plot_ly(long_agg, labels = ~type_new, values = ~total_citations, type = 'pie',
                marker = list(colors = colors, 
                              line = list(color = '#FFFFFF', width = 1)))
@@ -129,6 +107,6 @@ fig2 <- fig2 %>% layout(title = 'Article Type',
                       yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
 
 fig2
-
+# can be saved as an html
 
 
