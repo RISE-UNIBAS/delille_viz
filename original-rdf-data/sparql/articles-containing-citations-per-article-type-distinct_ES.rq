@@ -9,28 +9,25 @@ prefix delille-pd: <http://e-editiones.ch/project/data/delille#>
 prefix delille-research: <http://e-editiones.ch/ontology/delille-research#>
 
 
-# RETRIEVE CITATIONS PER VERSE PER ARTICLE TYPE:
+# RETRIEVE ARTICLES CONTAINING CITATIONS PER ARTICLE TYPE:
+# mind the DISTINCT, each article may contain multiple citations but it is only counted once here
 
 SELECT
-  (COUNT( ?translationArticle) AS ?translationArticleCount)
-  (COUNT( ?literaryPedagogicArticle) AS ?literaryPedagogicArticleCount)  
-  (COUNT( ?literaryNewsArticle) AS ?literaryNewsArticleCount)
-  (COUNT( ?poemOrVersePlayArticle) AS ?poemOrVersePlayArticleCount)
-  (COUNT( ?novelArticle) AS ?novelArticleCount)
-  (COUNT( ?essayOrPanoramicOrPhilosophicOrHumanitiesArticle) AS ?essayOrPanoramicOrPhilosophicOrHumanitiesArticleCount)
-  (COUNT( ?literaryNonfictionArticle) AS ?literaryNonfictionArticleCount)
-  (COUNT( ?literaryScientificArticle) AS ?literaryScientificArticleCount)
+  (COUNT(DISTINCT ?translationArticle) AS ?translationArticleCount)
+  (COUNT(DISTINCT ?literaryPedagogicArticle) AS ?literaryPedagogicArticleCount)  
+  (COUNT(DISTINCT ?literaryNewsArticle) AS ?literaryNewsArticleCount)
+  (COUNT(DISTINCT ?poemOrVersePlayArticle) AS ?poemOrVersePlayArticleCount)
+  (COUNT(DISTINCT ?novelArticle) AS ?novelArticleCount)
+  (COUNT(DISTINCT ?essayOrPanoramicOrPhilosophicOrHumanitiesArticle) AS ?essayOrPanoramicOrPhilosophicOrHumanitiesArticleCount)
+  (COUNT(DISTINCT ?literaryNonfictionArticle) AS ?literaryNonfictionArticleCount)
+  (COUNT(DISTINCT ?literaryScientificArticle) AS ?literaryScientificArticleCount)
   
-  (COUNT( ?scientificOrVulgarizedArticle) AS ?scientificOrVulgarizedArticleCount)  
+  (COUNT(DISTINCT ?scientificOrVulgarizedArticle) AS ?scientificOrVulgarizedArticleCount)  
   
-  (COUNT( ?hDCReviewArticle) AS ?hDCReviewArticleCount)
-  (COUNT( ?hDCTranslationReviewArticle) AS ?hDCTranslationReviewArticleCount)
-  (COUNT( ?otherDelilleExpressionReviewArticle) AS ?otherDelilleExpressionReviewArticleCount)
-    
-  ##((?literaryNewsArticleCount+?hDCReviewArticleCount+?hDCTranslationReviewArticleCount+?otherDelilleExpressionReviewArticleCount+?poemOrVersePlayArticleCount+?novelArticleCount+?literaryNonfictionArticleCount+?essayOrPanoramicOrPhilosophicOrHumanitiesArticleCount+?literaryScientificArticleCount) AS ?literaryArticleCount)
-    
-  ##((?literaryNewsArticleCount+?hDCReviewArticleCount+?hDCTranslationReviewArticleCount+?otherDelilleExpressionReviewArticleCount+?poemOrVersePlayArticleCount+?novelArticleCount+?literaryNonfictionArticleCount+?essayOrPanoramicOrPhilosophicOrHumanitiesArticleCount+?literaryScientificArticleCount+?translationArticleCount+?literaryPedagogicArticleCount+?scientificOrVulgarizedArticleCount) AS ?allCitingArticle) # added translationArticleCount
-
+  (COUNT(DISTINCT ?hDCReviewArticle) AS ?hDCReviewArticleCount)
+  (COUNT(DISTINCT ?hDCTranslationReviewArticle) AS ?hDCTranslationReviewArticleCount)
+  (COUNT(DISTINCT ?otherDelilleExpressionReviewArticle) AS ?otherDelilleExpressionReviewArticleCount)
+ 
 WHERE {
   ?rhymingVerse
     a prosodic-structure:RhymingVerse;
