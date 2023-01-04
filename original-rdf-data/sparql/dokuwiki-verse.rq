@@ -1,0 +1,15 @@
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix human: <http://e-editiones.ch/ontology/human#>
+prefix prosodic-structure: <http://e-editiones.ch/ontology/prosodic-structure#>
+prefix language: <http://e-editiones.ch/ontology/language#>
+
+# RETRIEVE VERSE NUMBER AND TEXT
+
+SELECT
+(CONCAT("<p style=\"font-size:150%;\"><strong>Chant 3, vers ", STR(?verseOrdinalNumeral), "</strong> : ", STR(?content), "</p>") AS ?text)
+
+WHERE {
+?verse rdfs:label "inseriParam---verse-label---"; # "verse-001"
+       prosodic-structure:verseHasOrdinalNumeral ?verseOrdinalNumeral;
+       language:hasContentLiteral ?content .
+}

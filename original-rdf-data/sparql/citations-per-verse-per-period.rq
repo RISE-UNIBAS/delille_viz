@@ -1,0 +1,103 @@
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX calendar: <http://e-editiones.ch/ontology/calendar#>
+PREFIX text: <http://e-editiones.ch/ontology/text#>
+PREFIX prosodic-structure: <http://e-editiones.ch/ontology/prosodic-structure#>
+PREFIX publishing: <http://e-editiones.ch/ontology/publishing#>
+PREFIX delille: <http://e-editiones.ch/ontology/delille#>
+PREFIX delille-research: <http://e-editiones.ch/ontology/delille-research#>
+
+
+# RETRIEVE PER VERSE AND PER PERIOD THE NUMBER OF PUBLISHED EXPRESSIONS WHEREIN THE VERSE IS CITED:
+
+SELECT
+  ?verseOrdinalNumeral
+  (COUNT(DISTINCT ?publicationBefore1800) AS ?publicationBefore1800Count)
+  (COUNT(DISTINCT ?publication1800_05) AS ?publication1800_05Count)
+  (COUNT(DISTINCT ?publication1806_13) AS ?publication1806_13Count)
+  (COUNT(DISTINCT ?publication1814_50) AS ?publication1814_50Count)
+  (COUNT(DISTINCT ?publicationAfter1850) AS ?publicationAfter1850Count)
+
+WHERE {
+	?rhymingVerse
+		a prosodic-structure:RhymingVerse;
+		prosodic-structure:verseHasOrdinalNumeral ?verseOrdinalNumeral.
+
+	{?rhymingVerse text:isCitedIn ?citingExpression1. BIND((?citingExpression1) AS ?citingExpression)} UNION
+	{?rhymingVerse delille-research:isCitedTwiceIn ?citingExpression2. BIND((?citingExpression2) AS ?citingExpression)} UNION
+	{?rhymingVerse delille-research:isCitedThreeTimesIn ?citingExpression3. BIND((?citingExpression3) AS ?citingExpression)} UNION
+	{?rhymingVerse delille-research:isCitedFourTimesIn ?citingExpression4. BIND((?citingExpression4) AS ?citingExpression)} UNION
+	{?rhymingVerse delille-research:isCitedFiveTimesIn ?citingExpression5. BIND((?citingExpression5) AS ?citingExpression)}
+
+	?CitingExpression rdfs:subClassOf delille:CitingExpression.
+	?citingExpression a ?CitingExpression.
+	OPTIONAL {
+		?citingExpression publishing:isPublishedIn ?publicationBefore1800.
+		?publicationBefore1800 publishing:hasYearPeriod ?yP.
+		?yP
+			calendar:hasGregorianEndDate ?eD.
+#			calendar:hasStartJulianDayNumber ?sJDN;
+#			calendar:hasEndJulianDayNumber ?eJDN.
+		FILTER(?eD < "1800-01-01+01:00"^^xsd:date) # OR JDN 2378497
+		}
+	OPTIONAL {
+		?citingExpression publishing:isPublishedIn ?publication1800_05.
+		?publication1800_05 publishing:hasYearPeriod ?yP.
+		?yP
+			calendar:hasGregorianStartDate ?sD;
+			calendar:hasGregorianEndDate ?eD.
+#			calendar:hasStartJulianDayNumber ?sJDN;
+#			calendar:hasEndJulianDayNumber ?eJDN.
+		FILTER("1799-12-31+01:00"^^xsd:date < ?sD && ?eD < "1806-01-01+01:00"^^xsd:date) # JDN 2378496, 2380688
+		}
+	OPTIONAL {
+		?citingExpression publishing:isPublishedIn ?publication1806_13.
+		?publication1806_13 publishing:hasYearPeriod ?yP.
+		?yP
+			calendar:hasGregorianStartDate ?sD;
+			calendar:hasGregorianEndDate ?eD.
+#			calendar:hasStartJulianDayNumber ?sJDN;
+#			calendar:hasEndJulianDayNumber ?eJDN.
+		FILTER("1805-12-31+01:00"^^xsd:date < ?sD && ?eD < "1814-01-01+01:00"^^xsd:date) # JDN 2380687, 2383610
+		}
+	OPTIONAL {
+		?citingExpression publishing:isPublishedIn ?publication1814_50.
+		?publication1814_50 publishing:hasYearPeriod ?yP.
+		?yP
+			calendar:hasGregorianStartDate ?sD;
+			calendar:hasGregorianEndDate ?eD.
+#			calendar:hasStartJulianDayNumber ?sJDN;
+#			calendar:hasEndJulianDayNumber ?eJDN.
+		FILTER("1813-12-31+01:00"^^xsd:date < ?sD && ?eD < "1851-01-01+01:00"^^xsd:date) # JDN 2383609, 2397124
+		}
+	#OPTIONAL {
+	#	?citingExpression publishing:isPublishedIn ?publication1814_50.
+	#	?publication1814_50 publishing:hasPartitionedPublishing ?partitionedPublishing.
+	#	?partitionedPublishing
+	#		publishing:hasStartYearPeriod ?sYP;
+	#		publishing:hasEndYearPeriod ?eYP.
+	#	?sYP
+	#		calendar:hasGregorianStartDate ?sSD.
+#			calendar:hasGregorianEndDate ?sED.
+#			calendar:hasStartJulianDayNumber ?sSJDN;
+#			calendar:hasEndJulianDayNumber ?sEJDN.
+	#	?eYP
+#			calendar:hasGregorianStartDate ?eSD;
+	#		calendar:hasGregorianEndDate ?eED.
+#			calendar:hasStartJulianDayNumber ?eSJDN;
+#			calendar:hasEndJulianDayNumber ?eEJDN.
+	#	FILTER("1813-12-31+01:00"^^xsd:date < ?sSD && ?eED < "1851-01-01+01:00"^^xsd:date)
+	#}
+	OPTIONAL {
+		?citingExpression publishing:isPublishedIn ?publicationAfter1850.
+		?publicationAfter1850 publishing:hasYearPeriod ?yP.
+		?yP
+			calendar:hasGregorianStartDate ?sD.
+#			calendar:hasStartJulianDayNumber ?sJDN;
+#			calendar:hasEndJulianDayNumber ?eJDN.
+		FILTER("1850-12-31+01:00"^^xsd:date < ?sD) # JDN 2397123
+		}
+	}
+
+GROUP BY ?verseOrdinalNumeral 
+ORDER BY ?verseOrdinalNumeral

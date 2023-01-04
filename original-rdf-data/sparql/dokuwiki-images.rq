@@ -1,0 +1,44 @@
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix human: <http://e-editiones.ch/ontology/human#>
+prefix text: <http://e-editiones.ch/ontology/text#>
+prefix calendar: <http://e-editiones.ch/ontology/calendar#>
+prefix text-expression: <http://e-editiones.ch/ontology/text-expression#>
+prefix publishing: <http://e-editiones.ch/ontology/publishing#>
+prefix image: <http://e-editiones.ch/ontology/image#>
+prefix creating: <http://e-editiones.ch/ontology/creating#>
+prefix delille: <http://e-editiones.ch/ontology/delille#>
+
+# RETRIEVE IMAGES
+
+SELECT
+?type
+?image
+?author
+?title
+(year(?year) AS ?Year)
+
+WHERE {
+  { ?image a image:EngravingExpression} UNION
+  { ?image a delille:NonOriginalEngraving }
+  
+  OPTIONAL { ?image image:expressionHasTitleLiteral ?title . }
+  
+  OPTIONAL {?image creating:hasAuthor ?authorPerson .
+   { ?authorPerson human:hasFamilyNameLiteral ?familyName .
+    ?authorPerson human:hasGivenNameLiteral ?givenName .
+    BIND (CONCAT(STR(?familyName), ", ", STR(?givenName)) AS ?author ) } UNION
+  { ?authorPerson human:hasNameLiteral ?author}
+  
+  }
+  BIND (
+    IF(EXISTS{?image a image:EngravingExpression}, "Gravures originales des éditions", 
+      IF(EXISTS{?image a delille:NonOriginalEngraving}, "Autres images", "")
+    ) AS ?type )
+  
+  OPTIONAL { 
+    ?image publishing:hasPublication ?publication. 
+    ?publication publishing:hasYearPeriod ?yearPeriod .
+    ?yearPeriod calendar:hasGregorianStartDate ?year .
+  }
+ 
+}

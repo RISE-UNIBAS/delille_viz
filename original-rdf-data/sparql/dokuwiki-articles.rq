@@ -1,0 +1,73 @@
+PREFIX language: <http://id.loc.gov/vocabulary/iso639-1/>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix human: <http://e-editiones.ch/ontology/human#>
+prefix language: <http://e-editiones.ch/ontology/language#>
+prefix teaching: <http://e-editiones.ch/ontology/teaching#>
+prefix text: <http://e-editiones.ch/ontology/text#>
+prefix calendar: <http://e-editiones.ch/ontology/calendar#>
+prefix text-expression: <http://e-editiones.ch/ontology/text-expression#>
+prefix publishing: <http://e-editiones.ch/ontology/publishing#>
+prefix delille: <http://e-editiones.ch/ontology/delille#>
+
+# RETRIEVE ARTICLES
+
+SELECT
+?type 
+?article
+(GROUP_CONCAT(DISTINCT ?authorName ; SEPARATOR = " et " ) AS ?authors)
+?title
+(year(?publicationDate) as ?date)
+?serialTitle
+?reference
+?sequence
+
+WHERE {
+?article 
+    a delille:Article;
+    text-expression:hasTitleLiteral ?title .
+  
+  { ?article a language:PersonTranslation } UNION
+  { ?article a teaching:PedagogicExpression  } UNION
+  { ?article a publishing:NewsArticle } UNION
+  { ?article a publishing:ReviewArticle } UNION
+  { ?article a delille:PoemOrVersePlay } UNION 
+  { ?article a delille:Novel } UNION
+  { ?article a delille:LiteraryScientificExpression } UNION
+  { ?article a delille:LiteraryNonfictionExpression } UNION
+  { ?article a delille:EssayOrPanoramicLiteraryOrPhilosophicOrHumanitiesExpression } UNION
+  { ?article a delille:ScientificOrVulgarizedExpression } 
+  
+  BIND (
+    IF(EXISTS{?article a teaching:PedagogicExpression},"Pédagogie des langues ou des lettres",
+      IF(EXISTS{?article a publishing:NewsArticle},"Nouvelles littéraires (lectures, annonces, extraits du poème, etc.)",
+        IF(EXISTS{?article a publishing:ReviewArticle},"Comptes rendus",
+        IF(EXISTS{?article a delille:PoemOrVersePlay},"Poésie, théâtre en vers",
+          IF(EXISTS{?article a delille:Novel},"Roman, récit fictionnel",
+            IF(EXISTS{?article a delille:LiteraryScientificExpression},"Esthétique, poétique, histoire littéraire (hors comptes rendus)",
+              IF(EXISTS{?article a delille:LiteraryNonfictionExpression},"Mémoires, biographies, histoire, anecdotes, correspondances",
+                IF(EXISTS{?article a delille:EssayOrPanoramicLiteraryOrPhilosophicOrHumanitiesExpression},"Autre essai", #, littérature panoramique et pittoresque, philosophie et sciences humaines
+                  IF(EXISTS{?article a delille:ScientificOrVulgarizedExpression},"Ouvrages de science et vulgarisation",
+                       IF(EXISTS{?article a language:PersonTranslation},"Traductions","")))))))))) 
+    AS ?type )
+  
+  OPTIONAL { 
+    ?article text-expression:hasAuthor ?author .
+    { ?author human:hasFamilyNameLiteral  ?authorName } UNION 
+    { ?author human:hasNameLiteral ?authorName } 
+  }
+  
+  OPTIONAL { ?article publishing:hasReferenceLiteral ?reference } #to check if still optional after importing mathieucoloniesannalesauvergnes
+  
+  OPTIONAL { 
+    ?article publishing:isPublishedIn ?serialPublication.
+    ?serialPublication a publishing:SerialIssue ;
+          publishing:hasYearPeriod ?publicationPeriod ;
+          publishing:isSerialIssueOfVolume ?serial .
+    ?serial publishing:hasTitleLiteral ?serialTitle .
+    ?publicationPeriod calendar:hasGregorianStartDate ?publicationDate . 
+  }
+  
+  OPTIONAL { ?article delille:hasPunctuatedCitedVerseNumberSequenceLiteral ?sequence }
+  
+}
+GROUP BY ?type ?article ?title ?publicationDate ?serialTitle ?reference ?sequence

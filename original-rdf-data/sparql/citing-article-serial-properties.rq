@@ -1,0 +1,139 @@
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX event: <http://e-editiones.ch/ontology/event#>
+PREFIX human: <http://e-editiones.ch/ontology/human#>
+PREFIX language: <http://e-editiones.ch/ontology/language#>
+PREFIX calendar: <http://e-editiones.ch/ontology/calendar#>
+PREFIX document: <http://e-editiones.ch/ontology/document#>
+PREFIX text: <http://e-editiones.ch/ontology/text#>
+PREFIX text-expression: <http://e-editiones.ch/ontology/text-expression#>
+PREFIX information-carrier: <http://e-editiones.ch/ontology/information-carrier#>
+PREFIX publishing: <http://e-editiones.ch/ontology/publishing#>
+PREFIX delille: <http://e-editiones.ch/ontology/delille#>
+
+
+# RETRIEVE VERSE CITING ARTICLES AND THEIR PROPERTIES:
+
+CONSTRUCT {
+	?article
+  		a delille:Article, ?OtherClass;
+  		publishing:hasReferenceLiteral ?referenceLiteral;
+  		publishing:isReviewOf ?reviewedExpression;
+  		publishing:isPublishedIn ?serialIssue;
+  		text-expression:isPartOfExpression ?articleTanslatedVersePoem;
+  		language:hasTranslation ?translation;
+		language:hasPartialTranslation ?partialTranslation.
+  	?reviewedExpression a ?ReviewedExpression.
+  	?serialIssue
+  		a publishing:SerialIssue;
+  		publishing:hasYearPeriod ?yP;
+  		publishing:isSerialIssueOfVolume ?serialVolume.
+  	?yP
+		calendar:hasGregorianStartDate ?sD;
+		calendar:hasGregorianEndDate ?eD;
+		calendar:hasStartJulianDayNumber ?sJDN;
+		calendar:hasEndJulianDayNumber ?eJDN.
+  	?serialVolume
+		a publishing:SerialVolume;
+  		publishing:serialVolumeHasExistence ?sVE;
+  		delille:hasExternalResource ?e;
+  		?pSV ?oSV.
+  	?sVE
+		a publishing:SerialVolumeExistence;
+		?hasPeriod ?period.
+	?period
+		calendar:hasGregorianStartDate ?sDSVE;
+		calendar:hasGregorianEndDate ?eDSVE;
+		calendar:hasStartJulianDayNumber ?sJDNSVE;
+		calendar:hasEndJulianDayNumber ?eJDNSVE.
+	?e
+		a document:HypertextDocument;
+		text:hasNameLiteral ?n;
+		document:isOnWebpage ?w.
+	?w
+		a publishing:WebPublication;
+		information-carrier:webpageHasURL ?u.
+	?articleTanslatedVersePoem a delille:TranslatedVersePoem.
+	?translation
+		a language:PersonTranslation;
+		language:translationHasPersonTranslator ?translatorPerson;
+		event:outputInvolvesRole ?personTranslator.
+	?translatorPerson human:personHasRole ?personTranslator.
+	?personTranslator a language:PersonTranslator.
+	?partialTranslation
+		a language:PersonTranslation, language:PartialTranslation;
+		language:translationHasPersonTranslator ?partialTranslatorPerson;
+		event:outputInvolvesRole ?partialPersonTranslator.
+	?partialTranslatorPerson human:personHasRole ?partialPersonTranslator.
+	?partialPersonTranslator a language:PersonTranslator.
+	}
+
+WHERE {
+  	?article
+  		a delille:Article, ?OtherClass;
+  		publishing:isPublishedIn ?serialIssue;
+  		publishing:hasReferenceLiteral ?referenceLiteral.
+	OPTIONAL {
+		# REVIEW ARTICLES OF A JACQUES DELILLE VERSE POEM, TRANSLATED VERSE POEM OR NON-VERSE POEM:
+		?article publishing:isReviewOf ?reviewedExpression.
+		?reviewedExpression a ?ReviewedExpression
+		}
+ 	?serialIssue
+  		a publishing:SerialIssue;
+  		publishing:hasYearPeriod ?yP;
+  		publishing:isSerialIssueOfVolume ?serialVolume.
+  	?yP
+		calendar:hasGregorianStartDate ?sD;
+		calendar:hasGregorianEndDate ?eD;
+		calendar:hasStartJulianDayNumber ?sJDN;
+		calendar:hasEndJulianDayNumber ?eJDN.
+	?serialVolume
+		a publishing:SerialVolume;
+  		?pSV ?oSV.
+	OPTIONAL {
+		?serialVolume publishing:serialVolumeHasExistence ?sVE.
+		?sVE
+			a publishing:SerialVolumeExistence;
+			?hasPeriod ?period.
+		?period
+			calendar:hasGregorianStartDate ?sDSVE;
+			calendar:hasGregorianEndDate ?eDSVE;
+			calendar:hasStartJulianDayNumber ?sJDNSVE;
+			calendar:hasEndJulianDayNumber ?eJDNSVE.
+		}
+	OPTIONAL {
+		?serialVolume delille:hasExternalResource ?e.
+		?e 
+			a document:HypertextDocument;
+			document:isOnWebpage ?w.
+		OPTIONAL {?e text:hasNameLiteral ?n}
+		?w
+			a publishing:WebPublication;
+			information-carrier:webpageHasURL ?u
+		}
+	OPTIONAL {
+		?article
+#			language:expressedInNaturalLanguage ?language;
+			text-expression:isPartOfExpression ?articleTanslatedVersePoem.
+#		?language a ?Language.
+#		?Language rdfs:subClassOf language:HumanNaturalLanguage.
+		?articleTanslatedVersePoem a delille:TranslatedVersePoem
+		}
+	OPTIONAL {
+		?article language:hasTranslation ?translation.
+		?translation
+			a language:PersonTranslation;
+			language:translationHasPersonTranslator ?translatorPerson;
+			event:outputInvolvesRole ?personTranslator.
+		?translatorPerson human:personHasRole ?personTranslator.
+		?personTranslator a language:PersonTranslator.
+		}
+	OPTIONAL {
+		?article language:hasPartialTranslation ?partialTranslation.
+		?partialTranslation
+			a language:PersonTranslation, language:PartialTranslation;
+			language:translationHasPersonTranslator ?partialTranslatorPerson;
+			event:outputInvolvesRole ?partialPersonTranslator.
+		?partialTranslatorPerson human:personHasRole ?partialPersonTranslator.
+		?partialPersonTranslator a language:PersonTranslator.
+		}
+	}

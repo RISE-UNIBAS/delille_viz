@@ -1,0 +1,21 @@
+prefix human: <http://e-editiones.ch/ontology/human#>
+prefix text: <http://e-editiones.ch/ontology/text#>
+
+
+# RETRIEVE CITERS:
+
+# Note: on 20201229: 297 identified and 86 unidentified citers of which 28 with IRI but insufficient data and 58 blank nodes (without any data).
+
+CONSTRUCT {
+	?authorPerson
+#		a human:Person;
+		human:personHasRole ?personRole. # For the 58 only this property is in the data graph.
+	?personRole a ?PersonRole.
+	}
+
+WHERE {
+	?authorPerson
+#		a human:Person;
+		human:personHasRole ?personRole.
+	?personRole a ?PersonRole.
+  	}

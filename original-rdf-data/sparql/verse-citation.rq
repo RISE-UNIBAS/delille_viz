@@ -1,0 +1,35 @@
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix language: <http://e-editiones.ch/ontology/language#>
+prefix text: <http://e-editiones.ch/ontology/text#>
+prefix text-expression: <http://e-editiones.ch/ontology/text-expression#>
+prefix prosodic-structure: <http://e-editiones.ch/ontology/prosodic-structure#>
+prefix delille: <http://e-editiones.ch/ontology/delille#>
+
+
+# RETRIEVE VERSES AND CITING EXPRESSIONS:
+
+CONSTRUCT {
+	?rhymingVerse
+		a prosodic-structure:RhymingVerse;
+		prosodic-structure:verseHasOrdinalNumeral ?verseOrdinalNumeral;
+		language:hasContentLiteral ?rhymingVerseContentLiteral;
+		text:isCitedIn ?citingExpression.
+	?CitingExpression rdfs:subClassOf delille:CitingExpression.
+	?citingExpression
+		a ?CitingExpression;
+		text-expression:hasTitleLiteral ?textExpressionTitleLiteral;
+		delille:hasPunctuatedCitedVerseNumberSequenceLiteral ?punctuatedCitedVerseNumberSequenceLiteral.
+	}
+
+WHERE {
+	?rhymingVerse
+		a prosodic-structure:RhymingVerse;
+		prosodic-structure:verseHasOrdinalNumeral ?verseOrdinalNumeral;
+		language:hasContentLiteral ?rhymingVerseContentLiteral;
+		text:isCitedIn ?citingExpression.
+	?CitingExpression rdfs:subClassOf delille:CitingExpression.
+	?citingExpression
+		a ?CitingExpression;
+		text-expression:hasTitleLiteral ?textExpressionTitleLiteral;
+		delille:hasPunctuatedCitedVerseNumberSequenceLiteral ?punctuatedCitedVerseNumberSequenceLiteral.
+	}

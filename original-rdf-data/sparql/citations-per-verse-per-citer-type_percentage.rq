@@ -1,0 +1,62 @@
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix human: <http://e-editiones.ch/ontology/human#>
+prefix text: <http://e-editiones.ch/ontology/text#>
+prefix text-expression: <http://e-editiones.ch/ontology/text-expression#>
+prefix prosodic-structure: <http://e-editiones.ch/ontology/prosodic-structure#>
+prefix delille: <http://e-editiones.ch/ontology/delille#>
+prefix delille-research: <http://e-editiones.ch/ontology/delille-research#>
+
+
+# RETRIEVE CITATIONS PER STROPHE-VERSE PER AUTHOR TYPE WITH PERCENTAGE OF ALL ROLES:
+
+SELECT
+  ?stropheOrdinalNumeral ?verseOrdinalNumeral
+  (COUNT(DISTINCT ?manOfLetters) AS ?manOfLettersCount)
+  (COUNT(DISTINCT ?vulgarizer) AS ?vulgarizerCount)
+  (COUNT(DISTINCT ?artist) AS ?artistCount)
+  (COUNT(DISTINCT ?otherRole) AS ?otherRoleCount)
+	((?manOfLettersCount+?vulgarizerCount+?artistCount+?otherRoleCount) AS ?allRoles)
+  (ROUND(?manOfLettersCount/?allRoles*100) AS ?menOfLettersPercentage)
+  (ROUND(?vulgarizerCount/?allRoles*100) AS ?vulgarizersPercentage)
+  (ROUND(?artistCount/?allRoles*100) AS ?artistsPercentage)
+  (ROUND(?otherRoleCount/?allRoles*100) AS ?otherRolesPercentage)
+
+WHERE {
+  ?rhymingVerse
+    a prosodic-structure:RhymingVerse;
+    prosodic-structure:verseHasOrdinalNumeral ?verseOrdinalNumeral;
+    prosodic-structure:isVerseOfStrophe ?strophe.
+
+  {?rhymingVerse text:isCitedIn ?citingExpression1. BIND((?citingExpression1) AS ?citingExpression)} UNION
+  {?rhymingVerse delille-research:isCitedTwiceIn ?citingExpression2. BIND((?citingExpression2) AS ?citingExpression)} UNION
+  {?rhymingVerse delille-research:isCitedThreeTimesIn ?citingExpression3. BIND((?citingExpression3) AS ?citingExpression)} UNION
+  {?rhymingVerse delille-research:isCitedFourTimesIn ?citingExpression4. BIND((?citingExpression4) AS ?citingExpression)} UNION
+  {?rhymingVerse delille-research:isCitedFiveTimesIn ?citingExpression5. BIND((?citingExpression5) AS ?citingExpression)}
+
+  ?strophe
+    a prosodic-structure:Strophe;
+    prosodic-structure:stropheHasOrdinalNumeral ?stropheOrdinalNumeral.
+  ?CitingExpression rdfs:subClassOf delille:CitingExpression.
+  ?citingExpression a ?CitingExpression.
+  OPTIONAL {?citingExpression text-expression:hasAuthor ?authorPerson}
+  OPTIONAL {?citingExpression text-expression:hasPossibleAuthor ?authorPerson}
+  OPTIONAL {
+    ?authorPerson human:personHasRole ?manOfLetters.
+    ?manOfLetters a text-expression:ManOfLetters.
+    }
+  OPTIONAL {
+    ?authorPerson human:personHasRole ?vulgarizer.
+    ?vulgarizer a text-expression:Vulgarizer.
+    }
+  OPTIONAL {
+    ?authorPerson human:personHasRole ?artist.
+    ?artist a human:Artist.
+    }
+  OPTIONAL {
+    ?authorPerson human:personHasRole ?otherRole.
+    ?otherRole a delille:NonArtist-ManOfLetters-Vulgarizer.
+    }
+  }
+
+GROUP BY ?stropheOrdinalNumeral ?verseOrdinalNumeral
+ORDER BY ?verseOrdinalNumeral

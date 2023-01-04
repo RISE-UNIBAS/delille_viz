@@ -1,0 +1,42 @@
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX calendar: <http://e-editiones.ch/ontology/calendar#>
+PREFIX text: <http://e-editiones.ch/ontology/text#>
+PREFIX prosodic-structure: <http://e-editiones.ch/ontology/prosodic-structure#>
+PREFIX publishing: <http://e-editiones.ch/ontology/publishing#>
+PREFIX delille: <http://e-editiones.ch/ontology/delille#>
+PREFIX delille-research: <http://e-editiones.ch/ontology/delille-research#>
+
+
+# RETRIEVE PER VERSE THE NUMBER OF CITATIONS (= CITING EXPRESSIONS) PER YEAR:
+# Note: partitioned publications not included because the time indicators are too crude.
+
+SELECT
+	?verseOrdinalNumeral
+	?citationYear
+	(((COUNT(DISTINCT ?citingExpression1))+((COUNT(?citingExpression2))*2)+((COUNT(DISTINCT?citingExpression3))*3)+((COUNT(DISTINCT ?citingExpression4))*4)+((COUNT(DISTINCT ?citingExpression5))*5)) AS ?numberOfCitationsPerYear)
+
+WHERE {
+	{?rhymingVerse text:isCitedIn ?citingExpression1. BIND((?citingExpression1) AS ?citingExpression)} UNION
+	{?rhymingVerse delille-research:isCitedTwiceIn ?citingExpression2. BIND((?citingExpression2) AS ?citingExpression)} UNION
+	{?rhymingVerse delille-research:isCitedThreeTimesIn ?citingExpression3. BIND((?citingExpression3) AS ?citingExpression)} UNION
+	{?rhymingVerse delille-research:isCitedFourTimesIn ?citingExpression4. BIND((?citingExpression4) AS ?citingExpression)} UNION
+	{?rhymingVerse delille-research:isCitedFiveTimesIn ?citingExpression5. BIND((?citingExpression5) AS ?citingExpression)}
+	?citingExpression publishing:isPublishedIn ?publication.
+	?publication publishing:hasYearPeriod ?yP.
+	?yP calendar:hasGregorianStartDate ?publicationYearStartDate.
+  	BIND(year(?publicationYearStartDate) AS ?citationYear)
+
+	{
+		SELECT
+			?rhymingVerse
+			?verseOrdinalNumeral
+
+		WHERE {
+			?rhymingVerse
+				prosodic-structure:verseHasOrdinalNumeral ?verseOrdinalNumeral;
+			}
+		}
+  }
+
+GROUP BY ?verseOrdinalNumeral ?citationYear 
+ORDER BY ?verseOrdinalNumeral

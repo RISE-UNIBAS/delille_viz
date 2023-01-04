@@ -1,0 +1,109 @@
+prefix text: <http://e-editiones.ch/ontology/text#>
+prefix language: <http://e-editiones.ch/ontology/language#>
+prefix text-expression: <http://e-editiones.ch/ontology/text-expression#>
+prefix teaching: <http://e-editiones.ch/ontology/teaching#>
+prefix prosodic-structure: <http://e-editiones.ch/ontology/prosodic-structure#>
+prefix publishing: <http://e-editiones.ch/ontology/publishing#>
+prefix delille: <http://e-editiones.ch/ontology/delille#>
+prefix delille-pd: <http://e-editiones.ch/project/data/delille#>
+prefix delille-research: <http://e-editiones.ch/ontology/delille-research#>
+
+
+# RETRIEVE CITATIONS PER VERSE PER ARTICLE TYPE WITH PERCENTAGE OF ALL ARTICLES:
+
+SELECT
+  ?verseOrdinalNumeral
+  (COUNT(DISTINCT ?translationArticle) AS ?translationArticleCount)
+  (COUNT(DISTINCT ?literaryPedagogicArticle) AS ?literaryPedagogicArticleCount)
+  (COUNT(DISTINCT ?literaryNewsArticle) AS ?literaryNewsArticleCount)
+  (COUNT(DISTINCT ?hDCReviewArticle) AS ?hDCReviewArticleCount)
+  (COUNT(DISTINCT ?hDCTranslationReviewArticle) AS ?hDCTranslationReviewArticleCount)
+  (COUNT(DISTINCT ?otherDelilleExpressionReviewArticle) AS ?otherDelilleExpressionReviewArticleCount)
+  (COUNT(DISTINCT ?poemOrVersePlayArticle) AS ?poemOrVersePlayArticleCount)
+  (COUNT(DISTINCT ?novelArticle) AS ?novelArticleCount)
+  (COUNT(DISTINCT ?literaryNonfictionArticle) AS ?literaryNonfictionArticleCount)
+  (COUNT(DISTINCT ?essayOrPanoramicOrPhilosophicOrHumanitiesArticle) AS ?essayOrPanoramicOrPhilosophicOrHumanitiesArticleCount)
+  (COUNT(DISTINCT ?literaryScientificArticle) AS ?literaryScientificArticleCount)
+  ((?literaryNewsArticleCount+?hDCReviewArticleCount+?hDCTranslationReviewArticleCount+?otherDelilleExpressionReviewArticleCount+?poemOrVersePlayArticleCount+?novelArticleCount+?literaryNonfictionArticleCount+?essayOrPanoramicOrPhilosophicOrHumanitiesArticleCount+?literaryScientificArticleCount) AS ?literaryArticleCount)
+  (COUNT(DISTINCT ?scientificOrVulgarizedArticle) AS ?scientificOrVulgarizedArticleCount)
+  ((?literaryPedagogicArticleCount+?literaryArticleCount+?scientificOrVulgarizedArticleCount) AS ?allCitingArticle)
+
+WHERE {
+  ?rhymingVerse
+    a prosodic-structure:RhymingVerse;
+    prosodic-structure:verseHasOrdinalNumeral ?verseOrdinalNumeral.
+  
+  OPTIONAL {
+    ?rhymingVerse ?p ?translationArticle.
+    FILTER (?p IN (text:isCitedIn, delille-research:isCitedTwiceIn, delille-research:isCitedThreeTimesIn, delille-research:isCitedFourTimesIn, delille-research:isCitedFiveTimesIn ) )
+    ?translationArticle a delille:Article, language:PersonTranslation ;
+      text-expression:isPartOfExpression ?expression.
+  ?expression a delille:TranslatedVersePoem.
+    }
+  OPTIONAL {
+    ?rhymingVerse ?p ?literaryPedagogicArticle.
+    FILTER (?p IN (text:isCitedIn, delille-research:isCitedTwiceIn, delille-research:isCitedThreeTimesIn, delille-research:isCitedFourTimesIn, delille-research:isCitedFiveTimesIn ) )
+    ?literaryPedagogicArticle a delille:Article, delille:LiteraryExpression, teaching:PedagogicExpression
+    }
+  OPTIONAL {
+    ?rhymingVerse ?p ?literaryNewsArticle.
+    FILTER (?p IN (text:isCitedIn, delille-research:isCitedTwiceIn, delille-research:isCitedThreeTimesIn, delille-research:isCitedFourTimesIn, delille-research:isCitedFiveTimesIn ) )
+    ?literaryNewsArticle a delille:Article, delille:LiteraryExpression, publishing:NewsArticle
+    }
+  OPTIONAL {
+    ?rhymingVerse ?p ?hDCReviewArticle.
+    FILTER (?p IN (text:isCitedIn, delille-research:isCitedTwiceIn, delille-research:isCitedThreeTimesIn, delille-research:isCitedFourTimesIn, delille-research:isCitedFiveTimesIn ) )
+    ?hDCReviewArticle
+      a delille:Article, delille:LiteraryExpression, publishing:ReviewArticle ;
+      publishing:isReviewOf delille-pd:HDC.
+    }
+  OPTIONAL {
+    ?rhymingVerse ?p ?hDCTranslationReviewArticle.
+    FILTER (?p IN (text:isCitedIn, delille-research:isCitedTwiceIn, delille-research:isCitedThreeTimesIn, delille-research:isCitedFourTimesIn, delille-research:isCitedFiveTimesIn ) )
+    ?hDCTranslationReviewArticle
+      a delille:Article, delille:LiteraryExpression, publishing:ReviewArticle ;
+      publishing:isReviewOf ?t.
+    ?t a delille:TranslatedVersePoem.
+    }
+  OPTIONAL {
+    ?rhymingVerse ?p ?otherDelilleExpressionReviewArticle.
+    FILTER (?p IN (text:isCitedIn, delille-research:isCitedTwiceIn, delille-research:isCitedThreeTimesIn, delille-research:isCitedFourTimesIn, delille-research:isCitedFiveTimesIn ) )
+    ?otherDelilleExpressionReviewArticle
+      a delille:Article, delille:LiteraryExpression, publishing:ReviewArticle ;
+      publishing:isReviewOf ?n.
+    ?n a delille:NonVersePoem
+    }
+  OPTIONAL {
+    ?rhymingVerse ?p ?poemOrVersePlayArticle.
+    FILTER (?p IN (text:isCitedIn, delille-research:isCitedTwiceIn, delille-research:isCitedThreeTimesIn, delille-research:isCitedFourTimesIn, delille-research:isCitedFiveTimesIn ) )
+    ?poemOrVersePlayArticle a delille:Article, delille:PoemOrVersePlay
+    }
+  OPTIONAL {
+    ?rhymingVerse ?p ?novelArticle.
+    FILTER (?p IN (text:isCitedIn, delille-research:isCitedTwiceIn, delille-research:isCitedThreeTimesIn, delille-research:isCitedFourTimesIn, delille-research:isCitedFiveTimesIn ) )
+    ?novelArticle a delille:Article, delille:Novel
+    }
+  OPTIONAL {
+    ?rhymingVerse ?p ?literaryNonfictionArticle.
+    FILTER (?p IN (text:isCitedIn, delille-research:isCitedTwiceIn, delille-research:isCitedThreeTimesIn, delille-research:isCitedFourTimesIn, delille-research:isCitedFiveTimesIn ) )
+    ?literaryNonfictionArticle a delille:Article, delille:LiteraryNonfictionExpression
+    }
+  OPTIONAL {
+    ?rhymingVerse ?p ?essayOrPanoramicOrPhilosophicOrHumanitiesArticle.
+    FILTER (?p IN (text:isCitedIn, delille-research:isCitedTwiceIn, delille-research:isCitedThreeTimesIn, delille-research:isCitedFourTimesIn, delille-research:isCitedFiveTimesIn ) )
+    ?essayOrPanoramicOrPhilosophicOrHumanitiesArticle a delille:Article, delille:EssayOrPanoramicLiteraryOrPhilosophicOrHumanitiesExpression
+    }
+  OPTIONAL {
+    ?rhymingVerse ?p ?literaryScientificArticle.
+    FILTER (?p IN (text:isCitedIn, delille-research:isCitedTwiceIn, delille-research:isCitedThreeTimesIn, delille-research:isCitedFourTimesIn, delille-research:isCitedFiveTimesIn ) )
+    ?literaryScientificArticle a delille:Article, delille:LiteraryScientificExpression
+    }
+  OPTIONAL {
+    ?rhymingVerse ?p ?scientificOrVulgarizedArticle.
+    FILTER (?p IN (text:isCitedIn, delille-research:isCitedTwiceIn, delille-research:isCitedThreeTimesIn, delille-research:isCitedFourTimesIn, delille-research:isCitedFiveTimesIn ) )
+    ?scientificOrVulgarizedArticle a delille:Article, delille:ScientificOrVulgarizedExpression
+    }
+  }
+
+GROUP BY ?verseOrdinalNumeral
+ORDER BY ?verseOrdinalNumeral

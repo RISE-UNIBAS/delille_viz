@@ -1,0 +1,32 @@
+PREFIX language: <http://id.loc.gov/vocabulary/iso639-1/>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix human: <http://e-editiones.ch/ontology/human#>
+prefix language: <http://e-editiones.ch/ontology/language#>
+prefix teaching: <http://e-editiones.ch/ontology/teaching#>
+prefix text: <http://e-editiones.ch/ontology/text#>
+prefix calendar: <http://e-editiones.ch/ontology/calendar#>
+prefix text-expression: <http://e-editiones.ch/ontology/text-expression#>
+prefix publishing: <http://e-editiones.ch/ontology/publishing#>
+prefix delille: <http://e-editiones.ch/ontology/delille#>
+
+# RETRIEVE MENTIONS
+
+SELECT
+?expression
+(GROUP_CONCAT(DISTINCT ?authorName ; SEPARATOR = " et " ) AS ?authors)
+?title
+
+
+WHERE {
+  ?canto a delille:Canto.
+  ?expression ^text:isMentionedIn ?canto; 
+               text-expression:hasTitleLiteral ?title .
+  
+  OPTIONAL { 
+    ?expression text-expression:hasAuthor ?author .
+    { ?author human:hasFamilyNameLiteral  ?authorName } UNION 
+    { ?author human:hasNameLiteral ?authorName } 
+  }
+
+}
+GROUP BY ?expression ?authorName ?title

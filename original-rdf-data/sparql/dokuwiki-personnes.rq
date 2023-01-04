@@ -1,0 +1,87 @@
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix human: <http://e-editiones.ch/ontology/human#>
+prefix text: <http://e-editiones.ch/ontology/text#>
+prefix calendar: <http://e-editiones.ch/ontology/calendar#>
+prefix text-expression: <http://e-editiones.ch/ontology/text-expression#>
+prefix event: <http://e-editiones.ch/ontology/event#>
+prefix prosodic-structure: <http://e-editiones.ch/ontology/prosodic-structure#>
+prefix delille: <http://e-editiones.ch/ontology/delille#>
+prefix delille-research: <http://e-editiones.ch/ontology/delille-research#>
+
+# RETRIEVE CITERS:
+
+SELECT
+distinct ?authorPerson
+?role
+?authorName
+?personLabel
+(year( ?birthYear ) as ?birthyear)
+(year( ?deathYear ) as ?deathyear)
+(COUNT(?citedVerse) AS ?citedVerseCount)
+(COUNT(?alludedVerse) AS ?alludedVerseCount)
+(COUNT(?pastichedVerse) AS ?pastichedVerseCount)
+(COUNT(?plagiarisedVerse) AS ?plagiarisedVerseCount)
+
+
+WHERE {
+  ?authorPerson
+    a human:Person;
+    rdfs:label ?personLabel;
+    human:personHasRole ?personRole.
+  
+  { ?personRole a text-expression:ManOfLetters } UNION
+  { ?personRole a human:Artist } UNION
+  { ?personRole a text-expression:Vulgarizer } UNION
+  { ?personRole a delille:NonArtist-ManOfLetters-Vulgarizer }
+  
+  BIND (
+    IF(regex(STR(?personRole), "#ManOfLetters"), "Homme de lettres",
+      IF(regex(STR(?personRole), "#Vulgarizer"), "Savant ou vulgarisateur",
+        IF(regex(STR(?personRole), "#Artist"), "Artiste",
+          IF(regex(STR(?personRole), "#OtherRole"), "Autre", "")
+      )
+    )
+  ) AS ?role
+)
+  
+  #OPTIONAL { ?authorPerson human:hasFamilyNameLiteral ?familyName .
+  #      ?authorPerson human:hasGivenNameLiteral ?givenName .
+  #  BIND (CONCAT(STR(?familyName), ", ", STR(?givenName)) AS ?authorName )
+  #}
+  #OPTIONAL { ?authorPerson human:hasNameLiteral ?simpleName .
+  #  BIND ((?simpleName) AS ?authorName )
+  #}
+  { ?authorPerson human:hasFamilyNameLiteral ?familyName .
+    ?authorPerson human:hasGivenNameLiteral ?givenName .
+    BIND (CONCAT(STR(?familyName), ", ", STR(?givenName)) AS ?authorName ) } UNION
+  { ?authorPerson human:hasNameLiteral ?authorName}
+  
+  OPTIONAL { ?authorPerson human:hasBirthYearPeriod ?birthYearPeriod.
+      ?birthYearPeriod calendar:hasGregorianStartDate ?birthYear }
+  OPTIONAL { ?authorPerson human:hasDeathYearPeriod ?deathYearPeriod.
+      ?deathYearPeriod calendar:hasGregorianEndDate ?deathYear }
+ 
+  #OPTIONAL { ?verse text:isCitedBy ?authorPerson . }
+  
+  OPTIONAL {?expression text-expression:hasAuthor ?authorPerson .
+  ?citedVerse a prosodic-structure:RhymingVerse ;
+          ?p ?expression .
+  FILTER (?p IN (text:isCitedIn, delille-research:isCitedTwiceIn, delille-research:isCitedThreeTimesIn, delille-research:isCitedFourTimesIn, delille-research:isCitedFiveTimesIn ) ) }
+  
+  OPTIONAL {?expression text-expression:hasAuthor ?authorPerson .
+  ?alludedVerse a prosodic-structure:RhymingVerse ;
+          text:isAlludedToIn ?expression . }
+  
+  OPTIONAL {?expression text-expression:hasAuthor ?authorPerson .
+  ?pastichedVerse a prosodic-structure:RhymingVerse ;
+          text:hasPasticheIn ?expression . }
+  
+   OPTIONAL {?expression text-expression:hasAuthor ?authorPerson .
+  ?plagiarisedVerse a prosodic-structure:RhymingVerse ;
+          text:isPlagiarisedIn ?expression . }
+  
+  
+  
+}
+GROUP BY ?authorPerson ?role ?authorName ?personLabel ?birthYear ?deathYear ?verse
+ORDER BY ?authorPerson
