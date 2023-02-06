@@ -9,7 +9,7 @@ prefix delille-pd: <http://e-editiones.ch/project/data/delille#>
 prefix delille-research: <http://e-editiones.ch/ontology/delille-research#>
 
 
-# RETRIEVE CITATIONS PER VERSE PER ARTICLE TYPE:
+# RETRIEVE CITATIONS PER ARTICLE TYPE PER YEAR:
 
 PREFIX calendar: <http://e-editiones.ch/ontology/calendar#>
 SELECT
