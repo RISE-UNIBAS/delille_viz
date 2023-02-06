@@ -10,30 +10,26 @@ prefix delille-research: <http://e-editiones.ch/ontology/delille-research#>
 
 
 # RETRIEVE CITATIONS PER ARTICLE TYPE PER YEAR:
-# if add distinct does not retrieve distinct articles, but distinct citations
+# multiple citations in the same article are not lister (SELECT DISTINCT)
 
 PREFIX calendar: <http://e-editiones.ch/ontology/calendar#>
-SELECT
+SELECT DISTINCT
   ?citationYear
 
-  (COUNT( ?translationArticle) AS ?translationArticleCount)
-  (COUNT( ?literaryPedagogicArticle) AS ?literaryPedagogicArticleCount)  
-  (COUNT( ?literaryNewsArticle) AS ?literaryNewsArticleCount)
-  (COUNT( ?poemOrVersePlayArticle) AS ?poemOrVersePlayArticleCount)
-  (COUNT( ?novelArticle) AS ?novelArticleCount)
-  (COUNT( ?essayOrPanoramicOrPhilosophicOrHumanitiesArticle) AS ?essayOrPanoramicOrPhilosophicOrHumanitiesArticleCount)
-  (COUNT( ?literaryNonfictionArticle) AS ?literaryNonfictionArticleCount)
-  (COUNT( ?literaryScientificArticle) AS ?literaryScientificArticleCount)
+  ?translationArticle
+  ?literaryPedagogicArticle
+  ?literaryNewsArticle
+  ?poemOrVersePlayArticle
+  ?novelArticle
+  ?essayOrPanoramicOrPhilosophicOrHumanitiesArticle
+  ?literaryNonfictionArticle
+  ?literaryScientificArticle
   
-  (COUNT( ?scientificOrVulgarizedArticle) AS ?scientificOrVulgarizedArticleCount)  
+  ?scientificOrVulgarizedArticle
   
-  (COUNT( ?hDCReviewArticle) AS ?hDCReviewArticleCount)
-  (COUNT( ?hDCTranslationReviewArticle) AS ?hDCTranslationReviewArticleCount)
-  (COUNT( ?otherDelilleExpressionReviewArticle) AS ?otherDelilleExpressionReviewArticleCount)
-
-  ((?literaryNewsArticleCount+?hDCReviewArticleCount+?hDCTranslationReviewArticleCount+?otherDelilleExpressionReviewArticleCount+?poemOrVersePlayArticleCount+?novelArticleCount+?literaryNonfictionArticleCount+?essayOrPanoramicOrPhilosophicOrHumanitiesArticleCount+?literaryScientificArticleCount) AS ?literaryArticleCount)
-    
-  ((?literaryNewsArticleCount+?hDCReviewArticleCount+?hDCTranslationReviewArticleCount+?otherDelilleExpressionReviewArticleCount+?poemOrVersePlayArticleCount+?novelArticleCount+?literaryNonfictionArticleCount+?essayOrPanoramicOrPhilosophicOrHumanitiesArticleCount+?literaryScientificArticleCount+?translationArticleCount+?literaryPedagogicArticleCount+?scientificOrVulgarizedArticleCount) AS ?allCitingArticle) # added translationArticleCount
+  ?hDCReviewArticle
+  ?hDCTranslationReviewArticle
+  ?otherDelilleExpressionReviewArticle
 
     
   
@@ -165,5 +161,4 @@ WHERE {
     }
   }
 
-GROUP BY ?citationYear
 ORDER BY ?citationYear
