@@ -8,8 +8,10 @@ prefix delille: <http://e-editiones.ch/ontology/delille#>
 prefix delille-research: <http://e-editiones.ch/ontology/delille-research#>
 
 
-# RETRIEVE CITATIONS PER STROPHE-VERSE PER CITER TYPE:
+# RETRIEVE DISTINCT CITERS PER STROPHE-VERSE PER CITER TYPE PER YEAR:
 
+PREFIX publishing: <http://e-editiones.ch/ontology/publishing#>
+PREFIX calendar: <http://e-editiones.ch/ontology/calendar#>
 SELECT
   ?stropheOrdinalNumeral ?verseOrdinalNumeral
   (COUNT(DISTINCT ?manOfLetters) AS ?manOfLettersCount)
@@ -17,6 +19,7 @@ SELECT
   (COUNT(DISTINCT ?artist) AS ?artistCount)
   (COUNT(DISTINCT ?otherRole) AS ?otherRoleCount)
   ((?manOfLettersCount+?vulgarizerCount+?artistCount+?otherRoleCount) AS ?allRoles)
+  ?citationYear
 
 WHERE {
   ?rhymingVerse
@@ -35,6 +38,15 @@ WHERE {
     prosodic-structure:stropheHasOrdinalNumeral ?stropheOrdinalNumeral.
   ?CitingExpression rdfs:subClassOf delille:CitingExpression.
   ?citingExpression a ?CitingExpression.
+
+
+  ?citingExpression publishing:isPublishedIn ?publication.
+	?publication publishing:hasYearPeriod ?yP.
+	?yP calendar:hasGregorianStartDate ?publicationYearStartDate.
+  	BIND(year(?publicationYearStartDate) AS ?citationYear)
+
+
+
   OPTIONAL {?citingExpression text-expression:hasAuthor ?authorPerson}
   OPTIONAL {?citingExpression text-expression:hasPossibleAuthor ?authorPerson}
   OPTIONAL {
@@ -55,5 +67,5 @@ WHERE {
     }
   }
 
-GROUP BY ?stropheOrdinalNumeral ?verseOrdinalNumeral
+GROUP BY ?stropheOrdinalNumeral ?verseOrdinalNumeral ?citationYear
 ORDER BY ?verseOrdinalNumeral
