@@ -8,7 +8,7 @@ prefix delille: <http://e-editiones.ch/ontology/delille#>
 prefix delille-research: <http://e-editiones.ch/ontology/delille-research#>
 
 
-# RETRIEVE DISTINCT CITERS PER STROPHE-VERSE PER CITER TYPE:
+# RETRIEVE CITATIONS PER STROPHE-VERSE PER CITER TYPE:
 
 SELECT
   ?stropheOrdinalNumeral ?verseOrdinalNumeral
@@ -19,24 +19,15 @@ SELECT
   ((?manOfLettersCount+?vulgarizerCount+?artistCount+?otherRoleCount) AS ?allRoles)
 
 WHERE {
-  ?rhymingVerse
-    a prosodic-structure:RhymingVerse;
-    prosodic-structure:verseHasOrdinalNumeral ?verseOrdinalNumeral;
-    prosodic-structure:isVerseOfStrophe ?strophe.
-
-  {?rhymingVerse text:isCitedIn ?citingExpression1. BIND((?citingExpression1) AS ?citingExpression)} UNION
-  {?rhymingVerse delille-research:isCitedTwiceIn ?citingExpression2. BIND((?citingExpression2) AS ?citingExpression)} UNION
-  {?rhymingVerse delille-research:isCitedThreeTimesIn ?citingExpression3. BIND((?citingExpression3) AS ?citingExpression)} UNION
-  {?rhymingVerse delille-research:isCitedFourTimesIn ?citingExpression4. BIND((?citingExpression4) AS ?citingExpression)} UNION
-  {?rhymingVerse delille-research:isCitedFiveTimesIn ?citingExpression5. BIND((?citingExpression5) AS ?citingExpression)}
-
-  ?strophe
-    a prosodic-structure:Strophe;
-    prosodic-structure:stropheHasOrdinalNumeral ?stropheOrdinalNumeral.
-  ?CitingExpression rdfs:subClassOf delille:CitingExpression.
-  ?citingExpression a ?CitingExpression.
-  OPTIONAL {?citingExpression text-expression:hasAuthor ?authorPerson}
-  OPTIONAL {?citingExpression text-expression:hasPossibleAuthor ?authorPerson}
+  	?rhymingVerse a prosodic-structure:RhymingVerse;
+  				prosodic-structure:verseHasOrdinalNumeral ?verseOrdinalNumeral;
+ 				prosodic-structure:isVerseOfStrophe ?strophe.
+    
+  	?strophe a prosodic-structure:Strophe;
+  			prosodic-structure:stropheHasOrdinalNumeral ?stropheOrdinalNumeral.
+    
+    ?rhymingVerse text:isCitedBy ?authorPerson .
+  
   OPTIONAL {
     ?authorPerson human:personHasRole ?manOfLetters.
     ?manOfLetters a text-expression:ManOfLetters.
