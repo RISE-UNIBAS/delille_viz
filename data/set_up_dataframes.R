@@ -134,5 +134,70 @@ long_citer$citer <- as.factor(long_citer$citer)
 levels(long_citer$citer)
 long_citer$citer <- factor(long_citer$citer, levels=c("others", "artist", "vulgarizer", "man_of_letters"))
 
+#### 5. citations-per-article-type-per-year_count ######
+
+cite_art_yr <- fromJSON(file="citations-per-article-type-per-year_count.json")
+
+names(cite_art_yr$results$bindings[[1]])
+
+cite_art_yr_df <- tibble(year = character(),
+                         translationArticle = character(),
+                         literaryPedagogicArticle = character(),
+                         literaryNewsArticleCount = character(),
+                         hDCReviewArticle = character(),
+                         hDCTranslationReviewArticle = character(),
+                         otherDelilleExpressionReviewArticle = character(),
+                         poemOrVersePlayArticle = character(),
+                         novelArticle = character(),
+                         literaryNonfictionArticle = character(),
+                         essayOrPanoramicOrPhilosophicOrHumanitiesArticle = character(),
+                         literaryScientificArticle = character(),
+                         literaryArticle = character(),
+                         scientificOrVulgarizedArticle = character(),
+                         allCitingArticle = character())
+
+
+for (i in 1:length(cite_art_yr$results$bindings)) {
+  number <- cite_art_yr$results$bindings[[i]]$citationYear$value
+  citation1 <- cite_art_yr$results$bindings[[i]]$translationArticleCount$value
+  citation2 <- cite_art_yr$results$bindings[[i]]$literaryPedagogicArticleCount$value
+  citation3 <- cite_art_yr$results$bindings[[i]]$literaryNewsArticleCount$value
+  citation4 <- cite_art_yr$results$bindings[[i]]$hDCReviewArticleCount$value
+  citation5 <- cite_art_yr$results$bindings[[i]]$hDCTranslationReviewArticleCount$value
+  citation6 <- cite_art_yr$results$bindings[[i]]$otherDelilleExpressionReviewArticleCount$value
+  citation7 <- cite_art_yr$results$bindings[[i]]$poemOrVersePlayArticleCount$value
+  citation8 <- cite_art_yr$results$bindings[[i]]$novelArticleCount$value
+  citation9 <- cite_art_yr$results$bindings[[i]]$literaryNonfictionArticleCount$value
+  citation10 <- cite_art_yr$results$bindings[[i]]$essayOrPanoramicOrPhilosophicOrHumanitiesArticleCount$value
+  citation11 <- cite_art_yr$results$bindings[[i]]$literaryScientificArticleCount$value
+  citation12 <- cite_art_yr$results$bindings[[i]]$literaryArticleCount$value
+  citation13 <- cite_art_yr$results$bindings[[i]]$scientificOrVulgarizedArticleCount$value
+  citation14 <- cite_art_yr$results$bindings[[i]]$allCitingArticle$value
+  cite_art_yr_df[i,1] <- number
+  cite_art_yr_df[i,2] <- citation1
+  cite_art_yr_df[i,3] <- citation2
+  cite_art_yr_df[i,4] <- citation3
+  cite_art_yr_df[i,5] <- citation4
+  cite_art_yr_df[i,6] <- citation5
+  cite_art_yr_df[i,7] <- citation6
+  cite_art_yr_df[i,8] <- citation7
+  cite_art_yr_df[i,9] <- citation8
+  cite_art_yr_df[i,10] <- citation9
+  cite_art_yr_df[i,11] <- citation10
+  cite_art_yr_df[i,12] <- citation11
+  cite_art_yr_df[i,13] <- citation12
+  cite_art_yr_df[i,14] <- citation13
+  cite_art_yr_df[i,15] <- citation14
+}
+
+cite_art_yr_df <- sapply(cite_art_yr_df,as.numeric)
+cite_art_yr_df <- as.data.frame(cite_art_yr_df)
+
+long_art_yr <- cite_art_yr_df %>% gather(article, citations, -c(year))
+long_art_yr <- long_art_yr[long_art_yr$article!="allCitingArticle",]
+
+
+long_art_yr$article <- as.factor(long_art_yr$article)
+
 ##### Save data frames #####
 
