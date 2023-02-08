@@ -143,7 +143,7 @@ names(cite_art_yr$results$bindings[[1]])
 cite_art_yr_df <- tibble(year = character(),
                          translationArticle = character(),
                          literaryPedagogicArticle = character(),
-                         literaryNewsArticleCount = character(),
+                         literaryNewsArticle = character(),
                          hDCReviewArticle = character(),
                          hDCTranslationReviewArticle = character(),
                          otherDelilleExpressionReviewArticle = character(),
@@ -195,6 +195,7 @@ cite_art_yr_df <- as.data.frame(cite_art_yr_df)
 
 long_art_yr <- cite_art_yr_df %>% gather(article, citations, -c(year))
 long_art_yr <- long_art_yr[long_art_yr$article!="allCitingArticle",]
+long_art_yr <- long_art_yr[long_art_yr$article!="literaryArticle",] # I am not sure about this? But the numbers don't add up otherwise
 
 
 long_art_yr$article <- as.factor(long_art_yr$article)
