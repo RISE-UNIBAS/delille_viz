@@ -1,0 +1,217 @@
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix event: <http://e-editiones.ch/ontology/event#>
+prefix human: <http://e-editiones.ch/ontology/human#>
+PREFIX language: <http://e-editiones.ch/ontology/language#>
+PREFIX document: <http://e-editiones.ch/ontology/document#>
+prefix calendar: <http://e-editiones.ch/ontology/calendar#>
+PREFIX text: <http://e-editiones.ch/ontology/text#>
+prefix text-expression: <http://e-editiones.ch/ontology/text-expression#>
+prefix text-editing: <http://e-editiones.ch/ontology/text-editing#>
+PREFIX note-structure: <http://e-editiones.ch/ontology/note-structure#>
+PREFIX prosodic-structure: <http://e-editiones.ch/ontology/prosodic-structure#>
+prefix literature: <http://e-editiones.ch/ontology/literature#>
+prefix information-carrier: <http://e-editiones.ch/ontology/information-carrier#>
+prefix publishing: <http://e-editiones.ch/ontology/publishing#>
+prefix scholarly-editing: <http://e-editiones.ch/ontology/scholarly-editing#>
+PREFIX delille: <http://e-editiones.ch/ontology/delille#>
+
+CONSTRUCT {
+	?versePoem
+		a delille:VersePoem;
+		rdfs:label ?versePoemLabel;
+		literature:hasPoet ?person;
+		event:outputInvolvesRole ?poetRole;
+		language:expressedInNaturalLanguage ?french;
+		text-expression:hasTitleLiteral ?versePoemTitleLiteral;
+		literature:hasPoetryGenre ?scientificPoetry;
+		text:hasDescriptionLiteral ?poemDescriptionLiteral;
+		text-editing:hasEdition ?editedVersePoem;
+		publishing:isFirstPublishedIn ?firstPublication.
+	?poetRole a literature:Poet.
+	?french a ?Language.
+	?Language rdfs:subClassOf language:GeneralHumanNaturalLanguage.
+	?scientificPoetry a literature:ScientificPoetry.
+	?editedVersePoem
+		a delille:EditedVersePoem;
+		text-editing:hasEditor ?person;
+		event:outputInvolvesRole ?editorRole;
+		publishing:isPublishedIn ?editedVersePoemPublication;
+		scholarly-editing:hasEdition ?scholarlyEdition.
+	?editorRole a text-editing:PersonEditor.
+	?person
+		a human:Person;
+		rdfs:label ?label;
+		human:hasFamilyNameLiteral ?familyNameLiteral;
+		human:hasGivenNameLiteral ?givenNameLiteral;
+		human:hasBirthday ?birthday;
+		human:hasDeathDay ?deathDay;
+		human:personHasRole ?poetRole, ?editorRole;
+		text:hasDescriptionLiteral ?descriptionLiteral.
+	?birthday
+		calendar:hasGregorianDate ?bGD;
+		calendar:hasJulianDayNumber ?bJDN;
+		calendar:hasMessage ?bM.
+	?deathDay
+		calendar:hasGregorianDate ?dGD;
+		calendar:hasJulianDayNumber ?dJDN;
+		calendar:hasMessage ?dM.
+	?editedVersePoemPublication
+		a publishing:Publication;
+		rdfs:label ?editedVersePoemPublicationLabel;
+		publishing:hasTitleLiteral ?editedVersePoemPublicationTitleLiteral;
+		publishing:hasYearPeriod ?yP.
+	?yP	calendar:hasGregorianStartDate ?sD;
+		calendar:hasGregorianEndDate ?eD;
+		calendar:hasStartJulianDayNumber ?sJDN;
+		calendar:hasEndJulianDayNumber ?eJDN.
+	?firstPublication
+		a publishing:FirstPublication;
+		publishing:hasTitleLiteral ?firstPublicationTitleLiteral;
+		publishing:hasPublisher ?firstPublisherPerson;
+		event:outputInvolvesRole ?personFirstPublisherRole;
+		publishing:hasYearPeriod ?fPYP.
+	?fPYP
+		calendar:hasGregorianStartDate ?fPGSD;
+		calendar:hasGregorianEndDate ?fPGED;
+		calendar:hasStartJulianDayNumber ?fPSJDN;
+		calendar:hasEndJulianDayNumber ?fPEJDN.
+	?firstPublisherPerson human:personHasRole ?personFirstPublisherRole.
+	?personFirstPublisherRole a publishing:PersonPublisher.
+	?canto
+		a delille:Canto;
+		rdfs:label ?cantoLabel;
+		prosodic-structure:verseSectionHasOrdinalNumeral ?cantoOrdinalNumeral;
+		prosodic-structure:verseSectionHasTitleLiteral "Troisième Chant"@fr;
+		prosodic-structure:isVerseSectionOfPoem ?editedVersePoem.
+	?argument
+		a literature:Argument;
+		language:hasContentLiteral ?argumentContentLiteral;
+		literature:isArgumentOf ?canto.
+	?scholarlyEdition
+		a delille:ScholarlyEdition;
+		rdfs:label ?scholarlyEditionLabel;
+		scholarly-editing:hasEditor ?scholarlyEditorPerson;
+		event:outputInvolvesRole ?scholarlyEditorRole;
+		publishing:isPublishedOnWeb ?webPublication.
+	?scholarlyEditorPerson
+		a human:Person;
+		human:personHasRole ?scholarlyEditorRole, ?personWebPublisherRole;
+		human:hasFamilyNameLiteral ?scholarlyEditorFamilyNameLiteral;
+		human:hasGivenNameLiteral ?scholarlyEditorGivenNameLiteral.
+#		human:hasBirthYear ?scholarlyEditorBirthYearLiteral.
+	?scholarlyEditorRole a scholarly-editing:PersonEditor.
+	?webPublication
+		a publishing:WebsitePublication, information-carrier:DokuWiki;
+		information-carrier:webPageHasURL ?webPublicationURLLiteral;
+		publishing:hasTitleLiteral ?webPublicationTitleLiteral;
+		publishing:hasPublisher ?scholarlyEditorPerson;
+		event:outputInvolvesRole ?personWebPublisherRole;
+		publishing:hasYearPeriod ?yP.
+	?yP
+		calendar:hasGregorianStartDate ?wPGSD;
+		calendar:hasGregorianEndDate ?wPGED;
+		calendar:hasStartJulianDayNumber ?wPSJDN;
+		calendar:hasEndJulianDayNumber ?wPEJDN.
+	?personWebPublisherRole a publishing:PersonPublisher.
+}
+
+WHERE
+{
+	?versePoem
+		a delille:VersePoem;
+		rdfs:label ?versePoemLabel;
+		literature:hasPoet ?person;
+		event:outputInvolvesRole ?poetRole;
+		language:expressedInNaturalLanguage ?french;
+		text-expression:hasTitleLiteral ?versePoemTitleLiteral;
+		literature:hasPoetryGenre ?scientificPoetry;
+		text:hasDescriptionLiteral ?poemDescriptionLiteral;
+		text-editing:hasEdition ?editedVersePoem;
+		publishing:isFirstPublishedIn ?firstPublication.
+	?poetRole a literature:Poet.
+	?french a ?Language.
+	?Language rdfs:subClassOf language:GeneralHumanNaturalLanguage.
+	?scientificPoetry a literature:ScientificPoetry.
+	?editedVersePoem
+		a delille:EditedVersePoem;
+		text-editing:hasEditor ?person;
+		event:outputInvolvesRole ?editorRole;
+		publishing:isPublishedIn ?editedVersePoemPublication;
+		scholarly-editing:hasEdition ?scholarlyEdition.
+	?editorRole a text-editing:PersonEditor.
+	?person
+		a human:Person;
+		rdfs:label ?label;
+		human:hasFamilyNameLiteral ?familyNameLiteral;
+		human:hasGivenNameLiteral ?givenNameLiteral;
+		human:hasBirthday ?birthday;
+		human:hasDeathDay ?deathDay;
+		human:personHasRole ?poetRole, ?editorRole;
+		text:hasDescriptionLiteral ?descriptionLiteral.
+	?birthday
+		calendar:hasGregorianDate ?bGD;
+		calendar:hasJulianDayNumber ?bJDN;
+		calendar:hasMessage ?bM.
+	?deathDay
+		calendar:hasGregorianDate ?dGD;
+		calendar:hasJulianDayNumber ?dJDN;
+		calendar:hasMessage ?dM.
+	?editedVersePoemPublication
+		a publishing:Publication;
+		rdfs:label ?editedVersePoemPublicationLabel;
+		publishing:hasTitleLiteral ?editedVersePoemPublicationTitleLiteral;
+		publishing:hasYearPeriod ?yP.
+	?yP	calendar:hasGregorianStartDate ?sD;
+		calendar:hasGregorianEndDate ?eD;
+		calendar:hasStartJulianDayNumber ?sJDN;
+		calendar:hasEndJulianDayNumber ?eJDN.
+	?firstPublication
+		a publishing:FirstPublication;
+		publishing:hasTitleLiteral ?firstPublicationTitleLiteral;
+		publishing:hasPublisher ?firstPublisherPerson;
+		event:outputInvolvesRole ?personFirstPublisherRole;
+		publishing:hasYearPeriod ?fPYP.
+	?fPYP
+		calendar:hasGregorianStartDate ?fPGSD;
+		calendar:hasGregorianEndDate ?fPGED;
+		calendar:hasStartJulianDayNumber ?fPSJDN;
+		calendar:hasEndJulianDayNumber ?fPEJDN.
+	?firstPublisherPerson human:personHasRole ?personFirstPublisherRole.
+	?personFirstPublisherRole a publishing:PersonPublisher.
+	?canto
+		a delille:Canto;
+		rdfs:label ?cantoLabel;
+		prosodic-structure:verseSectionHasOrdinalNumeral ?cantoOrdinalNumeral;
+		prosodic-structure:verseSectionHasTitleLiteral "Troisième Chant"@fr;
+		prosodic-structure:isVerseSectionOfPoem ?editedVersePoem.
+	?argument
+		a literature:Argument;
+		language:hasContentLiteral ?argumentContentLiteral;
+		literature:isArgumentOf ?canto.
+	?scholarlyEdition
+		a delille:ScholarlyEdition;
+		rdfs:label ?scholarlyEditionLabel;
+		scholarly-editing:hasEditor ?scholarlyEditorPerson;
+		event:outputInvolvesRole ?scholarlyEditorRole;
+		publishing:isPublishedOnWeb ?webPublication.
+	?scholarlyEditorPerson
+		a human:Person;
+		human:personHasRole ?scholarlyEditorRole, ?personWebPublisherRole;
+		human:hasFamilyNameLiteral ?scholarlyEditorFamilyNameLiteral;
+		human:hasGivenNameLiteral ?scholarlyEditorGivenNameLiteral.
+#		human:hasBirthYear ?scholarlyEditorBirthYearLiteral.
+	?scholarlyEditorRole a scholarly-editing:PersonEditor.
+	?webPublication
+		a publishing:WebsitePublication, information-carrier:DokuWiki;
+		information-carrier:webPageHasURL ?webPublicationURLLiteral;
+		publishing:hasTitleLiteral ?webPublicationTitleLiteral;
+		publishing:hasPublisher ?scholarlyEditorPerson;
+		event:outputInvolvesRole ?personWebPublisherRole;
+		publishing:hasYearPeriod ?wPYP.
+	?wPYP
+		calendar:hasGregorianStartDate ?wPGSD;
+		calendar:hasGregorianEndDate ?wPGED;
+		calendar:hasStartJulianDayNumber ?wPSJDN;
+		calendar:hasEndJulianDayNumber ?wPEJDN.
+	?personWebPublisherRole a publishing:PersonPublisher.
+}

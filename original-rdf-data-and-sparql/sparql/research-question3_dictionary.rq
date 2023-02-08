@@ -1,0 +1,23 @@
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX text: <http://e-editiones.ch/ontology/text#>
+PREFIX prosodic-structure: <http://e-editiones.ch/ontology/prosodic-structure#>
+PREFIX delille: <http://e-editiones.ch/ontology/delille#>
+PREFIX delille-research: <http://e-editiones.ch/ontology/delille-research#>
+PREFIX delille-pd: <http://e-editiones.ch/project/data/delille#>
+
+SELECT
+	?verseOrdinalNumeral ?dictionary
+
+WHERE {
+	?rhymingVerse
+		a prosodic-structure:RhymingVerse;
+  		prosodic-structure:verseHasOrdinalNumeral ?verseOrdinalNumeral;
+		text:isCitedIn ?dictionary.
+	?dictionary a delille:Dictionary
+	}
+
+GROUP BY ?verseOrdinalNumeral ?dictionary
+ORDER BY ?verseOrdinalNumeral

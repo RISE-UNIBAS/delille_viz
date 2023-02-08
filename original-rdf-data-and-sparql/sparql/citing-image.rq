@@ -1,0 +1,111 @@
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX event: <http://e-editiones.ch/ontology/event#>
+PREFIX human: <http://e-editiones.ch/ontology/human#>
+PREFIX creating: <http://e-editiones.ch/ontology/creating#>
+PREFIX calendar: <http://e-editiones.ch/ontology/calendar#>
+PREFIX document: <http://e-editiones.ch/ontology/document#>
+PREFIX image: <http://e-editiones.ch/ontology/image#>
+PREFIX text: <http://e-editiones.ch/ontology/text#>
+PREFIX text-expression: <http://e-editiones.ch/ontology/text-expression#>
+PREFIX publishing: <http://e-editiones.ch/ontology/publishing#>
+PREFIX information-carrier: <http://e-editiones.ch/ontology/information-carrier#>
+PREFIX delille: <http://e-editiones.ch/ontology/delille#>
+
+
+# RETRIEVE VERSE CITING IMAGE EXPRESSIONS AND THEIR PROPERTIES:
+
+CONSTRUCT {
+	?Image rdfs:subClassOf image:Expression.
+	?image
+		a ?Image;
+#		rdfs:label ?l;
+#		image:expressionHasTitleLiteral ?t;
+#		text:hasDescriptionLiteral ?d;
+		creating:hasAuthor ?authorPerson;
+		event:outputInvolvesRole ?authorRole;
+		image:abstractIsPartOfDocument ?documentExpression;
+		delille:hasExternalResource ?externalResource;
+		publishing:hasReferenceLiteral ?referenceLiteral;
+		publishing:hasPublication ?publication;
+		a creating:AnonymousCreation;
+		?p ?o.
+	?authorPerson
+		a human:UnidentifiedPerson;
+		human:personHasRole ?authorRole.
+	?authorRole a creating:Author.
+	?expression a ?Expression.
+	?Expression rdfs:subClassOf delille:CitingExpression.
+	?externalResource
+		a document:HypertextDocument;
+		text:hasNameLiteral ?nameLiteral;
+		document:isOnWebpage ?webpage.
+	?webpage
+		a publishing:WebPublication;
+		information-carrier:webpageHasURL ?url.
+	?publication publishing:hasYearPeriod ?yP.
+	?yP
+		calendar:hasGregorianStartDate ?sD;
+		calendar:hasGregorianEndDate ?eD;
+		calendar:hasStartJulianDayNumber ?sJDN;
+		calendar:hasEndJulianDayNumber ?eJDN.
+	?textExpression
+		a ?TextExpression;
+		text-expression:isPartOfDocumentExpression ?documentExpression.
+	?TextExpression rdfs:subClassOf delille:CitingExpression.
+	?documentExpression a document:Expression
+	}
+
+WHERE {
+	?Image rdfs:subClassOf image:Expression.
+	?image
+		a ?Image;
+		?p ?o.
+#		rdfs:label ?l;
+#		text:hasDescriptionLiteral ?d;
+#	OPTIONAL {?i image:expressionHasTitleLiteral ?t}
+	OPTIONAL {
+		?image image:abstractIsPartOfDocument ?documentExpression.
+		?textExpression
+			a ?TextExpression;
+			text-expression:isPartOfDocumentExpression ?documentExpression.
+		?documentExpression a document:Expression.
+		?TextExpression rdfs:subClassOf delille:CitingExpression
+		}
+	OPTIONAL {
+		?image delille:hasExternalResource ?externalResource.
+		?externalResource 
+			a document:HypertextDocument;
+			document:isOnWebpage ?webpage.
+		OPTIONAL {?externalResource text:hasNameLiteral ?nameLiteral}
+		?webpage
+			a publishing:WebPublication;
+			information-carrier:webpageHasURL ?url.
+		}
+	OPTIONAL {
+		?image publishing:hasPublication ?publication.
+		?publication publishing:hasYearPeriod ?yP.
+		?yP
+			calendar:hasGregorianStartDate ?sD;
+			calendar:hasGregorianEndDate ?eD;
+			calendar:hasStartJulianDayNumber ?sJDN;
+			calendar:hasEndJulianDayNumber ?eJDN
+		}
+	OPTIONAL {?image publishing:hasReferenceLiteral ?referenceLiteral}
+	OPTIONAL {
+		?image
+			creating:hasAuthor ?authorPerson;
+			event:outputInvolvesRole ?authorRole.
+		?authorPerson human:personHasRole ?authorRole.
+		?authorRole a creating:Author
+		}
+	OPTIONAL {
+		?image
+			a creating:AnonymousCreation;
+			creating:hasAuthor ?unidentifiedPerson;
+			event:outputInvolvesRole ?authorRole.
+		?unidentifiedPerson
+			a human:UnidentifiedPerson;
+			human:personHasRole ?authorRole.
+		?authorRole a creating:Author
+		}
+	}

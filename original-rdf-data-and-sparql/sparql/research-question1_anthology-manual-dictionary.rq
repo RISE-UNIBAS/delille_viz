@@ -1,0 +1,17 @@
+PREFIX delille-research: <http://e-editiones.ch/ontology/delille-research#>
+
+CONSTRUCT {
+	?rhymingVerse
+		delille-research:verseHasNumberOfEarlyAnthologyOrManualAndDictionaryCitations ?earlyAnthologyOrManualAndDictionaryCitationCount;
+		delille-research:verseHasNumberOfLateNonAnthologyOrManualAndDictionaryCitations ?lateNonAnthologyOrManualAndDictionaryCitationCount;
+		delille-research:verseHasNumberOfEarlyNonAnthologyOrManualAndDictionaryCitations ?earlyNonAnthologyOrManualAndDictionaryCitationCount;
+		delille-research:verseHasNumberOfLateAnthologyOrManualAndDictionaryCitations ?lateAnthologyOrManualAndDictionaryCitationCount
+	}
+
+WHERE {
+	?rhymingVerse
+		delille-research:verseHasNumberOfEarlyAnthologyOrManualAndDictionaryCitations ?earlyAnthologyOrManualAndDictionaryCitationCount;
+		delille-research:verseHasNumberOfLateNonAnthologyOrManualAndDictionaryCitations ?lateNonAnthologyOrManualAndDictionaryCitationCount;
+		delille-research:verseHasNumberOfEarlyNonAnthologyOrManualAndDictionaryCitations ?earlyNonAnthologyOrManualAndDictionaryCitationCount;
+		delille-research:verseHasNumberOfLateAnthologyOrManualAndDictionaryCitations ?lateAnthologyOrManualAndDictionaryCitationCount
+	}

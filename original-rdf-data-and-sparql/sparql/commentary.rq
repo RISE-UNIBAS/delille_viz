@@ -1,0 +1,52 @@
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX language: <http://e-editiones.ch/ontology/language#>
+PREFIX text: <http://e-editiones.ch/ontology/text#>
+PREFIX text-expression: <http://e-editiones.ch/ontology/text-expression#>
+PREFIX text-structure: <http://e-editiones.ch/ontology/text-structure#>
+PREFIX delille: <http://e-editiones.ch/ontology/delille#>
+
+
+# RETRIEVE SCIENTIFIC COMMENTARIES:
+
+CONSTRUCT {
+	?textStructure
+		text-structure:isPartOfTextExpression ?textExpression;
+		text:isCitedIn ?commentary.
+	?commentary
+		a delille:Commentary, text-expression:ExpressionPart;
+		text-expression:hasTitleLiteral ?commentaryTitle;
+#		:hasCommentator ?commentator;
+		text-expression:isCommentaryOn ?textStructure;
+		text-expression:isPartOfExpression ?scholarlyEdition.
+	?scholarlyEdition a delille:ScholarlyEdition.
+	?section
+		a text-structure:Section;
+		text-structure:sectionHasTitleLiteral ?title;
+		text-structure:sectionHasOrdinalNumeral ?sectionOrdinalNumeral;
+		language:hasContentLiteral ?content;
+		text-structure:isSectionOfExpression ?commentary
+	}
+
+WHERE {
+	OPTIONAL {
+		?textStructure
+			text-structure:isPartOfTextExpression ?textExpression;
+			text:isCitedIn ?commentary.
+		}
+#	OPTIONAL {
+#
+#		}
+	?commentary
+		a delille:Commentary, text-expression:ExpressionPart;
+		text-expression:hasTitleLiteral ?commentaryTitle;
+#		text-expression:hasCommentator ?commentator;
+		text-expression:isCommentaryOn ?textStructure; # textStructure PO textExpression, person or serial
+		text-expression:isPartOfExpression ?scholarlyEdition.
+	?scholarlyEdition a delille:ScholarlyEdition.
+	?section
+		a text-structure:Section;
+		text-structure:sectionHasTitleLiteral ?title;
+		text-structure:sectionHasOrdinalNumeral ?sectionOrdinalNumeral;
+		language:hasContentLiteral ?content;
+		text-structure:isSectionOfExpression ?commentary
+	}

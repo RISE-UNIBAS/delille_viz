@@ -1,0 +1,38 @@
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix text-expression: <http://e-editiones.ch/ontology/text-expression#>
+prefix publishing: <http://e-editiones.ch/ontology/publishing#>
+prefix calendar: <http://e-editiones.ch/ontology/calendar#>
+
+# RETRIEVE CITATIONS BY AUTHOR
+
+SELECT
+(CONCAT(STR(?text), " (", STR(?publicationDate), ")") AS ?output)
+
+
+WHERE {
+?person rdfs:label "inseriParam---personLabel---" .
+  ?expression text-expression:hasAuthor ?person ;
+              text-expression:hasTitleLiteral ?title ;
+             publishing:isPublishedIn ?publication .
+  
+  OPTIONAL { ?expression publishing:hasReferenceLiteral ?reference . }
+  
+  BIND (
+    IF(EXISTS{?expression publishing:hasReferenceLiteral ?reference}, ?reference, ?title ) AS ?text )
+  
+  OPTIONAL {
+    ?publication publishing:hasYearPeriod ?YearPeriod . 
+    ?YearPeriod calendar:hasGregorianStartDate ?gregorianYear .
+    BIND ( (year(?gregorianYear)) AS ?publicationDate )
+  }
+
+  OPTIONAL {
+    ?publication publishing:hasPartitionedPublishing ?partitionedPublication .
+    ?partitionedPublication publishing:hasStartYearPeriod ?startYearPeriod ;
+                            publishing:hasEndYearPeriod ?endYearPeriod .
+    ?startYearPeriod calendar:hasGregorianStartDate ?gregorianStartYear.
+    ?endYearPeriod calendar:hasGregorianEndDate ?gregorianEndYear.
+    BIND ( (CONCAT(STR(year(?gregorianStartYear)), '-', (STR(year(?gregorianEndYear))))) AS ?publicationDate)
+  }  
+  
+}

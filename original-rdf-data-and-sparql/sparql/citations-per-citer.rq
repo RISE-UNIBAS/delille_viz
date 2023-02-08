@@ -1,0 +1,73 @@
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX event: <http://e-editiones.ch/ontology/event#>
+PREFIX human: <http://e-editiones.ch/ontology/human#>
+PREFIX language: <http://e-editiones.ch/ontology/language#>
+PREFIX calendar: <http://e-editiones.ch/ontology/calendar#>
+PREFIX document: <http://e-editiones.ch/ontology/document#>
+PREFIX text: <http://e-editiones.ch/ontology/text#>
+PREFIX text-expression: <http://e-editiones.ch/ontology/text-expression#>
+PREFIX prosodic-structure: <http://e-editiones.ch/ontology/prosodic-structure#>
+PREFIX delille: <http://e-editiones.ch/ontology/delille#>
+
+
+# RETRIEVE CITATIONS PER CITER PERSON WITH PROPERTIES:
+
+# Notes:
+#° The cited verses are counted per expression.
+# If a person is citing in more than 1 expression, the same verse can be cited in the different expressions, hence counted accordingly.
+
+
+SELECT
+#	?person
+	?role
+#	?PersonRoleLabel
+	?familyName
+	?givenName
+	?name
+	(year(?gregorianStartDate) AS ?birthYear)
+	(year(?gregorianEndDate) AS ?deathYear)
+	(COUNT(DISTINCT ?rhymingVerse) AS ?rhymingVerseCount)
+
+WHERE {
+	?person human:personHasRole ?personRole. #, ?citerRole. # thanks to the link text:hasCiter between citingExpression and person
+#	?personRole a ?PersonRole.
+	{?personRole a text-expression:ManOfLetters} UNION
+	{?personRole a human:Artist} UNION
+	{?personRole a text-expression:Vulgarizer} UNION
+	{?personRole a delille:NonArtist-ManOfLetters-Vulgarizer}.
+#	?PersonRole rdfs:label ?PersonRoleLabel.
+	OPTIONAL {?person human:hasFamilyNameLiteral ?familyName}
+	OPTIONAL {?person human:hasGivenNameLiteral ?givenName}
+	OPTIONAL {?person human:hasNameLiteral ?name}
+	OPTIONAL {
+    	?person human:hasBirthYearPeriod ?birthYearPeriod.
+		?birthYearPeriod calendar:hasGregorianStartDate ?gregorianStartDate
+  		}
+	OPTIONAL {
+    	?person human:hasDeathYearPeriod ?deathYearPeriod.
+		?deathYearPeriod calendar:hasGregorianEndDate ?gregorianEndDate
+  		}
+	BIND (
+    	IF(regex(STR(?personRole), "#ManOfLetters"), "ManOfLetters",
+			IF(regex(STR(?personRole), "#Vulgarizer"), "Vulgarizer",
+				IF(regex(STR(?personRole), "#Artist"), "Artist",
+					IF(regex(STR(?personRole), "#OtherRole"), "Other", ""
+          				)
+					)
+      			)
+    		) AS ?role
+  		)
+#	?citerRole a text:PersonCiter.
+#	?citingExpression
+#		a ?CitingExpression;
+#		event:outputInvolvesRole ?citerRole;
+#		delille:hasPunctuatedCitedVerseNumberSequenceLiteral ?punctuatedCitedVerseNumberSequenceLiteral.
+#	?CitingExpression rdfs:subClassOf delille:CitingExpression.
+	?rhymingVerse
+#		a prosodic-structure:RhymingVerse;
+		text:isCitedBy ?person
+#		text:isCitedIn ?citingExpression
+	}
+
+GROUP BY ?role ?familyName ?givenName ?name ?gregorianStartDate ?gregorianEndDate ?rhymingVerse
+ORDER BY ?role

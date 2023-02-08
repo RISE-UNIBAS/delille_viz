@@ -1,0 +1,38 @@
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix text: <http://e-editiones.ch/ontology/text#>
+prefix prosodic-structure: <http://e-editiones.ch/ontology/prosodic-structure#>
+prefix delille: <http://e-editiones.ch/ontology/delille#>
+prefix delille-research: <http://e-editiones.ch/ontology/delille-research#>
+
+
+# RETRIEVE PER STROPHE-VERSE THE NUMBER OF CITING EXPRESSIONS:
+
+SELECT
+	?stropheOrdinalNumeral
+	(SUM(?citingExpressionCount) AS ?finalCount)
+
+WHERE {
+	{
+		SELECT
+			?stropheOrdinalNumeral ?verseOrdinalNumeral
+			((COUNT(DISTINCT ?citingExpression1))+(COUNT(DISTINCT ?citingExpression2)*2)+(COUNT(DISTINCT ?citingExpression3)*3)+(COUNT(DISTINCT ?citingExpression4)*4)+(COUNT(DISTINCT ?citingExpression5)*5) AS ?citingExpressionCount)
+
+		WHERE {
+			?rhymingVerse
+				prosodic-structure:verseHasOrdinalNumeral ?verseOrdinalNumeral;
+				prosodic-structure:isVerseOfStrophe ?strophe;
+				text:isCitedIn ?citingExpression1.
+		OPTIONAL {?rhymingVerse delille-research:isCitedTwiceIn ?citingExpression2}
+		OPTIONAL {?rhymingVerse delille-research:isCitedThreeTimesIn ?citingExpression3}
+		OPTIONAL {?rhymingVerse delille-research:isCitedFourTimesIn ?citingExpression4}
+		OPTIONAL {?rhymingVerse delille-research:isCitedFiveTimesIn ?citingExpression5}
+
+			?strophe prosodic-structure:stropheHasOrdinalNumeral ?stropheOrdinalNumeral.
+			}
+		GROUP BY ?stropheOrdinalNumeral ?verseOrdinalNumeral
+		ORDER BY ?verseOrdinalNumeral
+	}
+	}
+
+GROUP BY ?stropheOrdinalNumeral
+ORDER BY ?stropheOrdinalNumeral

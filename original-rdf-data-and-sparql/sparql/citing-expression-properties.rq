@@ -1,0 +1,148 @@
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX event: <http://e-editiones.ch/ontology/event#>
+PREFIX human: <http://e-editiones.ch/ontology/human#>
+PREFIX language: <http://e-editiones.ch/ontology/language#>
+PREFIX document: <http://e-editiones.ch/ontology/document#>
+PREFIX calendar: <http://e-editiones.ch/ontology/calendar#>
+PREFIX text: <http://e-editiones.ch/ontology/text#>
+PREFIX text-expression: <http://e-editiones.ch/ontology/text-expression#>
+PREFIX text-structure: <http://e-editiones.ch/ontology/text-structure#>
+PREFIX prosodic-structure: <http://e-editiones.ch/ontology/prosodic-structure#>
+PREFIX information-carrier: <http://e-editiones.ch/ontology/information-carrier#>
+PREFIX publishing: <http://e-editiones.ch/ontology/publishing#>
+PREFIX literature: <http://e-editiones.ch/ontology/literature#>
+PREFIX delille: <http://e-editiones.ch/ontology/delille#>
+
+
+# RETRIEVE CITING EXPRESSIONS, THEIR PROPERTIES, AND SCIENTIFIC COMMENTARIES:
+
+CONSTRUCT {
+	?CitingExpression rdfs:subClassOf delille:CitingExpression.
+	?citingExpression
+		a ?CitingExpression, ?OtherClass;
+		text-expression:hasTitleLiteral ?t;
+		?outputHasAgent ?person;
+		event:outputInvolvesRole ?r;
+  		publishing:isPublishedIn ?publication;
+  		delille:hasExternalResource ?e;
+  		text-expression:isPartOfExpression ?articleTanslatedVersePoem;
+		?p ?o.
+  	?person human:personHasRole ?r.
+  	?r a ?R.
+  	?o a ?O.
+  	?publication
+  		publishing:hasNumeral ?pN;
+  		publishing:hasYearPeriod ?yP;
+  		publishing:hasPartitionedPublishing ?pP.
+  	?yP
+		calendar:hasGregorianStartDate ?sD;
+		calendar:hasGregorianEndDate ?eD;
+		calendar:hasStartJulianDayNumber ?sJDN;
+		calendar:hasEndJulianDayNumber ?eJDN.
+	?pP
+		a publishing:PartitionedPublishing;
+		?hasPeriod ?period.
+	?period
+		calendar:hasGregorianStartDate ?sDPP;
+		calendar:hasGregorianEndDate ?eDPP;
+		calendar:hasStartJulianDayNumber ?sJDNPP;
+		calendar:hasEndJulianDayNumber ?eJDNPP.
+	?e
+		a document:HypertextDocument;
+		text:hasNameLiteral ?n;
+		document:isOnWebpage ?w.
+	?w
+		a publishing:WebPublication;
+		information-carrier:webpageHasURL ?u.
+	?textStructure
+		text-structure:isPartOfTextExpression ?citingExpression;
+		text:isCitedIn ?commentary.
+	?commentary
+		a delille:Commentary, text-expression:ExpressionPart;
+		text-expression:hasTitleLiteral ?commentaryTitle;
+#		:hasCommentator ?commentator;
+		text-expression:isCommentaryOn ?textStructure;
+		text-expression:isPartOfExpression ?scholarlyEdition.
+	?scholarlyEdition a delille:ScholarlyEdition.
+	?section
+		a text-structure:Section;
+		text-structure:sectionHasTitleLiteral ?st;
+		text-structure:sectionHasOrdinalNumeral ?n;
+		language:hasContentLiteral ?c;
+		text-structure:isSectionOfExpression ?commentary.
+	?articleTanslatedVersePoem a delille:TranslatedVersePoem
+	}
+
+WHERE {
+	?CitingExpression rdfs:subClassOf delille:CitingExpression.
+	?citingExpression
+		a ?CitingExpression;
+		text-expression:hasTitleLiteral ?t;
+		?outputHasAgent ?person;
+		event:outputInvolvesRole ?r;
+  		publishing:isPublishedIn ?publication;
+		?p ?o.
+  	?person human:personHasRole ?r.
+  	?r a ?R.
+  	?o a ?O.
+	OPTIONAL {
+    	?citingExpression a ?OtherClass.
+  		MINUS {?OtherClass rdfs:subClassOf delille:CitingExpression}
+  		}
+  	OPTIONAL {?publication publishing:hasNumeral ?pN}
+	OPTIONAL {
+		?publication publishing:hasYearPeriod ?yP.
+		?yP
+			calendar:hasGregorianStartDate ?sD;
+			calendar:hasGregorianEndDate ?eD;
+			calendar:hasStartJulianDayNumber ?sJDN;
+			calendar:hasEndJulianDayNumber ?eJDN.
+		}
+	OPTIONAL {
+		?publication publishing:hasPartitionedPublishing ?pP.
+		?pP
+			a publishing:PartitionedPublishing;
+			?hasPeriod ?period.
+		?period
+			calendar:hasGregorianStartDate ?sDPP;
+			calendar:hasGregorianEndDate ?eDPP;
+			calendar:hasStartJulianDayNumber ?sJDNPP;
+			calendar:hasEndJulianDayNumber ?eJDNPP.
+		}
+	OPTIONAL {
+		?citingExpression delille:hasExternalResource ?e.
+		?e
+			a document:HypertextDocument;
+			document:isOnWebpage ?w.
+		OPTIONAL {?e text:hasNameLiteral ?n}
+		?w
+			a publishing:WebPublication;
+			information-carrier:webpageHasURL ?u
+		}
+	OPTIONAL {
+		?citingExpression
+#			language:expressedInNaturalLanguage ?language;
+			text-expression:isPartOfExpression ?articleTanslatedVersePoem.
+#		?language a ?Language.
+#		?Language rdfs:subClassOf language:HumanNaturalLanguage.
+		?articleTanslatedVersePoem a delille:TranslatedVersePoem
+		}
+	OPTIONAL {
+		?textStructure
+			text-structure:isPartOfTextExpression ?citingExpression;
+			text:isCitedIn ?commentary.
+		?commentary
+			a delille:Commentary, text-expression:ExpressionPart;
+			text-expression:hasTitleLiteral ?commentaryTitle;
+#			:hasCommentator ?commentator;
+			text-expression:isCommentaryOn ?textStructure;
+			text-expression:isPartOfExpression ?scholarlyEdition.
+		?scholarlyEdition a delille:ScholarlyEdition.
+		?section
+			a text-structure:Section;
+			text-structure:sectionHasTitleLiteral ?st;
+			text-structure:sectionHasOrdinalNumeral ?n;
+			language:hasContentLiteral ?c;
+			text-structure:isSectionOfExpression ?commentary
+		}
+	}

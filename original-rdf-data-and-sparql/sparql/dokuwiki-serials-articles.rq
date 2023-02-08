@@ -1,0 +1,25 @@
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix human: <http://e-editiones.ch/ontology/human#>
+prefix text: <http://e-editiones.ch/ontology/text#>
+prefix calendar: <http://e-editiones.ch/ontology/calendar#>
+prefix text-expression: <http://e-editiones.ch/ontology/text-expression#>
+prefix publishing: <http://e-editiones.ch/ontology/publishing#>
+prefix delille: <http://e-editiones.ch/ontology/delille#>
+
+# RETRIEVE ARTICLES
+
+SELECT
+?reference
+
+WHERE {
+  ?serial a publishing:SerialVolume ;
+          rdfs:label "inseriParam---verse-label---"; # "semainedesfamilles"
+          ^publishing:isSerialIssueOfVolume ?issue .
+  
+  ?issue ^publishing:isPublishedIn ?article .
+  
+  ?article a delille:Article;
+    text-expression:hasTitleLiteral ?title ;
+    publishing:hasReferenceLiteral ?reference .
+
+}

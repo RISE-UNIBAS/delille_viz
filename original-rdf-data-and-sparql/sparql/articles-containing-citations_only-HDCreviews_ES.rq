@@ -1,0 +1,12 @@
+prefix text: <http://e-editiones.ch/ontology/text#>
+prefix publishing: <http://e-editiones.ch/ontology/publishing#>
+prefix delille-pd: <http://e-editiones.ch/project/data/delille#>
+
+# RETRIEVE ARTICLE REVIEWING HDC THAT CONTAINS CITATIONS:
+
+SELECT DISTINCT
+  ?hDCReviewArticle
+WHERE {
+  ?rhymingVerse text:isCitedIn ?hDCReviewArticle.
+  ?hDCReviewArticle publishing:isReviewOf delille-pd:HDC.
+}

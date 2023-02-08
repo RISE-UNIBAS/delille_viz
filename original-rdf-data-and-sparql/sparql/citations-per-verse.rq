@@ -1,0 +1,26 @@
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX text: <http://e-editiones.ch/ontology/text#>
+PREFIX prosodic-structure: <http://e-editiones.ch/ontology/prosodic-structure#>
+PREFIX delille: <http://e-editiones.ch/ontology/delille#>
+PREFIX delille-research: <http://e-editiones.ch/ontology/delille-research#>
+
+
+# RETRIEVE PER VERSE THE NUMBER OF CITING EXPRESSIONS:
+# Note: partitioned publications included
+
+SELECT
+	?verseOrdinalNumeral
+	((COUNT(DISTINCT ?citingExpression1))+(COUNT(DISTINCT ?citingExpression2)*2)+(COUNT(DISTINCT ?citingExpression3)*3)+(COUNT(DISTINCT ?citingExpression4)*4)+(COUNT(DISTINCT ?citingExpression5)*5) AS ?citationCount)
+	
+WHERE {
+	?rhymingVerse
+		prosodic-structure:verseHasOrdinalNumeral ?verseOrdinalNumeral;
+		text:isCitedIn ?citingExpression1.
+	OPTIONAL {?rhymingVerse delille-research:isCitedTwiceIn ?citingExpression2}
+	OPTIONAL {?rhymingVerse delille-research:isCitedThreeTimesIn ?citingExpression3}
+	OPTIONAL {?rhymingVerse delille-research:isCitedFourTimesIn ?citingExpression4}
+	OPTIONAL {?rhymingVerse delille-research:isCitedFiveTimesIn ?citingExpression5}
+	}
+
+GROUP BY ?verseOrdinalNumeral
+ORDER BY ?verseOrdinalNumeral

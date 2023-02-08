@@ -1,0 +1,36 @@
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix human: <http://e-editiones.ch/ontology/human#>
+prefix text: <http://e-editiones.ch/ontology/text#>
+prefix calendar: <http://e-editiones.ch/ontology/calendar#>
+prefix text-expression: <http://e-editiones.ch/ontology/text-expression#>
+prefix publishing: <http://e-editiones.ch/ontology/publishing#>
+prefix delille: <http://e-editiones.ch/ontology/delille#>
+
+# RETRIEVE SERIALS
+
+SELECT
+?serial 
+?label
+?title
+?dates
+(COUNT(?article) as ?articleCount)
+
+WHERE {
+ ?serial a publishing:SerialVolume ;
+         rdfs:label ?label ;
+         publishing:hasTitleLiteral ?title .
+  OPTIONAL { 
+    ?serial publishing:serialVolumeHasExistence ?existence .
+    ?existence a publishing:SerialVolumeExistence ;
+               publishing:hasStartYearPeriod ?startYearPeriod ;
+               publishing:hasEndYearPeriod ?endYearPeriod .
+    ?startYearPeriod calendar:hasGregorianStartDate ?startYear .
+    ?endYearPeriod calendar:hasGregorianEndDate ?endYear .
+    BIND (CONCAT(STR(year(?startYear)), "-", STR(year(?endYear))) AS ?dates )
+  }
+            
+  ?serial ^publishing:isSerialIssueOfVolume ?issue .
+  ?issue ^publishing:isPublishedIn ?article .
+  
+}
+GROUP BY ?serial ?label ?title ?dates

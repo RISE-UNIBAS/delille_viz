@@ -1,0 +1,17 @@
+PREFIX text-expression: <http://e-editiones.ch/ontology/text-expression#>
+PREFIX delille: <http://e-editiones.ch/ontology/delille#>
+
+
+# RETRIEVE CITING ARTICLES:
+
+CONSTRUCT {
+  ?article
+      a delille:Article, ?OtherClass;
+      text-expression:hasTitleLiteral ?t.
+  }
+
+WHERE {
+  ?article
+      a delille:Article, ?OtherClass;
+      text-expression:hasTitleLiteral ?t.
+  }

@@ -1,0 +1,131 @@
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX event: <http://e-editiones.ch/ontology/event#>
+PREFIX human: <http://e-editiones.ch/ontology/human#>
+PREFIX language: <http://e-editiones.ch/ontology/language#>
+PREFIX calendar: <http://e-editiones.ch/ontology/calendar#>
+PREFIX document: <http://e-editiones.ch/ontology/document#>
+PREFIX text: <http://e-editiones.ch/ontology/text#>
+PREFIX text-expression: <http://e-editiones.ch/ontology/text-expression#>
+PREFIX publishing: <http://e-editiones.ch/ontology/publishing#>
+PREFIX information-carrier: <http://e-editiones.ch/ontology/information-carrier#>
+PREFIX delille: <http://e-editiones.ch/ontology/delille#>
+
+
+# RETRIEVE PERSONS WITH THEIR PROPERTIES AND EXPRESSIONS THEY CITE IN:
+
+CONSTRUCT {
+	?person
+		a human:Person;
+		?hasDay ?day;
+		?hasPeriod ?period;
+		human:personHasRole ?personRole;
+		delille:hasExternalResource ?e;
+		?p ?o.
+	?day
+		?hasDate ?gD;
+		calendar:hasJulianDayNumber ?jDN;
+		calendar:hasMessage ?m.
+	?period
+		calendar:hasGregorianStartDate ?sD;
+		calendar:hasGregorianEndDate ?eD;
+		calendar:hasStartJulianDayNumber ?sJDN;
+		calendar:hasEndJulianDayNumber ?eJDN.
+	?personRole a ?PersonRole.
+	?e
+		a document:HypertextDocument;
+		text:hasNameLiteral ?n;
+		document:isOnWebpage ?w.
+	?w
+		a publishing:WebPublication;
+		information-carrier:webpageHasURL ?u.
+	?citingExpression
+		a ?CitingExpression;
+		text-expression:hasTitleLiteral ?citingExpressionTitleLiteral;
+		text-expression:hasAuthor ?person;
+		event:outputInvolvesRole ?authorRole, ?citerRole.
+	?authorRole a text-expression:Author.
+	?citerRole a text:PersonCiter.
+	?translatedVersePoem
+		a delille:TranslatedVersePoem;
+		text-expression:hasTitleLiteral ?translatedVersePoemTitleLiteral;
+		language:translationHasPersonTranslator ?person;
+		event:outputInvolvesRole ?personTranslator;
+		language:expressedInNaturalLanguage ?language.
+	?personTranslator a language:PersonTranslator.
+	?language a ?Language.
+	?translatedVersePoemArticle
+		a publishing:Article, language:PersonTranslation;
+		text-expression:hasTitleLiteral ?translatedVersePoemArticleTitleLiteral;
+		language:translationHasPersonTranslator ?person;			
+		event:outputInvolvesRole ?articlePersonTranslator;
+		language:expressedInNaturalLanguage ?articleLanguage;
+		text-expression:isPartOfExpression ?articleTanslatedVersePoem.
+	?articlePersonTranslator a language:PersonTranslator.
+	?articleLanguage a ?Language.
+	?articleTanslatedVersePoem a delille:TranslatedVersePoem.
+	}
+
+WHERE {
+	?person
+		a human:Person;
+		human:personHasRole ?personRole;
+		?p ?o.
+	?personRole a ?PersonRole.
+	OPTIONAL {
+		?citingExpression
+			a ?CitingExpression;
+			text-expression:hasTitleLiteral ?citingExpressionTitleLiteral;
+			text-expression:hasAuthor ?person;
+			event:outputInvolvesRole ?authorRole, ?citerRole.
+		?CitingExpression rdfs:subClassOf delille:CitingExpression.
+		?authorRole a text-expression:Author.
+		?citerRole a text:PersonCiter.
+		}
+	OPTIONAL {
+		?translatedVersePoem
+			a delille:TranslatedVersePoem;
+			text-expression:hasTitleLiteral ?translatedVersePoemTitleLiteral;
+			language:translationHasPersonTranslator ?person;
+			event:outputInvolvesRole ?personTranslator;
+			language:expressedInNaturalLanguage ?language.
+		?personTranslator a language:PersonTranslator.
+		?language a ?Language.
+		}
+	OPTIONAL {
+		?translatedVersePoemArticle
+			a publishing:Article, language:PersonTranslation;
+			text-expression:hasTitleLiteral ?translatedVersePoemArticleTitleLiteral;
+			language:translationHasPersonTranslator ?person;			
+			event:outputInvolvesRole ?articlePersonTranslator;
+			language:expressedInNaturalLanguage ?articleLanguage;
+			text-expression:isPartOfExpression ?articleTanslatedVersePoem.
+		?articlePersonTranslator a language:PersonTranslator.
+		?articleLanguage a ?Language.
+		?articleTanslatedVersePoem a delille:TranslatedVersePoem
+		}
+	OPTIONAL {
+		?person ?hasDay ?day.
+		?day
+			?hasDate ?gD;
+			calendar:hasJulianDayNumber ?jDN;
+			calendar:hasMessage ?m. # Just an example.
+		}
+	OPTIONAL {
+		?person ?hasPeriod ?period.
+		?period
+			calendar:hasGregorianStartDate ?sD;
+			calendar:hasGregorianEndDate ?eD;
+			calendar:hasStartJulianDayNumber ?sJDN;
+			calendar:hasEndJulianDayNumber ?eJDN.
+		}
+	OPTIONAL {
+		?person delille:hasExternalResource ?e.
+		?e 
+			a document:HypertextDocument;
+			document:isOnWebpage ?w.
+		OPTIONAL {?e text:hasNameLiteral ?n}
+		?w
+			a publishing:WebPublication;
+			information-carrier:webpageHasURL ?u
+		}
+	}

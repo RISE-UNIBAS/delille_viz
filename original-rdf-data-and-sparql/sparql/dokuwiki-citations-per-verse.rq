@@ -1,0 +1,45 @@
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix human: <http://e-editiones.ch/ontology/human#>
+prefix text: <http://e-editiones.ch/ontology/text#>
+prefix calendar: <http://e-editiones.ch/ontology/calendar#>
+prefix text-expression: <http://e-editiones.ch/ontology/text-expression#>
+prefix event: <http://e-editiones.ch/ontology/event#>
+prefix prosodic-structure: <http://e-editiones.ch/ontology/prosodic-structure#>
+prefix delille: <http://e-editiones.ch/ontology/delille#>
+prefix delille-research: <http://e-editiones.ch/ontology/delille-research#>
+
+# RETRIEVE CITERS PER VERSE:
+
+SELECT
+(GROUP_CONCAT(DISTINCT ?authorLabel ; SEPARATOR = ";" ) AS ?authorsLabels)
+#(GROUP_CONCAT(DISTINCT ?authorName ; SEPARATOR = " et " ) AS ?authors)
+(GROUP_CONCAT(DISTINCT ?authorName1 ; SEPARATOR = " et " ) AS ?authors)
+?expressionLabel
+?title
+?sequence
+
+WHERE {
+  ?verse
+    rdfs:label "inseriParam---verse-label---";
+    ?p ?expression .
+    FILTER (?p IN (text:isCitedIn, delille-research:isCitedTwiceIn, delille-research:isCitedThreeTimesIn, delille-research:isCitedFourTimesIn, delille-research:isCitedFiveTimesIn ) )
+  
+  ?expression rdfs:label ?expressionLabel.
+  ?expression text-expression:hasTitleLiteral ?title .
+  
+  OPTIONAL {
+    ?expression text-expression:hasAuthor ?author .
+    { ?author rdfs:label ?authorLabel .
+      ?author human:hasFamilyNameLiteral ?familyName .
+      ?author human:hasGivenNameLiteral ?givenName .
+      BIND (CONCAT(STR(?familyName), ", ", STR(?givenName)) AS ?authorName ) } UNION
+    { ?author human:hasNameLiteral ?authorName}
+  }
+  BIND ( COALESCE(?authorName, "Anonyme") As ?authorName1)
+ 
+  OPTIONAL { ?expression delille:hasPunctuatedCitedVerseNumberSequenceLiteral ?sequence . }
+  
+}
+GROUP BY ?title ?sequence ?expressionLabel
+ORDER BY ?sequence 
+

@@ -1,0 +1,51 @@
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX event: <http://e-editiones.ch/ontology/event#>
+PREFIX human: <http://e-editiones.ch/ontology/human#>
+PREFIX language: <http://e-editiones.ch/ontology/language#>
+PREFIX calendar: <http://e-editiones.ch/ontology/calendar#>
+PREFIX text: <http://e-editiones.ch/ontology/text#>
+PREFIX text-expression: <http://e-editiones.ch/ontology/text-expression#>
+PREFIX publishing: <http://e-editiones.ch/ontology/publishing#>
+PREFIX delille: <http://e-editiones.ch/ontology/delille#>
+
+
+# RETRIEVE CITING AND TRANSLATION EXPRESSIONS INCLUDING ARTICLES, WITH PARTITIONED PUBLICATION TIME:
+
+CONSTRUCT {
+	?expression
+		a ?Expression;
+		text-expression:hasTitleLiteral ?textExpressionTitleLiteral;
+		text-expression:isPartOfExpression ?articleTanslatedVersePoem;
+		publishing:isPublishedIn ?publication.
+	?articleTanslatedVersePoem a delille:TranslatedVersePoem.
+ 	?publication publishing:hasPartitionedPublishing ?pP.
+	?pP
+		a publishing:PartitionedPublishing;
+		?hasPeriod ?period.
+	?period
+		calendar:hasGregorianStartDate ?sDPP;
+		calendar:hasGregorianEndDate ?eDPP;
+		calendar:hasStartJulianDayNumber ?sJDNPP;
+		calendar:hasEndJulianDayNumber ?eJDNPP.
+	}
+
+WHERE {
+	?expression
+		a ?Expression;
+		text-expression:hasTitleLiteral ?textExpressionTitleLiteral;
+		publishing:isPublishedIn ?publication.
+	OPTIONAL {
+		?expression
+			text-expression:isPartOfExpression ?articleTanslatedVersePoem.
+		?articleTanslatedVersePoem a delille:TranslatedVersePoem
+		}
+	?publication publishing:hasPartitionedPublishing ?pP.
+	?pP
+		a publishing:PartitionedPublishing;
+		?hasPeriod ?period.
+	?period
+		calendar:hasGregorianStartDate ?sDPP;
+		calendar:hasGregorianEndDate ?eDPP;
+		calendar:hasStartJulianDayNumber ?sJDNPP;
+		calendar:hasEndJulianDayNumber ?eJDNPP.
+	}

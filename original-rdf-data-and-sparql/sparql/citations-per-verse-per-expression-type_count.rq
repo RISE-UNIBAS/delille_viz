@@ -1,0 +1,58 @@
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+prefix human: <http://e-editiones.ch/ontology/human#>
+prefix text: <http://e-editiones.ch/ontology/text#>
+prefix text-expression: <http://e-editiones.ch/ontology/text-expression#>
+prefix prosodic-structure: <http://e-editiones.ch/ontology/prosodic-structure#>
+prefix delille: <http://e-editiones.ch/ontology/delille#>
+prefix delille-research: <http://e-editiones.ch/ontology/delille-research#>
+
+
+# RETRIEVE CITATIONS PER STROPHE-VERSE PER EXPRESSION TYPE:
+
+SELECT
+  ?stropheOrdinalNumeral ?verseOrdinalNumeral
+  ((COUNT(DISTINCT ?dictionary)+COUNT(DISTINCT ?anthologyOrManual)) AS ?dictionaryOrAnthologyOrManualCount)
+  (COUNT(DISTINCT ?literaryExpression) AS ?literaryExpressionCount)
+  (COUNT(DISTINCT ?scientificOrVulgarizedExpression) AS ?scientificOrVulgarizedExpressionCount)
+  (COUNT(DISTINCT ?catalogue) AS ?catalogueCount)
+
+WHERE {
+  ?rhymingVerse
+    a prosodic-structure:RhymingVerse;
+    prosodic-structure:verseHasOrdinalNumeral ?verseOrdinalNumeral;
+    prosodic-structure:isVerseOfStrophe ?strophe.
+  ?strophe
+    a prosodic-structure:Strophe;
+    prosodic-structure:stropheHasOrdinalNumeral ?stropheOrdinalNumeral.
+  OPTIONAL {
+    ?rhymingVerse ?p ?dictionary.
+    FILTER (?p IN (text:isCitedIn, delille-research:isCitedTwiceIn, delille-research:isCitedThreeTimesIn, delille-research:isCitedFourTimesIn, delille-research:isCitedFiveTimesIn ) )
+    ?dictionary a delille:Dictionary
+    }
+  OPTIONAL {
+    ?rhymingVerse ?p ?anthologyOrManual.
+    FILTER (?p IN (text:isCitedIn, delille-research:isCitedTwiceIn, delille-research:isCitedThreeTimesIn, delille-research:isCitedFourTimesIn, delille-research:isCitedFiveTimesIn ) )
+    ?anthologyOrManual a delille:AnthologyOrManual
+    }
+  OPTIONAL {
+    ?rhymingVerse ?p ?literaryExpression.
+    FILTER (?p IN (text:isCitedIn, delille-research:isCitedTwiceIn, delille-research:isCitedThreeTimesIn, delille-research:isCitedFourTimesIn, delille-research:isCitedFiveTimesIn ) )
+    ?literaryExpression a delille:LiteraryExpression.
+    MINUS {?literaryExpression a delille:Article}
+    }
+  OPTIONAL {
+    ?rhymingVerse ?p ?scientificOrVulgarizedExpression.
+    FILTER (?p IN (text:isCitedIn, delille-research:isCitedTwiceIn, delille-research:isCitedThreeTimesIn, delille-research:isCitedFourTimesIn, delille-research:isCitedFiveTimesIn ) )
+    ?scientificOrVulgarizedExpression a delille:ScientificOrVulgarizedExpression.
+    MINUS {?scientificOrVulgarizedExpression a delille:Article}
+    }
+  OPTIONAL {
+    ?rhymingVerse ?p ?catalogue.
+    FILTER (?p IN (text:isCitedIn, delille-research:isCitedTwiceIn, delille-research:isCitedThreeTimesIn, delille-research:isCitedFourTimesIn, delille-research:isCitedFiveTimesIn ) )
+    ?catalogue a delille:Catalogue
+    }
+  }
+
+GROUP BY ?stropheOrdinalNumeral ?verseOrdinalNumeral
+ORDER BY ?verseOrdinalNumeral

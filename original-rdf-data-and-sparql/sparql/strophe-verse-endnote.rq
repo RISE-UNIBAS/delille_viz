@@ -1,0 +1,77 @@
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX language: <http://e-editiones.ch/ontology/language#>
+PREFIX document: <http://e-editiones.ch/ontology/document#>
+PREFIX text: <http://e-editiones.ch/ontology/text#>
+PREFIX note-structure: <http://e-editiones.ch/ontology/note-structure#>
+PREFIX prosodic-structure: <http://e-editiones.ch/ontology/prosodic-structure#>
+PREFIX delille: <http://e-editiones.ch/ontology/delille#>
+
+
+# RETRIEVE STROPHES, VERSES AND THEIR ENDNOTES OF THE THIRD CANTO OF L'HOMME DES CHAMPS:
+
+CONSTRUCT {
+	?strophe
+		a prosodic-structure:Strophe;
+		rdfs:label ?stropheLabel;
+		prosodic-structure:stropheHasOrdinalNumeral ?stropheOrdinalNumeral;
+		prosodic-structure:isStropheOfSection ?canto.
+	?canto
+		a delille:Canto;
+		rdfs:label ?cantoLabel;
+		prosodic-structure:verseSectionHasOrdinalNumeral ?cantoOrdinalNumeral;
+		prosodic-structure:verseSectionHasTitleLiteral "Troisième Chant"@fr;
+		prosodic-structure:isVerseSectionOfPoem ?editedVersePoem.
+	?rhymingVerse
+		a prosodic-structure:RhymingVerse;
+		rdfs:label ?verseLabel;
+		prosodic-structure:verseHasOrdinalNumeral ?verseOrdinalNumeral;
+		language:hasContentLiteral ?rhymingVerseContentLiteral;
+		prosodic-structure:isVerseOfStrophe ?strophe;
+		text:isCitedIn ?citingExpression;
+		text:isAlludedToIn ?alludingExpression;
+		text:hasPasticheIn ?pasticheExpression;
+		text:isPlagiarisedIn ?plagiarisingExpression;
+		document:hasEndnote ?verseEndnote.
+	?verseEndnote
+		a note-structure:Endnote;
+		rdfs:label ?verseEndnoteLabel;
+		note-structure:endnoteHasOrdinalNumeral ?verseEndnoteOrdinalNumeral;
+		note-structure:endnoteHasOrdinalLiteral ?verseEndnoteOrdinalLiteral;
+		language:hasContentLiteral ?verseEndnoteContentLiteral.
+	}
+
+WHERE {
+	?strophe
+		a prosodic-structure:Strophe;
+		rdfs:label ?stropheLabel;
+		prosodic-structure:stropheHasOrdinalNumeral ?stropheOrdinalNumeral;
+		prosodic-structure:isStropheOfSection ?canto.
+	?canto
+		a delille:Canto;
+		rdfs:label ?cantoLabel;
+		prosodic-structure:verseSectionHasOrdinalNumeral ?cantoOrdinalNumeral;
+		prosodic-structure:verseSectionHasTitleLiteral "Troisième Chant"@fr;
+		prosodic-structure:isVerseSectionOfPoem ?editedVersePoem.
+	?rhymingVerse
+		a prosodic-structure:RhymingVerse;
+		rdfs:label ?verseLabel;
+		prosodic-structure:verseHasOrdinalNumeral ?verseOrdinalNumeral;
+		language:hasContentLiteral ?rhymingVerseContentLiteral;
+		prosodic-structure:isVerseOfStrophe ?strophe;
+		text:isCitedIn ?citingExpression.
+	OPTIONAL {?rhymingVerse text:isAlludedToIn ?alludingExpression}
+	OPTIONAL {?rhymingVerse text:hasPasticheIn ?pasticheExpression}
+	OPTIONAL {?rhymingVerse text:isPlagiarisedIn ?plagiarisingExpression}
+	OPTIONAL {
+		?rhymingVerse document:hasEndnote ?verseEndnote.
+		?verseEndnote
+			a note-structure:Endnote;
+			rdfs:label ?verseEndnoteLabel;
+			note-structure:endnoteHasOrdinalNumeral ?verseEndnoteOrdinalNumeral;
+			note-structure:endnoteHasOrdinalLiteral ?verseEndnoteOrdinalLiteral;
+			language:hasContentLiteral ?verseEndnoteContentLiteral.
+		OPTIONAL {
+			?verseEndnote text:isCitedIn ?expression
+			}
+		}
+}

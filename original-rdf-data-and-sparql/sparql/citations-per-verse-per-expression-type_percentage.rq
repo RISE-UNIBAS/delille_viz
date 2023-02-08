@@ -1,0 +1,99 @@
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+prefix human: <http://e-editiones.ch/ontology/human#>
+prefix text: <http://e-editiones.ch/ontology/text#>
+prefix text-expression: <http://e-editiones.ch/ontology/text-expression#>
+prefix prosodic-structure: <http://e-editiones.ch/ontology/prosodic-structure#>
+prefix delille: <http://e-editiones.ch/ontology/delille#>
+prefix delille-research: <http://e-editiones.ch/ontology/delille-research#>
+
+
+# RETRIEVE CITATIONS PER STROPHE-VERSE PER EXPRESSION TYPE WITH PERCENTAGE OF ALL EXPRESSIONS:
+
+SELECT
+  ?stropheOrdinalNumeral ?verseOrdinalNumeral
+  (COUNT(DISTINCT ?dictionary) AS ?dictionaryCount)
+  (COUNT(DISTINCT ?anthologyOrManual) AS ?anthologyOrManualCount)
+  ((?dictionaryCount+?anthologyOrManualCount) AS ?dictionaryOrAnthologyOrManualCount)
+  (COUNT(DISTINCT ?poemOrVersePlay) AS ?poemOrVersePlayCount)  
+  (COUNT(DISTINCT ?novel) AS ?novelCount)
+  (COUNT(DISTINCT ?literaryNonfictionExpression) AS ?literaryNonfictionExpressionCount)
+  (COUNT(DISTINCT ?essayOrPanoramicLiteraryOrPhilosophicOrHumanitiesExpression) AS ?essayOrPanoramicLiteraryOrPhilosophicOrHumanitiesExpressionCount)
+  (COUNT(DISTINCT ?literaryScientificExpression) AS ?literaryScientificExpressionCount)
+  ((?poemOrVersePlayCount+?novelCount+?literaryNonfictionExpressionCount+?essayOrPanoramicLiteraryOrPhilosophicOrHumanitiesExpressionCount+?literaryScientificExpressionCount) AS ?literaryExpressionCount)
+  (COUNT(DISTINCT ?scientificOrVulgarizedExpression) AS ?scientificOrVulgarizedExpressionCount)
+  (COUNT(DISTINCT ?catalogue) AS ?catalogueCount)
+  ((?dictionaryOrAnthologyOrManualCount+?literaryExpressionCount+?scientificOrVulgarizedExpressionCount+?catalogueCount) AS ?allCitingExpression)
+  (ROUND(?dictionaryOrAnthologyOrManualCount/?allCitingExpression*100) AS ?dictionaryOrAnthologyOrManualPercentage)
+  (ROUND(?literaryExpressionCount/?allCitingExpression*100) AS ?literaryExpressionPercentage)
+  (ROUND(?poemOrVersePlayCount/?allCitingExpression*100) AS ?poemOrVersePlayPercentage)
+  (ROUND(?novelCount/?allCitingExpression*100) AS ?novelPercentage)
+  (ROUND(?literaryNonfictionExpressionCount/?allCitingExpression*100) AS ?literaryNonfictionExpressionPercentage)
+  (ROUND(?essayOrPanoramicLiteraryOrPhilosophicOrHumanitiesExpressionCount/?allCitingExpression*100) AS ?essayOrPanoramicLiteraryOrPhilosophicOrHumanitiesExpressionPercentage)
+  (ROUND(?literaryScientificExpressionCount/?allCitingExpression*100) AS ?literaryScientificExpressionPercentage)
+  (ROUND(?scientificOrVulgarizedExpressionCount/?allCitingExpression*100) AS ?scientificOrVulgarizedExpressionPercentage)
+  (ROUND(?catalogueCount/?allCitingExpression*100) AS ?cataloguePercentage)
+
+WHERE {
+  ?rhymingVerse
+    a prosodic-structure:RhymingVerse;
+    prosodic-structure:verseHasOrdinalNumeral ?verseOrdinalNumeral;
+    prosodic-structure:isVerseOfStrophe ?strophe.
+  ?strophe
+    a prosodic-structure:Strophe;
+    prosodic-structure:stropheHasOrdinalNumeral ?stropheOrdinalNumeral.
+  OPTIONAL {
+    ?rhymingVerse ?p ?dictionary.
+    FILTER (?p IN (text:isCitedIn, delille-research:isCitedTwiceIn, delille-research:isCitedThreeTimesIn, delille-research:isCitedFourTimesIn, delille-research:isCitedFiveTimesIn ) )
+    ?dictionary a delille:Dictionary
+    }
+  OPTIONAL {
+    ?rhymingVerse ?p ?anthologyOrManual.
+    FILTER (?p IN (text:isCitedIn, delille-research:isCitedTwiceIn, delille-research:isCitedThreeTimesIn, delille-research:isCitedFourTimesIn, delille-research:isCitedFiveTimesIn ) )
+    ?anthologyOrManual a delille:AnthologyOrManual
+    }
+  OPTIONAL {
+    ?rhymingVerse ?p ?poemOrVersePlay.
+    FILTER (?p IN (text:isCitedIn, delille-research:isCitedTwiceIn, delille-research:isCitedThreeTimesIn, delille-research:isCitedFourTimesIn, delille-research:isCitedFiveTimesIn ) )
+    ?poemOrVersePlay a delille:PoemOrVersePlay.
+    MINUS {?poemOrVersePlay a delille:Article}
+  }
+  OPTIONAL {
+    ?rhymingVerse ?p ?novel.
+    FILTER (?p IN (text:isCitedIn, delille-research:isCitedTwiceIn, delille-research:isCitedThreeTimesIn, delille-research:isCitedFourTimesIn, delille-research:isCitedFiveTimesIn ) )
+    ?novel a delille:Novel.
+    MINUS {?novel a delille:Article}
+    }
+  OPTIONAL {
+    ?rhymingVerse ?p ?literaryNonfictionExpression.
+    FILTER (?p IN (text:isCitedIn, delille-research:isCitedTwiceIn, delille-research:isCitedThreeTimesIn, delille-research:isCitedFourTimesIn, delille-research:isCitedFiveTimesIn ) )
+    ?literaryNonfictionExpression a delille:LiteraryNonfictionExpression.
+    MINUS {?literaryNonfictionExpression a delille:Article}
+    }
+  OPTIONAL {
+    ?rhymingVerse ?p ?essayOrPanoramicLiteraryOrPhilosophicOrHumanitiesExpression.
+    FILTER (?p IN (text:isCitedIn, delille-research:isCitedTwiceIn, delille-research:isCitedThreeTimesIn, delille-research:isCitedFourTimesIn, delille-research:isCitedFiveTimesIn ) )
+    ?essayOrPanoramicLiteraryOrPhilosophicOrHumanitiesExpression a delille:EssayOrPanoramicLiteraryOrPhilosophicOrHumanitiesExpression.
+    MINUS {?essayOrPanoramicLiteraryOrPhilosophicOrHumanitiesExpression a delille:Article}
+    }
+  OPTIONAL {
+    ?rhymingVerse ?p ?literaryScientificExpression.
+    FILTER (?p IN (text:isCitedIn, delille-research:isCitedTwiceIn, delille-research:isCitedThreeTimesIn, delille-research:isCitedFourTimesIn, delille-research:isCitedFiveTimesIn ) )
+    ?literaryScientificExpression a delille:LiteraryScientificExpression.
+    MINUS {?literaryScientificExpression a delille:Article}
+      }
+  OPTIONAL {
+    ?rhymingVerse ?p ?scientificOrVulgarizedExpression.
+    FILTER (?p IN (text:isCitedIn, delille-research:isCitedTwiceIn, delille-research:isCitedThreeTimesIn, delille-research:isCitedFourTimesIn, delille-research:isCitedFiveTimesIn ) )
+    ?scientificOrVulgarizedExpression a delille:ScientificOrVulgarizedExpression.
+    MINUS {?scientificOrVulgarizedExpression a delille:Article}
+    }
+  OPTIONAL {
+    ?rhymingVerse ?p ?catalogue.
+    FILTER (?p IN (text:isCitedIn, delille-research:isCitedTwiceIn, delille-research:isCitedThreeTimesIn, delille-research:isCitedFourTimesIn, delille-research:isCitedFiveTimesIn ) )
+    ?catalogue a delille:Catalogue
+    }
+  }
+
+GROUP BY ?stropheOrdinalNumeral ?verseOrdinalNumeral
+ORDER BY ?verseOrdinalNumeral

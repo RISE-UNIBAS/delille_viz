@@ -1,0 +1,82 @@
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix human: <http://e-editiones.ch/ontology/human#>
+prefix text: <http://e-editiones.ch/ontology/text#>
+prefix calendar: <http://e-editiones.ch/ontology/calendar#>
+prefix text-expression: <http://e-editiones.ch/ontology/text-expression#>
+prefix publishing: <http://e-editiones.ch/ontology/publishing#>
+prefix delille: <http://e-editiones.ch/ontology/delille#>
+
+# RETRIEVE EXPRESSIONS (only standalone works, not articles)
+
+SELECT
+?type
+?text
+(GROUP_CONCAT(DISTINCT ?authorName1 ; SEPARATOR = " et " ) AS ?authors)
+?title
+?publicationDate
+?sequence
+
+WHERE {
+  ?text 
+    a delille:CitingExpression ;
+    text-expression:hasTitleLiteral ?title ;
+    publishing:isPublishedIn ?publication .
+  
+   # ?text a delille:TranslatedVersePoem .
+  { ?text a delille:Dictionary  } UNION
+  { ?text a delille:AnthologyOrManual } UNION
+  { ?text a delille:PoemOrVersePlay } UNION
+  { ?text a delille:Novel } UNION 
+  { ?text a delille:LiteraryScientificExpression } UNION
+  { ?text a delille:LiteraryNonfictionExpression } UNION
+  { ?text a delille:EssayOrPanoramicLiteraryOrPhilosophicOrHumanitiesExpression } UNION
+  { ?text a delille:ScientificOrVulgarizedExpression } UNION
+  { ?text a delille:Catalogue }
+  
+  BIND (
+    IF(EXISTS{?text a delille:Dictionary},"Dictionnaire",
+      IF(EXISTS{?text a delille:AnthologyOrManual},"Anthologie/Manuel scolaire",
+        IF(EXISTS{?text a delille:PoemOrVersePlay},"Poésie, théâtre en vers",
+          IF(EXISTS{?text a delille:Novel},"Roman, récit fictionnel",
+            IF(EXISTS{?text a delille:LiteraryScientificExpression},"Esthétique, poétique, histoire littéraire",
+              IF(EXISTS{?text a delille:LiteraryNonfictionExpression},"Mémoires, biographies, histoire, anecdotes, correspondances",
+                IF(EXISTS{?text a delille:EssayOrPanoramicLiteraryOrPhilosophicOrHumanitiesExpression},"Autre essai", #, littérature panoramique et pittoresque, philosophie et sciences humaines
+                  IF(EXISTS{?text a delille:ScientificOrVulgarizedExpression},"Ouvrages de science et vulgarisation",
+                    IF(EXISTS{?text a delille:Catalogue},"Catalogue",""))))))))) 
+    AS ?type )
+  
+  #?text a delille:Engraving .
+  #?text a delille:OtherImage .
+  
+  OPTIONAL { ?text delille:hasPunctuatedCitedVerseNumberSequenceLiteral ?sequence . }
+ 
+  OPTIONAL { 
+    ?text text-expression:hasAuthor ?author .
+    { ?author human:hasFamilyNameLiteral  ?authorName } UNION 
+    { ?author human:hasNameLiteral ?authorName } 
+  }
+  
+    BIND ( COALESCE(?authorName, "Anonyme") As ?authorName1)
+  
+  OPTIONAL {
+    ?publication publishing:hasYearPeriod ?YearPeriod . 
+    ?YearPeriod calendar:hasGregorianStartDate ?gregorianYear .
+    BIND ( (year(?gregorianYear)) AS ?publicationDate )
+  }
+
+  OPTIONAL {
+    ?publication publishing:hasPartitionedPublishing ?partitionedPublication .
+    ?partitionedPublication publishing:hasStartYearPeriod ?startYearPeriod ;
+                            publishing:hasEndYearPeriod ?endYearPeriod .
+    ?startYearPeriod calendar:hasGregorianStartDate ?gregorianStartYear.
+    ?endYearPeriod calendar:hasGregorianEndDate ?gregorianEndYear.
+    BIND ( (CONCAT(STR(year(?gregorianStartYear)), '-', (STR(year(?gregorianEndYear))))) AS ?publicationDate)
+  }
+  
+  
+  MINUS { ?text a delille:Article } # for work-renedejeuner
+  
+ 
+}
+GROUP BY ?type ?text ?title ?publicationDate ?sequence
+ORDER BY ?text
