@@ -1,0 +1,61 @@
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+prefix human: <http://e-editiones.ch/ontology/human#>
+prefix text: <http://e-editiones.ch/ontology/text#>
+prefix text-expression: <http://e-editiones.ch/ontology/text-expression#>
+prefix prosodic-structure: <http://e-editiones.ch/ontology/prosodic-structure#>
+prefix delille: <http://e-editiones.ch/ontology/delille#>
+prefix delille-research: <http://e-editiones.ch/ontology/delille-research#>
+
+
+# RETRIEVE DISTINCT CITERS PER STROPHE-VERSE PER CITER TYPE PER YEAR:
+
+PREFIX publishing: <http://e-editiones.ch/ontology/publishing#>
+PREFIX calendar: <http://e-editiones.ch/ontology/calendar#>
+SELECT
+  ?stropheOrdinalNumeral ?verseOrdinalNumeral ?citationYear
+  (COUNT(DISTINCT ?manOfLetters) AS ?manOfLettersCount)
+  (COUNT(DISTINCT ?vulgarizer) AS ?vulgarizerCount)
+  (COUNT(DISTINCT ?artist) AS ?artistCount)
+  (COUNT(DISTINCT ?otherRole) AS ?otherRoleCount)
+  ((?manOfLettersCount+?vulgarizerCount+?artistCount+?otherRoleCount) AS ?allRoles)
+
+WHERE {
+  	?rhymingVerse a prosodic-structure:RhymingVerse;
+  				prosodic-structure:verseHasOrdinalNumeral ?verseOrdinalNumeral;
+ 				prosodic-structure:isVerseOfStrophe ?strophe.
+    
+  	?strophe a prosodic-structure:Strophe;
+  			prosodic-structure:stropheHasOrdinalNumeral ?stropheOrdinalNumeral.
+    
+    ?rhymingVerse text:isCitedBy ?authorPerson .
+	?rhymingVerse text:isCitedIn ?work .
+    ?work text:hasCiter ?authorPerson .    
+    
+    ?work publishing:isPublishedIn ?publication.
+	?publication publishing:hasYearPeriod ?yP.
+	?yP calendar:hasGregorianStartDate ?publicationYearStartDate.
+  	BIND(year(?publicationYearStartDate) AS ?citationYear)
+
+
+  
+  OPTIONAL {
+    ?authorPerson human:personHasRole ?manOfLetters.
+    ?manOfLetters a text-expression:ManOfLetters.
+    }
+  OPTIONAL {
+    ?authorPerson human:personHasRole ?vulgarizer.
+    ?vulgarizer a text-expression:Vulgarizer.
+    }
+  OPTIONAL {
+    ?authorPerson human:personHasRole ?artist.
+    ?artist a human:Artist.
+    }
+  OPTIONAL {
+    ?authorPerson human:personHasRole ?otherRole.
+    ?otherRole a delille:NonArtist-ManOfLetters-Vulgarizer.
+    }
+  }
+
+GROUP BY ?stropheOrdinalNumeral ?verseOrdinalNumeral ?citationYear
+ORDER BY ?verseOrdinalNumeral
