@@ -8,7 +8,7 @@ prefix delille: <http://e-editiones.ch/ontology/delille#>
 prefix delille-research: <http://e-editiones.ch/ontology/delille-research#>
 
 
-# RETRIEVE CITATIONS PER STROPHE-VERSE PER CITER TYPE:
+# RETRIEVE DISTINCT CITERS PER STROPHE-VERSE PER CITER TYPE:
 
 SELECT
   ?stropheOrdinalNumeral ?verseOrdinalNumeral
