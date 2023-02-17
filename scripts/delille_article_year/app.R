@@ -4,6 +4,10 @@
 ## add ylim?
 
 library(shiny)
+library(tidyverse)
+library(scales)
+load("cite_art_yr_df.Rda")
+load("long_art_yr.Rda")
 ### help found here: https://stackoverflow.com/questions/62782423/r-shiny-how-to-filter-by-time-range-on-the-x-axis-and-simultaneously-have-two
 
 # Define UI for application that draws a histogram
