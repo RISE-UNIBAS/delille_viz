@@ -1,6 +1,8 @@
 ## This app creates a dynamic viz of the period when a certain verse was cited
 
 library(shiny)
+library(tidyverse)
+load("long_period.Rda")
 
 ui <- fluidPage(
   

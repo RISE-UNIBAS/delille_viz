@@ -1,10 +1,12 @@
 ## Shiny app that has one slider, namely a range for verses
-## the structure of each app is very similar, si I will put the explanations here
+## the structure of each app is very similar, so I will put the explanations here
 
 library(shiny)
 library(shinyWidgets)
-# load the necessary packages
-# data should've been loaded beforehand, so no need to do it again
+library(tidyverse)
+load("cite_verse_df.Rda")
+# load the necessary packages & data
+
 
 ui <- fluidPage( # first, we create the user interface (the front end)
   

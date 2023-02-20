@@ -1,18 +1,17 @@
 ## This app creates a dynamic viz (pie chart) of article type with citations per year
-## citations-per-article-type-per-year_count.json
-## add ylim?
-## I NEED TO RECHECK LABELS ETC. SINCE I MODIFIED THE DATA
+## RECHECK LABELS ETC.
 
 library(shiny)
-### help found here: https://stackoverflow.com/questions/62782423/r-shiny-how-to-filter-by-time-range-on-the-x-axis-and-simultaneously-have-two
+library(tidyverse)
+load("cite_art_yr_df.Rda")
+load("long_art_yr.Rda")
 
-# Define UI for application that draws a histogram
 ui <- fluidPage(
   
   # App title ----
-  titlePanel("Sliders"),
+  titlePanel("Type of citations per year"),
   
-  # Sidebar layout with input and output definitions ----
+  # Make slider for years
   sidebarLayout(
     
     sidebarPanel(
@@ -21,8 +20,10 @@ ui <- fluidPage(
       
       sliderInput(inputId = "year", "Year:",
                   min = min(cite_art_yr_df$year), max = max(cite_art_yr_df$year),
-                  value = c(1,10),
-                  step = 1)
+                  value = c(1789,1800),
+                  width = "100%",
+                  step = 1,
+                  sep = "")
       
     ),
     
@@ -36,7 +37,7 @@ ui <- fluidPage(
   )
 )
 
-# Define server logic required to draw a histogram
+# Define server logic required to display pie chart
 server <- function(input, output) {
   s <- reactive({
     long_art_yr %>%

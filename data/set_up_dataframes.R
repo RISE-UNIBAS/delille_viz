@@ -12,6 +12,8 @@ library(rjson)
 library(dplyr)
 library(tidyr)
 
+setwd("/Users/antheaalberto/Documents/GitHub/delille_viz/data") ## Adjust this!
+
 rm(list=ls()) # cleans the environment to make everything a bit less busy
 
 # I generally prefer to work with "standard" data frames instead of lists
@@ -99,7 +101,7 @@ long_period <- cite_period_df %>% gather(period, citations, -c(verse))
 long_period$period <- factor(long_period$period, levels = c("cite_before1800", "cite_1800_05", "cite_1806_13", "cite_1814_50", "cite_after"))
 
 ##### 4. citations-per-verse-per-citer-type_count.json #####
-citers <- fromJSON(file="citations-per-verse-per-citer-type_count.json")
+citers <- fromJSON(file="distinct-citers-per-verse-per-citer-type-per-year_count.json")
 names(citers$results$bindings[[1]])
 
 citer_df <- tibble(verse = character(),
@@ -202,3 +204,9 @@ long_art_yr$article <- as.factor(long_art_yr$article)
 
 ##### Save data frames #####
 
+save(cite_art_yr_df, file = "/Users/antheaalberto/Documents/GitHub/delille_viz/scripts/article_year_pie/cite_art_yr_df.Rda")
+save(cite_verse_df, file = "/Users/antheaalberto/Documents/GitHub/delille_viz/scripts/delille_verses_only/cite_verse_df.Rda")
+save(citer_df, file = "/Users/antheaalberto/Documents/GitHub/delille_viz/scripts/stacked_barplot_and_piechart/citer_df.Rda")
+save(long_citer, file = "/Users/antheaalberto/Documents/GitHub/delille_viz/scripts/stacked_barplot_and_piechart/long_citer.Rda")
+save(long_period, file = "/Users/antheaalberto/Documents/GitHub/delille_viz/scripts/verse_and_period/long_period.Rda")
+save(cite_year_df, file = "/Users/antheaalberto/Documents/GitHub/delille_viz/scripts/year_and_verse/cite_year_df.Rda")

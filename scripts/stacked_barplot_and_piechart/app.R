@@ -2,6 +2,9 @@
 ## citations-per-verse-per-citer-type_count.json
 
 library(shiny)
+library(tidyverse)
+load("citer_df.Rda")
+load("long_citer.Rda")
 ### help found here: https://stackoverflow.com/questions/62782423/r-shiny-how-to-filter-by-time-range-on-the-x-axis-and-simultaneously-have-two
 
 # Define UI for application that draws a histogram
