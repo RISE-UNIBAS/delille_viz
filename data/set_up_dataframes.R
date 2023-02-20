@@ -17,7 +17,7 @@ setwd("/Users/antheaalberto/Documents/GitHub/delille_viz/data") ## Adjust this!
 rm(list=ls()) # cleans the environment to make everything a bit less busy
 
 # I generally prefer to work with "standard" data frames instead of lists
-# So chapters 1-4 (amend that) will read the json in form of a list and then transform them into a data frame
+# So sections 1-5 (amend that) will read the json in form of a list and then transform them into a data frame
 # The logic is essentially the same for every separate data frame
 
 ###### 1. citations-per-verse.json ######
@@ -26,7 +26,7 @@ cite_verse <- fromJSON(file="citations-per-verse.json") # read data
 cite_verse_df <- tibble(verse = character(),
                         citations = character()) # create empty data frame
 
-# Then we have a so-called "for-loop" go through the list annd fill the empty data frame 
+# Then we have a so-called "for-loop" go through the list and fill the empty data frame 
 for (i in 1:length(cite_verse$results$bindings)) {
   number <- cite_verse$results$bindings[[i]]$verseOrdinalNumeral$value
   citation <- cite_verse$results$bindings[[i]]$citationCount$value
@@ -203,6 +203,7 @@ long_art_yr <- long_art_yr[long_art_yr$article!="literaryArticle",] # I am not s
 long_art_yr$article <- as.factor(long_art_yr$article)
 
 ##### Save data frames #####
+# either adjust or comment out, this was for getting the proper data into the app folder
 
 save(cite_art_yr_df, file = "/Users/antheaalberto/Documents/GitHub/delille_viz/scripts/article_year_pie/cite_art_yr_df.Rda")
 save(cite_verse_df, file = "/Users/antheaalberto/Documents/GitHub/delille_viz/scripts/delille_verses_only/cite_verse_df.Rda")
