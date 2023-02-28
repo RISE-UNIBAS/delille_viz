@@ -3,7 +3,6 @@
 library(shiny)
 library(shinyWidgets)
 library(tidyverse)
-load("cite_year_df.Rda")
 
 ui <- fluidPage(
   
