@@ -53,7 +53,7 @@ server <- function(input, output) {
   
   output$artPlot <- renderPlot({
     
-    ggplot(s(), aes_string(x="year", y="citations", fill = "article")) + 
+    ggplot(s(), aes(x=year, y=citations, fill = article)) + 
       geom_bar(position = "stack", stat = "identity") + 
       scale_fill_manual(values = c("#83B692", "#F9ADA0", "#F9627D", "#5B3758",
                                             "#413C58", "#A3C4BC", "#BFD7B5", "#E7EFC5", "#F2E7C9",

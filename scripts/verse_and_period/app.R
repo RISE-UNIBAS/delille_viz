@@ -44,7 +44,7 @@ server <- function(input, output) {
   
   output$citePlot <- renderPlot({
     
-    ggplot(s(), aes_string(x="verse", y = "citations", fill = "period")) + geom_bar(position = "dodge", stat = "identity") + theme_classic() +
+    ggplot(s(), aes(x=verse, y = citations, fill = period)) + geom_bar(position = "dodge", stat = "identity") + theme_classic() +
       labs(fill = "Time Period") + scale_fill_manual(breaks = c("cite_before1800", "cite_1800_05", "cite_1806_13", "cite_1814_50", "cite_after"), #technically unnecessary, since I reordered before
                                                      labels = c("Before 1800", "1800-1805", "1806-1813", "1814-1850", "After 1850"),
                                                      values = c("skyblue2", "royalblue3", "palegreen2", "green4", "pink1")) +

@@ -49,7 +49,7 @@ server <- function(input, output) {
   
   output$citePlot <- renderPlot({
     
-    ggplot(s(), aes_string(x="verse", y="citations", fill = "citer")) + 
+    ggplot(s(), aes(x=verse, y=citations, fill = citer)) + 
       geom_bar(position = "stack", stat = "identity") + 
       scale_fill_manual(values = c("green4", "olivedrab2", "royalblue3", "lightsteelblue2"), 
                         labels = c("Autres", "Artistes", "Savants ou vulgarisateurs", "Gens de lettres"),

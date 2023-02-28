@@ -48,7 +48,7 @@ server <- function(input, output) {
   
   output$citePlot <- renderPlot({
     
-    ggplot(s(), aes_string(x="verse", y = "citations")) + geom_col(aes_string(x="verse", y = "citations"), position = "dodge", fill = "#087F8C") + theme_bw() +
+    ggplot(s(), aes(x=verse, y = citations)) + geom_col(aes_string(x="verse", y = "citations"), position = "dodge", fill = "#087F8C") + theme_bw() +
       labs(x="Verse", y="Citations") + scale_x_continuous(labels = scales::number_format(accuracy=1), limits = c(min(input$verse), max(input$verse))) + ylim(0,7)
     
   })
