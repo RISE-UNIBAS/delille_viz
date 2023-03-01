@@ -1,3 +1,3 @@
 # delille_viz
 
-Data visualization for a project at University of Basel
+Data visualization for the [*Reconstruire Delille*](https://delille.philhist.unibas.ch/) project at the University of Basel.
