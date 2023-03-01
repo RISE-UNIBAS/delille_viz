@@ -105,6 +105,7 @@ citers <- fromJSON(file="distinct-citers-per-verse-per-citer-type-per-year_count
 names(citers$results$bindings[[1]])
 
 citer_df <- tibble(verse = character(),
+                   year = character(),
                    man_of_letters = character(),
                    vulgarizer = character(),
                    artist = character(),
@@ -112,23 +113,25 @@ citer_df <- tibble(verse = character(),
                    all = character())
 for (i in 1:length(citers$results$bindings)) {
   number <- citers$results$bindings[[i]]$verseOrdinalNumeral$value
+  year <- citers$results$bindings[[i]]$citationYear$value
   man_of_letters <- citers$results$bindings[[i]]$manOfLettersCount$value
   vulgarizer <- citers$results$bindings[[i]]$vulgarizerCount$value
   artist <- citers$results$bindings[[i]]$artistCount$value
   others <- citers$results$bindings[[i]]$otherRoleCount$value
   all <- citers$results$bindings[[i]]$allRoles$value
   citer_df[i,1] <- number
-  citer_df[i,2] <- man_of_letters
-  citer_df[i,3] <- vulgarizer
-  citer_df[i,4] <- artist
-  citer_df[i,5] <- others
-  citer_df[i,6] <- all
+  citer_df[i,2] <- year
+  citer_df[i,3] <- man_of_letters
+  citer_df[i,4] <- vulgarizer
+  citer_df[i,5] <- artist
+  citer_df[i,6] <- others
+  citer_df[i,7] <- all
 }
 
 citer_df <- sapply(citer_df,as.numeric)
 citer_df <- as.data.frame(citer_df)
 
-long_citer <- citer_df %>% gather(citer, citations, -c(verse))
+long_citer <- citer_df %>% gather(citer, citations, -c(verse, year))
 
 long_citer <- long_citer[long_citer$citer!="all",]
 
