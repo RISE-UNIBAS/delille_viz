@@ -220,6 +220,19 @@ long_art_yr <- long_art_yr[long_art_yr$article!="literaryArticle",] # I am not s
 
 long_art_yr$article <- as.factor(long_art_yr$article)
 
+### Make it cumulative
+long_cumsum <- long_art_yr %>% 
+  group_by(article) %>% 
+  mutate(cumsum_cite = cumsum(citations))
+
+long_cumsum <- long_cumsum %>% 
+  complete(year = full_seq(c(1789:1904), 1))
+
+long_cumsum <- long_cumsum %>% 
+  group_by(article) %>% 
+  fill(cumsum_cite)
+
+
 ##### Save data frames #####
 # either adjust or comment out, this was for getting the proper data into the app folder
 
@@ -230,3 +243,4 @@ save(long_citer, file = "/Users/antheaalberto/Documents/GitHub/delille_viz/scrip
 save(long_period, file = "/Users/antheaalberto/Documents/GitHub/delille_viz/scripts/verse_and_period/long_period.Rda")
 save(cite_year_df, file = "/Users/antheaalberto/Documents/GitHub/delille_viz/scripts/year_and_verse/cite_year_df.Rda")
 save(cite_year_cumsum, file = "/Users/antheaalberto/Documents/GitHub/delille_viz/scripts/year_and_verse_cumulative/cite_year_cumsum.Rda")
+save(long_cumsum, file = "/Users/antheaalberto/Documents/GitHub/delille_viz/scripts/pie_cumulative/long_cumsum.Rda")
