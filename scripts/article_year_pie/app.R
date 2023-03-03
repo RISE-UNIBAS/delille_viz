@@ -9,7 +9,7 @@ load("long_art_yr.Rda")
 ui <- fluidPage(
   
   # App title ----
-  titlePanel("Type of citations per year"),
+  titlePanel("Type of citations by year"),
   
   # Make slider for years
   sidebarLayout(

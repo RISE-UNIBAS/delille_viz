@@ -11,7 +11,7 @@ load("long_citer.Rda")
 ui <- fluidPage(
   
   # App title ----
-  titlePanel("Sliders"),
+  titlePanel("Citations by citer type (barchart)"),
   
   # Sidebar layout with input and output definitions ----
   sidebarLayout(

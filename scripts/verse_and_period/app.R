@@ -7,7 +7,7 @@ load("long_period.Rda")
 ui <- fluidPage(
   
   # App title ----
-  titlePanel("Sliders"),
+  titlePanel("Citations by period"),
   
   sidebarLayout(
     

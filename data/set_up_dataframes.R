@@ -65,6 +65,21 @@ cite_year_df <-
   group_by(verse) %>% 
   arrange(year)
 
+#### Make it cumulative
+cite_year_cumsum <- cite_year_df %>% 
+  group_by(verse) %>% 
+  mutate(cumsum_cite = cumsum(citations))
+
+cite_year_cumsum <- cite_year_cumsum %>%   
+  complete(year = full_seq(c(1789:1926), 1))
+
+cite_year_cumsum <- cite_year_cumsum %>% 
+  group_by(verse) %>% 
+  fill(cumsum_cite)
+
+cite_year_cumsum$cumsum_cite <- ifelse(is.na(cite_year_cumsum$cumsum_cite), 0, cite_year_cumsum$cumsum_cite)
+
+
 ##### 3. citations-per-verse-per-period.json #####
 cite_verse_period <- fromJSON(file="citations-per-verse-per-period.json")
 
@@ -214,3 +229,4 @@ save(citer_df, file = "/Users/antheaalberto/Documents/GitHub/delille_viz/scripts
 save(long_citer, file = "/Users/antheaalberto/Documents/GitHub/delille_viz/scripts/stacked_barplot_and_piechart/long_citer.Rda")
 save(long_period, file = "/Users/antheaalberto/Documents/GitHub/delille_viz/scripts/verse_and_period/long_period.Rda")
 save(cite_year_df, file = "/Users/antheaalberto/Documents/GitHub/delille_viz/scripts/year_and_verse/cite_year_df.Rda")
+save(cite_year_cumsum, file = "/Users/antheaalberto/Documents/GitHub/delille_viz/scripts/year_and_verse_cumulative/cite_year_cumsum.Rda")

@@ -11,7 +11,7 @@ load("cite_verse_df.Rda")
 ui <- fluidPage( # first, we create the user interface (the front end)
   
   # App title ----
-  titlePanel("Subset by verse"),
+  titlePanel("Citations by verse"),
   
   
   sidebarLayout( 
@@ -48,7 +48,7 @@ server <- function(input, output) {
   
   output$citePlot <- renderPlot({
     
-    ggplot(s(), aes(x=verse, y = citations)) + geom_col(aes_string(x="verse", y = "citations"), position = "dodge", fill = "#83B692") + theme_bw() +
+    ggplot(s(), aes(x=verse, y = citations)) + geom_col(aes(x=verse, y = citations), position = "dodge", fill = "#83B692") + theme_bw() +
       labs(x="Verse", y="Citations") + scale_x_continuous(labels = scales::number_format(accuracy=1))
     
   }) # this generates the plot
