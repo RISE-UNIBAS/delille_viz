@@ -49,11 +49,15 @@ server <- function(input, output) {
   
   output$citePlot <- renderPlot({
     
-    ggplot(s(), aes(x=verse, y=citations, fill = citer)) + 
+    ggplot(s(), aes(x=verse, y=citations, fill = citer, color=citer)) + 
       geom_bar(position = "stack", stat = "identity") + 
       scale_fill_manual(values = c("green4", "olivedrab2", "royalblue3", "lightsteelblue2"), 
                         labels = c("Autres", "Artistes", "Savants ou vulgarisateurs", "Gens de lettres"),
-                        name = "") + scale_x_continuous(labels = scales::number_format(accuracy=1)) +
+                        name = "") + 
+      scale_color_manual(values = c("green4", "olivedrab2", "royalblue3", "lightsteelblue2"), 
+                        labels = c("Autres", "Artistes", "Savants ou vulgarisateurs", "Gens de lettres"),
+                        name = "", guide="none") +
+      scale_x_continuous(labels = scales::number_format(accuracy=1)) +
       labs(x = "Verse", y = "Citations") +
       theme_classic()
   })

@@ -1,0 +1,5 @@
+PREFIX human: <http://e-editiones.ch/ontology/human#>
+select * where { 
+	?s human:hasBirthYearPeriod ?o .
+} 
+

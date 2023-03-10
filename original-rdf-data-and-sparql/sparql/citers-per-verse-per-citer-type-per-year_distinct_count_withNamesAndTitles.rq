@@ -13,7 +13,7 @@ prefix delille-research: <http://e-editiones.ch/ontology/delille-research#>
 PREFIX publishing: <http://e-editiones.ch/ontology/publishing#>
 PREFIX calendar: <http://e-editiones.ch/ontology/calendar#>
 SELECT
-  ?stropheOrdinalNumeral ?verseOrdinalNumeral ?citationYear
+  ?stropheOrdinalNumeral ?verseOrdinalNumeral ?citationYear ?authorPerson ?work
   (COUNT(DISTINCT ?manOfLetters) AS ?manOfLettersCount)
   (COUNT(DISTINCT ?vulgarizer) AS ?vulgarizerCount)
   (COUNT(DISTINCT ?artist) AS ?artistCount)
@@ -21,21 +21,21 @@ SELECT
   ((?manOfLettersCount+?vulgarizerCount+?artistCount+?otherRoleCount) AS ?allRoles)
 
 WHERE {
-  	?rhymingVerse a prosodic-structure:RhymingVerse;
-  				prosodic-structure:verseHasOrdinalNumeral ?verseOrdinalNumeral;
- 				prosodic-structure:isVerseOfStrophe ?strophe.
+    ?rhymingVerse a prosodic-structure:RhymingVerse;
+          prosodic-structure:verseHasOrdinalNumeral ?verseOrdinalNumeral;
+        prosodic-structure:isVerseOfStrophe ?strophe.
     
-  	?strophe a prosodic-structure:Strophe;
-  			prosodic-structure:stropheHasOrdinalNumeral ?stropheOrdinalNumeral.
+    ?strophe a prosodic-structure:Strophe;
+        prosodic-structure:stropheHasOrdinalNumeral ?stropheOrdinalNumeral.
     
     ?rhymingVerse text:isCitedBy ?authorPerson .
-	?rhymingVerse text:isCitedIn ?work .
+  ?rhymingVerse text:isCitedIn ?work .
     ?work text:hasCiter ?authorPerson .    
     
     ?work publishing:isPublishedIn ?publication.
-	?publication publishing:hasYearPeriod ?yP.
-	?yP calendar:hasGregorianStartDate ?publicationYearStartDate.
-  	BIND(year(?publicationYearStartDate) AS ?citationYear)
+  ?publication publishing:hasYearPeriod ?yP.
+  ?yP calendar:hasGregorianStartDate ?publicationYearStartDate.
+    BIND(year(?publicationYearStartDate) AS ?citationYear)
 
 
   
@@ -57,5 +57,5 @@ WHERE {
     }
   }
 
-GROUP BY ?stropheOrdinalNumeral ?verseOrdinalNumeral ?citationYear
+GROUP BY ?stropheOrdinalNumeral ?verseOrdinalNumeral ?citationYear ?authorPerson ?work
 ORDER BY ?verseOrdinalNumeral

@@ -1,0 +1,48 @@
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+prefix human: <http://e-editiones.ch/ontology/human#>
+prefix text: <http://e-editiones.ch/ontology/text#>
+prefix text-expression: <http://e-editiones.ch/ontology/text-expression#>
+prefix prosodic-structure: <http://e-editiones.ch/ontology/prosodic-structure#>
+prefix delille: <http://e-editiones.ch/ontology/delille#>
+prefix delille-research: <http://e-editiones.ch/ontology/delille-research#>
+
+
+# RETRIEVE DISTINCT CITERS PER STROPHE-VERSE PER CITER TYPE PER YEAR:
+
+PREFIX publishing: <http://e-editiones.ch/ontology/publishing#>
+PREFIX calendar: <http://e-editiones.ch/ontology/calendar#>
+SELECT DISTINCT
+  ?authorPerson ?work ?citationYear ?familyName ?givenName ?name ?birthYear ?deathYear
+
+WHERE {
+  	?rhymingVerse a prosodic-structure:RhymingVerse;
+  				prosodic-structure:verseHasOrdinalNumeral ?verseOrdinalNumeral .
+    
+    ?rhymingVerse text:isCitedBy ?authorPerson .
+	?rhymingVerse text:isCitedIn ?work .
+    ?work text:hasCiter ?authorPerson .    
+    
+    ?work publishing:isPublishedIn ?publication.
+	?publication publishing:hasYearPeriod ?yP.
+	?yP calendar:hasGregorianStartDate ?publicationYearStartDate.
+  	BIND(year(?publicationYearStartDate) AS ?citationYear)
+	
+    
+    OPTIONAL {?authorPerson human:hasFamilyNameLiteral ?familyName}
+	OPTIONAL {?authorPerson human:hasGivenNameLiteral ?givenName}
+	OPTIONAL {?authorPerson human:hasNameLiteral ?name}
+	OPTIONAL {
+    	?authorPerson human:hasBirthYearPeriod ?birthYearPeriod.
+		?birthYearPeriod calendar:hasGregorianStartDate ?gregorianStartDate
+  		}
+	OPTIONAL {
+    	?authorPerson human:hasDeathYearPeriod ?deathYearPeriod.
+		?deathYearPeriod calendar:hasGregorianEndDate ?gregorianEndDate
+  		}
+
+  
+  
+  }
+
+GROUP BY ?authorPerson ?work ?citationYear ?familyName ?givenName ?name ?birthYear ?deathYear
