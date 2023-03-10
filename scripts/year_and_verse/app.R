@@ -18,12 +18,12 @@ ui <- fluidPage(
       
       
       
-      sliderTextInput(inputId = "year", "Year:",
-                      choices = unique(cite_year_df$year), 
-                      selected = min(cite_year_df$year),
-                      grid = T,
+      sliderInput(inputId = "year", "Year:",
+                      min = min(cite_year_df$year), max = max(cite_year_df$year),
+                      value = c(1789,1800),
+                      step = 1,
                       width = "100%",
-                      animate = animationOptions(interval=1000)),
+                      sep = ""),
       sliderInput(inputId = "verse", "Verse:",
                   min = min(cite_year_df$verse), max = max(cite_year_df$verse),
                   value = c(1,10),
@@ -42,7 +42,8 @@ ui <- fluidPage(
 
 server <- function(input, output) {
   s <- reactive(cite_year_df %>% 
-                  filter(year==input$year,
+                  filter(year >= input$year[1],
+                         year <= input$year[2],
                          verse >= input$verse[1],
                          verse <= input$verse[2]))
   

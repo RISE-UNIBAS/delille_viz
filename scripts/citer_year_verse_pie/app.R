@@ -2,6 +2,7 @@
 ## PIE CHART (should slider be range or single year?)
 ## RECHECK VALUES
 ## citations-per-verse-per-citer-type_count.json
+## This has the white lines as well, could get rid if them but would have to restructure data
 
 library(shiny)
 library(tidyverse)
