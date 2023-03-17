@@ -8,7 +8,7 @@ load("cite_year_df.Rda")
 ui <- fluidPage(
   
   # App title ----
-  titlePanel("Citations by year and verse"),
+  titlePanel(div("Citations by year and verse",  style = "font-size: 20px")),
   
   
   sidebarLayout(
@@ -45,12 +45,14 @@ server <- function(input, output) {
                   filter(year >= input$year[1],
                          year <= input$year[2],
                          verse >= input$verse[1],
-                         verse <= input$verse[2]))
+                         verse <= input$verse[2]) %>% 
+                  group_by(verse) %>% 
+                  summarise(sum_cite = sum(citations))) 
   
   output$citePlot <- renderPlot({
     
-    ggplot(s(), aes(x=verse, y = citations)) + geom_col(aes(x=verse, y = citations), position = "dodge", fill = "#087F8C") + theme_bw() +
-      labs(x="Verse", y="Citations") + scale_x_continuous(labels = scales::number_format(accuracy=1), limits = c(min(input$verse), max(input$verse))) + ylim(0,7)
+    ggplot(s(), aes(x=verse, y = sum_cite)) + geom_col(aes(x=verse, y = sum_cite), position = "dodge", fill = "#087F8C") + theme_bw() +
+      labs(x="Verse", y="Citations") + scale_x_continuous(labels = scales::number_format(accuracy=1), limits = c(min(input$verse), max(input$verse)))
     
   })
 }
