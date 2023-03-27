@@ -8,7 +8,7 @@ load("cite_year_df.Rda")
 ui <- fluidPage(
   
   # App title ----
-  titlePanel(div("Citations by year and verse",  style = "font-size: 20px")),
+  titlePanel(div("Cumul des citations par intervalles de vers et périodes",  style = "font-size: 15px")),
   
   
   sidebarLayout(
@@ -18,13 +18,13 @@ ui <- fluidPage(
       
       
       
-      sliderInput(inputId = "year", "Year:",
+      sliderInput(inputId = "year", "Années:",
                       min = min(cite_year_df$year), max = max(cite_year_df$year),
                       value = c(1789,1800),
                       step = 1,
                       width = "100%",
                       sep = ""),
-      sliderInput(inputId = "verse", "Verse:",
+      sliderInput(inputId = "verse", "Vers:",
                   min = min(cite_year_df$verse), max = max(cite_year_df$verse),
                   value = c(1,10),
                   step = 1,
@@ -52,7 +52,7 @@ server <- function(input, output) {
   output$citePlot <- renderPlot({
     
     ggplot(s(), aes(x=verse, y = sum_cite)) + geom_col(aes(x=verse, y = sum_cite), position = "dodge", fill = "#087F8C") + theme_bw() +
-      labs(x="Verse", y="Citations") + scale_x_continuous(labels = scales::number_format(accuracy=1), limits = c(min(input$verse), max(input$verse)))
+      labs(x="Vers", y="Citations") + scale_x_continuous(labels = scales::number_format(accuracy=1))
     
   })
 }

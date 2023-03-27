@@ -9,7 +9,7 @@ load("long_art_yr.Rda")
 ui <- fluidPage(
   
   # App title ----
-  titlePanel("Type of citations by year"),
+  titlePanel(div("Citations par type d'articles",  style = "font-size: 15px")),
   
   # Make slider for years
   sidebarLayout(
@@ -18,7 +18,7 @@ ui <- fluidPage(
       
       
       
-      sliderInput(inputId = "year", "Year:",
+      sliderInput(inputId = "year", "Anées:",
                   min = min(cite_art_yr_df$year), max = max(cite_art_yr_df$year),
                   value = c(1789,1800),
                   width = "100%",
@@ -51,14 +51,14 @@ server <- function(input, output) {
     
     ggplot(s(), aes(x="", y=citations, fill=article)) + geom_bar(width = 1, stat = "identity") +
       coord_polar("y", start=0) +
-      scale_fill_manual(values = c("#83B692", "#F9ADA0", "#F9627D", "#5B3758",
-                                            "#413C58", "#A3C4BC", "#BFD7B5", "#E7EFC5", "#F2E7C9",
-                                            "#3AB795", "#A0E8AF", "#86BAA1"),
-                        labels = c("Essay", "Review", "Translation Review", "Literary News",
-                                  "Literary Nonfiction", "Literary Pedagogic", "Literary Scientific", "Novel",
-                                  "Other Expression", "Poem or Verse", "Scientific or Vulgarized", "Translation"),
-                        name = "Article Type") + 
-      theme_bw() + labs(x="", y="", title = "Total citations by article type")
+      scale_fill_manual(values = c("red3", "mediumorchid", "slateblue", "yellowgreen",
+                                         "pink", "dodgerblue2", "lightsalmon1", "khaki2", "grey43",
+                                         "chartreuse4", "darkorange1", "skyblue1"),
+                                         labels = c("Autres essais, littérature panoramique, etc.", "Comptes rendus du poème", "Comptes rendus de traductions", "Vie littéraire",
+                                                    "Mémoires, biographies, anecdotes, etc.", "Pédagogie des sciences ou des lettres", "Esthétique, poétique, histoire littéraire", "Roman, fiction en prose",
+                                                    "Comptes rendus d'autres œuvres de Delille", "Texte en vers", "Science et vulgarisation", "Traductions"),
+                        name = "Catégories") + 
+      theme_bw() + labs(x="", y="", title = "Total des citations par catégories")
   })
 }
 # Run the application 
