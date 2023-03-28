@@ -1,6 +1,6 @@
 ## trying shiny and plotly (WIP)
 ## with category (de-)selection
-## I used the "Paired" palette 
+## I used the "Paired" and "Set3" (more pastel colors) palette 
 ## but it's possible to create a vector with the desired colors
 
 library(shiny)
@@ -10,7 +10,7 @@ library(plotly)
 load("long_cumsum_new.Rda")
                     
 long_cumsum_new$color <- leaflet::colorFactor(
-  palette = "Paired", domain = long_cumsum_new$article_new
+  palette = "Set3", domain = long_cumsum_new$article_new
 )(long_cumsum_new$article_new)
 
 ui <- fluidPage(
