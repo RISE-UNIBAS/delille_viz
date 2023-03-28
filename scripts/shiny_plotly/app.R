@@ -1,13 +1,17 @@
 ## trying shiny and plotly (WIP)
-## it works, but I cannot change the colors (yet)
-## and there are surely ways to make it better looking
-## it also has a category (de-)selector, but same problem with colors updating wrongly
+## with category (de-)selection
+## I used the "Paired" palette 
+## but it's possible to create a vector with the desired colors
 
 library(shiny)
 library(shinyWidgets)
 library(tidyverse)
 library(plotly)
 load("long_cumsum_new.Rda")
+                    
+long_cumsum_new$color <- leaflet::colorFactor(
+  palette = "Paired", domain = long_cumsum_new$article_new
+)(long_cumsum_new$article_new)
 
 ui <- fluidPage(
   
@@ -55,9 +59,11 @@ server <- function(input, output, session) {
   
   output$artPlot <- renderPlotly({
     
-    plot_ly(s(), labels = ~article_new, values = ~cumsum_cite, type = 'pie') %>% 
-    layout(xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
-           yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
+    plot_ly(s(), labels = ~article_new, values = ~cumsum_cite, type = 'pie', 
+            marker = list(colors = ~color, 
+                          line = list(color = '#FFFFFF', width = 1))) %>% 
+      layout(xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
+             yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
   })
 }
 # Run the application 
