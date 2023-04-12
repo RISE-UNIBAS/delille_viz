@@ -24,7 +24,7 @@ ui <- fluidPage(
                       selected = min(cite_year_cumsum$year),
                       grid = T,
                       width = "100%",
-                      animate = animationOptions(500)), # the lower the interval, the faster the animation
+                      animate = animationOptions(interval=500)), # the lower the interval, the faster the animation
       sliderInput(inputId = "verse", "Vers:",
                   min = min(cite_year_cumsum$verse), max = max(cite_year_cumsum$verse),
                   value = c(1,10),
