@@ -29,3 +29,12 @@ The folder 'original-rdf-data-and-sparql' contains the full project data in the 
 
 The folder 'ontologyVisualisation' contains the visualisation of the entire ontology, the source ontology in TTL (turtle) format and a readme file for documentation.
 
+
+
+####################
+##
+## ONTOLOGIES
+##
+####################
+
+The ontologies at http://e-editiones.ch/ontology/ etc. are available in the legacy repo https://github.com/nie-ine/Ontologies.

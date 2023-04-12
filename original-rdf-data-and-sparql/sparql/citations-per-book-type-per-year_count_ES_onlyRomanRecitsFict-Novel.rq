@@ -14,9 +14,9 @@ prefix calendar: <http://e-editiones.ch/ontology/calendar#>
 # if add distinct does not retrieve distinct books, but distinct citations
 
 SELECT
-  ?publicationYear ?publicationPeriod ?anthologyOrManual
+  ?publicationYear ?publicationPeriod ?Roman___récit_fictionnel
 
-  (COUNT( ?anthologyOrManual) AS ?Anthologies_et_manuels)
+  (COUNT( ?Roman___récit_fictionnel) AS ?Roman___récit_fictionnelCount)
 
     
   
@@ -26,10 +26,10 @@ WHERE {
     prosodic-structure:verseHasOrdinalNumeral ?verseOrdinalNumeral.
   
    
-    ?rhymingVerse ?p ?anthologyOrManual.
+    ?rhymingVerse ?p ?Roman___récit_fictionnel.
     FILTER (?p IN (text:isCitedIn, delille-research:isCitedTwiceIn, delille-research:isCitedThreeTimesIn, delille-research:isCitedFourTimesIn, delille-research:isCitedFiveTimesIn ) )
-    ?anthologyOrManual a delille:AnthologyOrManual .
-    ?anthologyOrManual publishing:isPublishedIn ?publication.
+    ?Roman___récit_fictionnel a delille:Novel .
+    ?Roman___récit_fictionnel publishing:isPublishedIn ?publication.
 
 
     OPTIONAL {
@@ -49,5 +49,5 @@ WHERE {
         }
 }
 
-GROUP BY ?publicationYear ?publicationPeriod ?dictionary
+GROUP BY ?publicationYear ?publicationPeriod ?Roman___récit_fictionnel
 ORDER BY ?publicationYear

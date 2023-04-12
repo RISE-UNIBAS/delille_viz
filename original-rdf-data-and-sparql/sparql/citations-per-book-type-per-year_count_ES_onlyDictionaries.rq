@@ -14,7 +14,7 @@ prefix calendar: <http://e-editiones.ch/ontology/calendar#>
 # if add distinct does not retrieve distinct books, but distinct citations
 
 SELECT
-  ?citationYear
+  ?publicationYear ?publicationPeriod ?dictionary
 
   (COUNT( ?dictionary) AS ?dictionaryCount)
 
@@ -33,25 +33,21 @@ WHERE {
 
 
     OPTIONAL {
-    ?publication publishing:hasYearPeriod ?YearPeriod . 
-    ?YearPeriod calendar:hasGregorianStartDate ?gregorianYear .
-    BIND ( (year(?gregorianYear)) AS ?citationYear )
-  }
-
-  OPTIONAL {
-    ?publication publishing:hasPartitionedPublishing ?partitionedPublication .
-    ?partitionedPublication publishing:hasStartYearPeriod ?startYearPeriod ;
-                            publishing:hasEndYearPeriod ?endYearPeriod .
-    ?startYearPeriod calendar:hasGregorianStartDate ?gregorianStartYear.
-    ?endYearPeriod calendar:hasGregorianEndDate ?gregorianEndYear.
-    BIND ( (CONCAT(STR(year(?gregorianStartYear)), '-', (STR(year(?gregorianEndYear))))) AS ?citationYear)
-  }  
-  
-  
-	
+          ?publication publishing:hasYearPeriod ?YearPeriod . 
+          ?YearPeriod calendar:hasGregorianStartDate ?gregorianYear .
+          BIND ( (year(?gregorianYear)) AS ?publicationPeriod )
+          BIND (?publicationPeriod AS ?publicationYear)
+        }
+        OPTIONAL {
+          ?publication publishing:hasPartitionedPublishing ?partitionedPublication .
+          ?partitionedPublication publishing:hasStartYearPeriod ?startYearPeriod ;
+                                  publishing:hasEndYearPeriod ?endYearPeriod .
+          ?startYearPeriod calendar:hasGregorianStartDate ?gregorianStartYear.
+          ?endYearPeriod calendar:hasGregorianEndDate ?gregorianEndYear.
+          BIND ( (CONCAT(STR(year(?gregorianStartYear)), '-', (STR(year(?gregorianEndYear))))) AS ?publicationPeriod)
+          BIND ((year(?gregorianStartYear)) AS ?publicationYear)
+        }
 }
-    
-  
 
-GROUP BY ?citationYear
-ORDER BY ?citationYear
+GROUP BY ?publicationYear ?publicationPeriod ?dictionary
+ORDER BY ?publicationYear
