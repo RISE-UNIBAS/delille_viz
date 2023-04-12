@@ -232,6 +232,49 @@ long_cumsum <- long_cumsum %>%
   group_by(article) %>% 
   fill(cumsum_cite)
 
+####### 6. citations-per-book-type-per-year-count ########
+
+book_yr <- fromJSON(file="citations-per-book-type-per-year-count.json")
+
+names(book_yr$results$bindings[[1]])
+
+book_yr_df <- tibble(year = character(),
+                         Dictionnaires = character(),
+                         Anthologies_et_manuels = character(),
+                         Ouvrages_littéraires = character(),
+                         Science_et_vulgarisation = character(),
+                         Autres = character(),
+                         Textes_en_vers = character(),
+                         Roman___récit_fictionnel = character(),
+                         Esthétique___poétique___histoire_littéraire = character(),
+                         Mémoires___biographies___histoire___etc = character(),
+                         Autres_essais = character())
+
+for (i in 1:length(book_yr$results$bindings)) {
+  number <- book_yr$results$bindings[[i+1]]$publicationYear$value ## some issues with the first year atm, it's not correct like this
+  citation1 <- book_yr$results$bindings[[i]]$Dictionnaires$value
+  citation2 <- book_yr$results$bindings[[i]]$Anthologies_et_manuels$value
+  citation3 <- book_yr$results$bindings[[i]]$Ouvrages_littéraires$value
+  citation4 <- book_yr$results$bindings[[i]]$Science_et_vulgarisation$value
+  citation5 <- book_yr$results$bindings[[i]]$Autres$value
+  citation6 <- book_yr$results$bindings[[i]]$Textes_en_vers$value
+  citation7 <- book_yr$results$bindings[[i]]$Roman___récit_fictionnel$value
+  citation8 <- book_yr$results$bindings[[i]]$Esthétique___poétique___histoire_littéraire$value
+  citation9 <- book_yr$results$bindings[[i]]$Mémoires___biographies___histoire___etc$value
+  citation10 <- book_yr$results$bindings[[i]]$Autres_essais$value
+  book_yr_df[i,1] <- number
+  book_yr_df[i,2] <- citation1
+  book_yr_df[i,3] <- citation2
+  book_yr_df[i,4] <- citation3
+  book_yr_df[i,5] <- citation4
+  book_yr_df[i,6] <- citation5
+  book_yr_df[i,7] <- citation6
+  book_yr_df[i,8] <- citation7
+  book_yr_df[i,9] <- citation8
+  book_yr_df[i,10] <- citation9
+  book_yr_df[i,11] <- citation10
+}
+
 
 ##### Save data frames #####
 # either adjust or comment out, this was for getting the proper data into the app folder

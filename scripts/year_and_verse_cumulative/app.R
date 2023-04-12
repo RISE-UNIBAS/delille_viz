@@ -24,12 +24,13 @@ ui <- fluidPage(
                       selected = min(cite_year_cumsum$year),
                       grid = T,
                       width = "100%",
-                      animate = animationOptions(interval=500)), # the lower the interval, the faster the animation
+                      animate = animationOptions(500)), # the lower the interval, the faster the animation
       sliderInput(inputId = "verse", "Vers:",
                   min = min(cite_year_cumsum$verse), max = max(cite_year_cumsum$verse),
                   value = c(1,10),
                   step = 1,
-                  width = "100%")
+                  width = "100%"),
+      
       
     ),
     
@@ -46,6 +47,7 @@ server <- function(input, output) {
                   filter(year==input$year,
                          verse >= input$verse[1],
                          verse <= input$verse[2]))
+  
   
   output$citePlot <- renderPlot({
     
