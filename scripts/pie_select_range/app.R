@@ -69,7 +69,7 @@ server <- function(input, output, session) {
     
     ggplot(s(), aes(x="", y=citations, fill=article_new)) + geom_bar(width = 1, stat = "identity") +
       coord_polar("y", start=0) + scale_fill_manual(name = "article", values = myColors, labels = input$article_new) +
-      theme_bw() + labs(x="", y="", title = "Total citations by article type")
+      theme_bw() + labs(x="", y="", title = "")
   })
 }
 # Run the application 
