@@ -27,7 +27,7 @@ WHERE {
   
    
     ?rhymingVerse ?p ?Science_et_vulgarisation.
-    FILTER (?p IN (text:isCitedIn, delille-research:isCitedTwiceIn, delille-research:isCitedThreeTimesIn, delille-research:isCitedFourTimesIn, delille-research:isCitedFiveTimesIn ) )
+    FILTER (?p IN (text:isCitedIn, delille-research:isCitedTwiceIn, delille-research:isCitedThreeTimesIn, delille-research:isCitedFourTimesIn, delille-research:isCitedFiveTimesIn, text:hasPasticheIn ) )
     ?Science_et_vulgarisation a delille:ScientificOrVulgarizedExpression .
     ?Science_et_vulgarisation publishing:isPublishedIn ?publication.
     MINUS {?Science_et_vulgarisation a delille:Article}
