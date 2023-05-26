@@ -30,6 +30,7 @@ WHERE {
     FILTER (?p IN (text:isCitedIn, delille-research:isCitedTwiceIn, delille-research:isCitedThreeTimesIn, delille-research:isCitedFourTimesIn, delille-research:isCitedFiveTimesIn ) )
     ?catalogue a delille:Catalogue .
     ?catalogue publishing:isPublishedIn ?publication.
+    MINUS {?catalogue a delille:Article}
 
 
     OPTIONAL {
