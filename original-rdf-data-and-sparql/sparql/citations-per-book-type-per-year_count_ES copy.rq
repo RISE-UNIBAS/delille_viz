@@ -18,14 +18,14 @@ SELECT
 
   (COUNT( ?dictionary) AS ?Dictionnaires)
   (COUNT( ?anthologyOrManual) AS ?Anthologies_et_manuels)
-  (COUNT( ?Science_et_vulgarisation) AS ?Science_et_vulgarisation)
+  (COUNT( ?scientificOrVulgarizedExpression) AS ?Science_et_vulgarisation)
   (COUNT( ?catalogue) AS ?Autres)
 
   # All Ouvrages littéraires
-  (COUNT( ?Textes_en_vers) AS ?Textes_en_vers)
-  (COUNT( ?Roman___récit_fictionnel) AS ?Roman___récit_fictionnel)
-  (COUNT( ?Esthétique___poétique___histoire_littéraire) AS ?Esthétique___poétique___histoire_littéraire)
-  (COUNT( ?Mémoires___biographies___histoire___etc) AS ?Mémoires___biographies___histoire___etc)
+  (COUNT( ?poemOrVersePlay) AS ?Textes_en_vers)
+  (COUNT( ?novel) AS ?Roman___récit_fictionnel)
+  (COUNT( ?literaryScientificExpression) AS ?Esthétique___poétique___histoire_littéraire)
+  (COUNT( ?literaryNonfictionExpression) AS ?Mémoires___biographies___histoire___etc)
   (COUNT( ?essayOrPanoramicLiteraryOrPhilosophicOrHumanitiesExpression) AS ?Autres_essais)
 
   ((?Textes_en_vers+?Roman___récit_fictionnel+?Esthétique___poétique___histoire_littéraire+?Mémoires___biographies___histoire___etc+?Autres_essais) AS ?Ouvrages_littéraires)
@@ -40,12 +40,11 @@ WHERE {
     prosodic-structure:verseHasOrdinalNumeral ?verseOrdinalNumeral.
   
    {
-    ?rhymingVerse ?p ?dictionary.
-    FILTER (?p IN (text:isCitedIn, delille-research:isCitedTwiceIn, delille-research:isCitedThreeTimesIn, delille-research:isCitedFourTimesIn, delille-research:isCitedFiveTimesIn ) )
-    ?dictionary a delille:Dictionary .
-    ?dictionary publishing:isPublishedIn ?publication.
-    MINUS {?dictionary a delille:Article}
-    OPTIONAL {
+        ?rhymingVerse ?p ?dictionary.
+        FILTER (?p IN (text:isCitedIn, delille-research:isCitedTwiceIn, delille-research:isCitedThreeTimesIn, delille-research:isCitedFourTimesIn, delille-research:isCitedFiveTimesIn ) )
+        ?dictionary a delille:Dictionary .
+        ?dictionary publishing:isPublishedIn ?publication.
+        OPTIONAL {
           ?publication publishing:hasYearPeriod ?YearPeriod . 
           ?YearPeriod calendar:hasGregorianStartDate ?gregorianYear .
           BIND ( (year(?gregorianYear)) AS ?publicationPeriod )
@@ -63,11 +62,10 @@ WHERE {
   }
   UNION {
         ?rhymingVerse ?p ?anthologyOrManual.
-    FILTER (?p IN (text:isCitedIn, delille-research:isCitedTwiceIn, delille-research:isCitedThreeTimesIn, delille-research:isCitedFourTimesIn, delille-research:isCitedFiveTimesIn ) )
-    ?anthologyOrManual a delille:AnthologyOrManual .
-    ?anthologyOrManual publishing:isPublishedIn ?publication.
-    MINUS {?anthologyOrManual a delille:Article}
-    OPTIONAL {
+        FILTER (?p IN (text:isCitedIn, delille-research:isCitedTwiceIn, delille-research:isCitedThreeTimesIn, delille-research:isCitedFourTimesIn, delille-research:isCitedFiveTimesIn ) )
+        ?anthologyOrManual a delille:AnthologyOrManual .
+        ?anthologyOrManual publishing:isPublishedIn ?publication.
+        OPTIONAL {
           ?publication publishing:hasYearPeriod ?YearPeriod . 
           ?YearPeriod calendar:hasGregorianStartDate ?gregorianYear .
           BIND ( (year(?gregorianYear)) AS ?publicationPeriod )
@@ -84,11 +82,10 @@ WHERE {
         }
   }
   UNION {
-        ?rhymingVerse ?p ?Science_et_vulgarisation.
-        FILTER (?p IN (text:isCitedIn, delille-research:isCitedTwiceIn, delille-research:isCitedThreeTimesIn, delille-research:isCitedFourTimesIn, delille-research:isCitedFiveTimesIn, text:hasPasticheIn ) )
-        ?Science_et_vulgarisation a delille:ScientificOrVulgarizedExpression .
-        ?Science_et_vulgarisation publishing:isPublishedIn ?publication.
-        MINUS {?Science_et_vulgarisation a delille:Article}
+        ?rhymingVerse ?p ?scientificOrVulgarizedExpression.
+        FILTER (?p IN (text:isCitedIn, delille-research:isCitedTwiceIn, delille-research:isCitedThreeTimesIn, delille-research:isCitedFourTimesIn, delille-research:isCitedFiveTimesIn ) )
+        ?scientificOrVulgarizedExpression a delille:ScientificOrVulgarizedExpression .
+        ?scientificOrVulgarizedExpression publishing:isPublishedIn ?publication.
         OPTIONAL {
           ?publication publishing:hasYearPeriod ?YearPeriod . 
           ?YearPeriod calendar:hasGregorianStartDate ?gregorianYear .
@@ -110,7 +107,6 @@ WHERE {
         FILTER (?p IN (text:isCitedIn, delille-research:isCitedTwiceIn, delille-research:isCitedThreeTimesIn, delille-research:isCitedFourTimesIn, delille-research:isCitedFiveTimesIn ) )
         ?catalogue a delille:Catalogue .
         ?catalogue publishing:isPublishedIn ?publication.
-        MINUS {?catalogue a delille:Article}
         OPTIONAL {
           ?publication publishing:hasYearPeriod ?YearPeriod . 
           ?YearPeriod calendar:hasGregorianStartDate ?gregorianYear .
@@ -131,33 +127,10 @@ WHERE {
 
 
   UNION {
-        ?rhymingVerse ?p ?Textes_en_vers.
-        FILTER (?p IN (text:isCitedIn, delille-research:isCitedTwiceIn, delille-research:isCitedThreeTimesIn, delille-research:isCitedFourTimesIn, delille-research:isCitedFiveTimesIn, text:isPlagiarisedIn, text:isAlludedToIn, text:hasPasticheIn ) )
-        ?Textes_en_vers a delille:PoemOrVersePlay .
-        ?Textes_en_vers publishing:isPublishedIn ?publication.
-        MINUS {?Textes_en_vers a delille:Article}
-        OPTIONAL {
-          ?publication publishing:hasYearPeriod ?YearPeriod . 
-          ?YearPeriod calendar:hasGregorianStartDate ?gregorianYear .
-          BIND ( (year(?gregorianYear)) AS ?publicationPeriod )
-          BIND (?publicationPeriod AS ?publicationYear)
-        }
-        OPTIONAL {
-          ?publication publishing:hasPartitionedPublishing ?partitionedPublication .
-          ?partitionedPublication publishing:hasStartYearPeriod ?startYearPeriod ;
-                                  publishing:hasEndYearPeriod ?endYearPeriod .
-          ?startYearPeriod calendar:hasGregorianStartDate ?gregorianStartYear.
-          ?endYearPeriod calendar:hasGregorianEndDate ?gregorianEndYear.
-          BIND ( (CONCAT(STR(year(?gregorianStartYear)), '-', (STR(year(?gregorianEndYear))))) AS ?publicationPeriod)
-          BIND ((year(?gregorianStartYear)) AS ?publicationYear)
-        }
-  }
-  UNION {
-        ?rhymingVerse ?p ?Roman___récit_fictionnel.
+        ?rhymingVerse ?p ?poemOrVersePlay.
         FILTER (?p IN (text:isCitedIn, delille-research:isCitedTwiceIn, delille-research:isCitedThreeTimesIn, delille-research:isCitedFourTimesIn, delille-research:isCitedFiveTimesIn ) )
-        ?Roman___récit_fictionnel a delille:Novel .
-        ?Roman___récit_fictionnel publishing:isPublishedIn ?publication.
-        MINUS {?Roman___récit_fictionnel a delille:Article}
+        ?poemOrVersePlay a delille:PoemOrVersePlay .
+        ?poemOrVersePlay publishing:isPublishedIn ?publication.
         OPTIONAL {
           ?publication publishing:hasYearPeriod ?YearPeriod . 
           ?YearPeriod calendar:hasGregorianStartDate ?gregorianYear .
@@ -174,57 +147,74 @@ WHERE {
           BIND ((year(?gregorianStartYear)) AS ?publicationYear)
         }
   }
-  
+  UNION {
+        ?rhymingVerse ?p ?novel.
+        FILTER (?p IN (text:isCitedIn, delille-research:isCitedTwiceIn, delille-research:isCitedThreeTimesIn, delille-research:isCitedFourTimesIn, delille-research:isCitedFiveTimesIn ) )
+        ?novel a delille:Novel .
+        ?novel publishing:isPublishedIn ?publication.
+        OPTIONAL {
+          ?publication publishing:hasYearPeriod ?YearPeriod . 
+          ?YearPeriod calendar:hasGregorianStartDate ?gregorianYear .
+          BIND ( (year(?gregorianYear)) AS ?publicationPeriod )
+          BIND (?publicationPeriod AS ?publicationYear)
+        }
+        OPTIONAL {
+          ?publication publishing:hasPartitionedPublishing ?partitionedPublication .
+          ?partitionedPublication publishing:hasStartYearPeriod ?startYearPeriod ;
+                                  publishing:hasEndYearPeriod ?endYearPeriod .
+          ?startYearPeriod calendar:hasGregorianStartDate ?gregorianStartYear.
+          ?endYearPeriod calendar:hasGregorianEndDate ?gregorianEndYear.
+          BIND ( (CONCAT(STR(year(?gregorianStartYear)), '-', (STR(year(?gregorianEndYear))))) AS ?publicationPeriod)
+          BIND ((year(?gregorianStartYear)) AS ?publicationYear)
+        }
+  }
+  UNION {
+        ?rhymingVerse ?p ?literaryScientificExpression.
+        FILTER (?p IN (text:isCitedIn, delille-research:isCitedTwiceIn, delille-research:isCitedThreeTimesIn, delille-research:isCitedFourTimesIn, delille-research:isCitedFiveTimesIn ) )
+        ?literaryScientificExpression a delille:LiteraryScientificExpression .
+        ?literaryScientificExpression publishing:isPublishedIn ?publication.
+        OPTIONAL {
+          ?publication publishing:hasYearPeriod ?YearPeriod . 
+          ?YearPeriod calendar:hasGregorianStartDate ?gregorianYear .
+          BIND ( (year(?gregorianYear)) AS ?publicationPeriod )
+          BIND (?publicationPeriod AS ?publicationYear)
+        }
+        OPTIONAL {
+          ?publication publishing:hasPartitionedPublishing ?partitionedPublication .
+          ?partitionedPublication publishing:hasStartYearPeriod ?startYearPeriod ;
+                                  publishing:hasEndYearPeriod ?endYearPeriod .
+          ?startYearPeriod calendar:hasGregorianStartDate ?gregorianStartYear.
+          ?endYearPeriod calendar:hasGregorianEndDate ?gregorianEndYear.
+          BIND ( (CONCAT(STR(year(?gregorianStartYear)), '-', (STR(year(?gregorianEndYear))))) AS ?publicationPeriod)
+          BIND ((year(?gregorianStartYear)) AS ?publicationYear)
+        }
+  }
+  UNION {
+        ?rhymingVerse ?p ?literaryNonfictionExpression.
+        FILTER (?p IN (text:isCitedIn, delille-research:isCitedTwiceIn, delille-research:isCitedThreeTimesIn, delille-research:isCitedFourTimesIn, delille-research:isCitedFiveTimesIn ) )
+        ?literaryNonfictionExpression a delille:LiteraryNonfictionExpression .
+        ?literaryNonfictionExpression publishing:isPublishedIn ?publication.
+        OPTIONAL {
+          ?publication publishing:hasYearPeriod ?YearPeriod . 
+          ?YearPeriod calendar:hasGregorianStartDate ?gregorianYear .
+          BIND ( (year(?gregorianYear)) AS ?publicationPeriod )
+          BIND (?publicationPeriod AS ?publicationYear)
+        }
+        OPTIONAL {
+          ?publication publishing:hasPartitionedPublishing ?partitionedPublication .
+          ?partitionedPublication publishing:hasStartYearPeriod ?startYearPeriod ;
+                                  publishing:hasEndYearPeriod ?endYearPeriod .
+          ?startYearPeriod calendar:hasGregorianStartDate ?gregorianStartYear.
+          ?endYearPeriod calendar:hasGregorianEndDate ?gregorianEndYear.
+          BIND ( (CONCAT(STR(year(?gregorianStartYear)), '-', (STR(year(?gregorianEndYear))))) AS ?publicationPeriod)
+          BIND ((year(?gregorianStartYear)) AS ?publicationYear)
+        }
+  }
   UNION {
         ?rhymingVerse ?p ?essayOrPanoramicLiteraryOrPhilosophicOrHumanitiesExpression.
         FILTER (?p IN (text:isCitedIn, delille-research:isCitedTwiceIn, delille-research:isCitedThreeTimesIn, delille-research:isCitedFourTimesIn, delille-research:isCitedFiveTimesIn ) )
         ?essayOrPanoramicLiteraryOrPhilosophicOrHumanitiesExpression a delille:EssayOrPanoramicLiteraryOrPhilosophicOrHumanitiesExpression .
         ?essayOrPanoramicLiteraryOrPhilosophicOrHumanitiesExpression publishing:isPublishedIn ?publication.
-        OPTIONAL {
-          ?publication publishing:hasYearPeriod ?YearPeriod . 
-          ?YearPeriod calendar:hasGregorianStartDate ?gregorianYear .
-          BIND ( (year(?gregorianYear)) AS ?publicationPeriod )
-          BIND (?publicationPeriod AS ?publicationYear)
-        }
-        OPTIONAL {
-          ?publication publishing:hasPartitionedPublishing ?partitionedPublication .
-          ?partitionedPublication publishing:hasStartYearPeriod ?startYearPeriod ;
-                                  publishing:hasEndYearPeriod ?endYearPeriod .
-          ?startYearPeriod calendar:hasGregorianStartDate ?gregorianStartYear.
-          ?endYearPeriod calendar:hasGregorianEndDate ?gregorianEndYear.
-          BIND ( (CONCAT(STR(year(?gregorianStartYear)), '-', (STR(year(?gregorianEndYear))))) AS ?publicationPeriod)
-          BIND ((year(?gregorianStartYear)) AS ?publicationYear)
-        }
-  }
-  UNION {
-        ?rhymingVerse ?p ?Esthétique___poétique___histoire_littéraire.
-        FILTER (?p IN (text:isCitedIn, delille-research:isCitedTwiceIn, delille-research:isCitedThreeTimesIn, delille-research:isCitedFourTimesIn, delille-research:isCitedFiveTimesIn ) )
-        ?Esthétique___poétique___histoire_littéraire a delille:LiteraryScientificExpression .
-        ?Esthétique___poétique___histoire_littéraire publishing:isPublishedIn ?publication.
-        MINUS {?Esthétique___poétique___histoire_littéraire a delille:Article}
-        OPTIONAL {
-          ?publication publishing:hasYearPeriod ?YearPeriod . 
-          ?YearPeriod calendar:hasGregorianStartDate ?gregorianYear .
-          BIND ( (year(?gregorianYear)) AS ?publicationPeriod )
-          BIND (?publicationPeriod AS ?publicationYear)
-        }
-        OPTIONAL {
-          ?publication publishing:hasPartitionedPublishing ?partitionedPublication .
-          ?partitionedPublication publishing:hasStartYearPeriod ?startYearPeriod ;
-                                  publishing:hasEndYearPeriod ?endYearPeriod .
-          ?startYearPeriod calendar:hasGregorianStartDate ?gregorianStartYear.
-          ?endYearPeriod calendar:hasGregorianEndDate ?gregorianEndYear.
-          BIND ( (CONCAT(STR(year(?gregorianStartYear)), '-', (STR(year(?gregorianEndYear))))) AS ?publicationPeriod)
-          BIND ((year(?gregorianStartYear)) AS ?publicationYear)
-        }
-  }
-
-  UNION {
-        ?rhymingVerse ?p ?Mémoires___biographies___histoire___etc.
-        FILTER (?p IN (text:isCitedIn, delille-research:isCitedTwiceIn, delille-research:isCitedThreeTimesIn, delille-research:isCitedFourTimesIn, delille-research:isCitedFiveTimesIn ) )
-        ?Mémoires___biographies___histoire___etc a delille:LiteraryNonfictionExpression .
-        ?Mémoires___biographies___histoire___etc publishing:isPublishedIn ?publication.
-        MINUS {?Mémoires___biographies___histoire___etc a delille:Article}
         OPTIONAL {
           ?publication publishing:hasYearPeriod ?YearPeriod . 
           ?YearPeriod calendar:hasGregorianStartDate ?gregorianYear .
