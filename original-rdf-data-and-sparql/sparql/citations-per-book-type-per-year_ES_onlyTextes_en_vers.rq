@@ -27,9 +27,10 @@ WHERE {
   
    
     ?rhymingVerse ?p ?Textes_en_vers.
-    FILTER (?p IN (text:isCitedIn, delille-research:isCitedTwiceIn, delille-research:isCitedThreeTimesIn, delille-research:isCitedFourTimesIn, delille-research:isCitedFiveTimesIn ) )
+    FILTER (?p IN (text:isCitedIn, delille-research:isCitedTwiceIn, delille-research:isCitedThreeTimesIn, delille-research:isCitedFourTimesIn, delille-research:isCitedFiveTimesIn, text:isPlagiarisedIn, text:isAlludedToIn, text:hasPasticheIn ) )
     ?Textes_en_vers a delille:PoemOrVersePlay .
     ?Textes_en_vers publishing:isPublishedIn ?publication.
+    MINUS {?Textes_en_vers a delille:Article}
 
 
     OPTIONAL {

@@ -30,6 +30,7 @@ WHERE {
     FILTER (?p IN (text:isCitedIn, delille-research:isCitedTwiceIn, delille-research:isCitedThreeTimesIn, delille-research:isCitedFourTimesIn, delille-research:isCitedFiveTimesIn ) )
     ?anthologyOrManual a delille:AnthologyOrManual .
     ?anthologyOrManual publishing:isPublishedIn ?publication.
+    MINUS {?anthologyOrManual a delille:Article}
 
 
     OPTIONAL {
@@ -49,5 +50,5 @@ WHERE {
         }
 }
 
-GROUP BY ?publicationYear ?publicationPeriod ?dictionary
+GROUP BY ?publicationYear ?publicationPeriod ?anthologyOrManual
 ORDER BY ?publicationYear

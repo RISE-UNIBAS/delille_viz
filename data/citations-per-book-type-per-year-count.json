@@ -5,71 +5,19 @@
       "publicationPeriod",
       "Dictionnaires",
       "Anthologies_et_manuels",
-      "Ouvrages_littéraires",
       "Science_et_vulgarisation",
       "Autres",
       "Textes_en_vers",
       "Roman___récit_fictionnel",
       "Esthétique___poétique___histoire_littéraire",
       "Mémoires___biographies___histoire___etc",
-      "Autres_essais"
+      "Autres_essais",
+      "Ouvrages_littéraires"
     ]
   },
   "results" : {
     "bindings" : [
       {
-        "Dictionnaires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Anthologies_et_manuels" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Science_et_vulgarisation" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "4"
-        },
-        "Autres" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Textes_en_vers" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Roman___récit_fictionnel" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Esthétique___poétique___histoire_littéraire" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Mémoires___biographies___histoire___etc" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Autres_essais" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        }
-      },
-      {
         "publicationYear" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
@@ -89,11 +37,6 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
-        },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "1"
         },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -129,6 +72,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "1"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "1"
         }
       },
       {
@@ -151,11 +99,6 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
-        },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "510"
         },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -191,6 +134,72 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "5"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "510"
+        }
+      },
+      {
+        "publicationYear" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "1801"
+        },
+        "publicationPeriod" : {
+          "type" : "literal",
+          "value" : "1801-1804"
+        },
+        "Dictionnaires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "0"
+        },
+        "Anthologies_et_manuels" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "0"
+        },
+        "Science_et_vulgarisation" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "0"
+        },
+        "Autres" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "0"
+        },
+        "Textes_en_vers" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "59"
+        },
+        "Roman___récit_fictionnel" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "0"
+        },
+        "Esthétique___poétique___histoire_littéraire" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "0"
+        },
+        "Mémoires___biographies___histoire___etc" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "0"
+        },
+        "Autres_essais" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "59"
         }
       },
       {
@@ -214,15 +223,10 @@
           "type" : "literal",
           "value" : "0"
         },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "5"
-        },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "18"
+          "value" : "6"
         },
         "Autres" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -247,12 +251,17 @@
         "Mémoires___biographies___histoire___etc" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "2"
+          "value" : "0"
         },
         "Autres_essais" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "3"
         }
       },
       {
@@ -271,11 +280,6 @@
           "value" : "0"
         },
         "Anthologies_et_manuels" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Ouvrages_littéraires" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
@@ -314,6 +318,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "0"
         }
       },
       {
@@ -337,15 +346,10 @@
           "type" : "literal",
           "value" : "1"
         },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "99"
-        },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "29"
+          "value" : "27"
         },
         "Autres" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -376,6 +380,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "15"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "99"
         }
       },
       {
@@ -398,11 +407,6 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "600"
-        },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "4"
         },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -438,6 +442,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "4"
         }
       },
       {
@@ -460,11 +469,6 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
-        },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "4"
         },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -500,6 +504,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "4"
         }
       },
       {
@@ -522,11 +531,6 @@
           "type" : "literal",
           "value" : "0"
         },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
@@ -561,6 +565,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "0"
         }
       },
       {
@@ -582,12 +591,7 @@
         "Anthologies_et_manuels" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "3"
-        },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "2"
+          "value" : "73"
         },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -623,6 +627,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "2"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "2"
         }
       },
       {
@@ -645,11 +654,6 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
-        },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "97"
         },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -685,6 +689,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "96"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "97"
         }
       },
       {
@@ -708,11 +717,6 @@
           "type" : "literal",
           "value" : "44"
         },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "9"
-        },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
@@ -747,6 +751,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "9"
         }
       },
       {
@@ -770,45 +779,45 @@
           "type" : "literal",
           "value" : "40"
         },
+        "Science_et_vulgarisation" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "0"
+        },
+        "Autres" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "0"
+        },
+        "Textes_en_vers" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "2"
+        },
+        "Roman___récit_fictionnel" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "0"
+        },
+        "Esthétique___poétique___histoire_littéraire" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "0"
+        },
+        "Mémoires___biographies___histoire___etc" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "1"
+        },
+        "Autres_essais" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "0"
+        },
         "Ouvrages_littéraires" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "3"
-        },
-        "Science_et_vulgarisation" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Autres" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Textes_en_vers" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "2"
-        },
-        "Roman___récit_fictionnel" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Esthétique___poétique___histoire_littéraire" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Mémoires___biographies___histoire___etc" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "1"
-        },
-        "Autres_essais" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
         }
       },
       {
@@ -831,11 +840,6 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
-        },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "6"
         },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -871,68 +875,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "6"
-        }
-      },
-      {
-        "publicationYear" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "1810"
-        },
-        "publicationPeriod" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "1810"
-        },
-        "Dictionnaires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Anthologies_et_manuels" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
         },
         "Ouvrages_littéraires" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "0"
-        },
-        "Science_et_vulgarisation" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "1"
-        },
-        "Autres" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Textes_en_vers" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Roman___récit_fictionnel" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Esthétique___poétique___histoire_littéraire" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Mémoires___biographies___histoire___etc" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Autres_essais" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
+          "value" : "6"
         }
       },
       {
@@ -955,11 +902,6 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "2"
-        },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "29"
         },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -995,6 +937,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "29"
         }
       },
       {
@@ -1017,11 +964,6 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "48"
-        },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
         },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -1057,6 +999,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "0"
         }
       },
       {
@@ -1080,15 +1027,10 @@
           "type" : "literal",
           "value" : "0"
         },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "2"
+          "value" : "3"
         },
         "Autres" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -1119,6 +1061,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "0"
         }
       },
       {
@@ -1141,11 +1088,6 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "7"
-        },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "3"
         },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -1181,6 +1123,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "3"
         }
       },
       {
@@ -1203,11 +1150,6 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "8"
-        },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
         },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -1243,6 +1185,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "0"
         }
       },
       {
@@ -1265,11 +1212,6 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
-        },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "30"
         },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -1305,6 +1247,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "30"
         }
       },
       {
@@ -1328,15 +1275,10 @@
           "type" : "literal",
           "value" : "0"
         },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "4"
-        },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "4"
+          "value" : "0"
         },
         "Autres" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -1367,6 +1309,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "4"
         }
       },
       {
@@ -1390,11 +1337,6 @@
           "type" : "literal",
           "value" : "0"
         },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "20"
-        },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
@@ -1429,6 +1371,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "20"
         }
       },
       {
@@ -1451,11 +1398,6 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "2"
-        },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "22"
         },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -1491,6 +1433,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "22"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "22"
         }
       },
       {
@@ -1513,11 +1460,6 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
-        },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "1"
         },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -1553,6 +1495,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "1"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "1"
         }
       },
       {
@@ -1575,11 +1522,6 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "2"
-        },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
         },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -1615,6 +1557,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "0"
         }
       },
       {
@@ -1637,11 +1584,6 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "166"
-        },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "20"
         },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -1671,12 +1613,17 @@
         "Mémoires___biographies___histoire___etc" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "1"
+          "value" : "0"
         },
         "Autres_essais" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "17"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "19"
         }
       },
       {
@@ -1700,15 +1647,10 @@
           "type" : "literal",
           "value" : "0"
         },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "2"
-        },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "4"
+          "value" : "0"
         },
         "Autres" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -1739,6 +1681,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "1"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "2"
         }
       },
       {
@@ -1757,11 +1704,6 @@
           "value" : "0"
         },
         "Anthologies_et_manuels" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Ouvrages_littéraires" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
@@ -1800,6 +1742,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "0"
         }
       },
       {
@@ -1821,11 +1768,6 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "67"
-        },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
         },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -1861,6 +1803,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "0"
         }
       },
       {
@@ -1883,11 +1830,6 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "151"
-        },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
         },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -1923,6 +1865,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "0"
         }
       },
       {
@@ -1945,11 +1892,6 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
-        },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "101"
         },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -1985,6 +1927,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "101"
         }
       },
       {
@@ -2008,15 +1955,10 @@
           "type" : "literal",
           "value" : "43"
         },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "8"
-        },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "39"
+          "value" : "0"
         },
         "Autres" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -2026,7 +1968,7 @@
         "Textes_en_vers" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "0"
+          "value" : "3"
         },
         "Roman___récit_fictionnel" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -2041,12 +1983,17 @@
         "Mémoires___biographies___histoire___etc" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "8"
+          "value" : "7"
         },
         "Autres_essais" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "10"
         }
       },
       {
@@ -2070,15 +2017,10 @@
           "type" : "literal",
           "value" : "0"
         },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "74"
+          "value" : "62"
         },
         "Autres" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -2109,6 +2051,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "0"
         }
       },
       {
@@ -2131,11 +2078,6 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
-        },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "61"
         },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -2171,6 +2113,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "9"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "61"
         }
       },
       {
@@ -2194,15 +2141,10 @@
           "type" : "literal",
           "value" : "0"
         },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "4"
-        },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "0"
+          "value" : "3"
         },
         "Autres" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -2233,6 +2175,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "4"
         }
       },
       {
@@ -2254,11 +2201,6 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
-        },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "4"
         },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -2294,6 +2236,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "4"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "4"
         }
       },
       {
@@ -2316,11 +2263,6 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
-        },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "1"
         },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -2356,6 +2298,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "1"
         }
       },
       {
@@ -2372,17 +2319,12 @@
         "Dictionnaires" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "0"
+          "value" : "7"
         },
         "Anthologies_et_manuels" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
-        },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "1"
         },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -2397,7 +2339,7 @@
         "Textes_en_vers" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "1"
+          "value" : "2"
         },
         "Roman___récit_fictionnel" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -2418,6 +2360,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "2"
         }
       },
       {
@@ -2441,11 +2388,6 @@
           "type" : "literal",
           "value" : "42"
         },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
@@ -2477,6 +2419,11 @@
           "value" : "0"
         },
         "Autres_essais" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
@@ -2503,15 +2450,10 @@
           "type" : "literal",
           "value" : "2"
         },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "50"
-        },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "18"
+          "value" : "0"
         },
         "Autres" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -2542,6 +2484,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "50"
         }
       },
       {
@@ -2564,11 +2511,6 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "18"
-        },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
         },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -2604,6 +2546,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "0"
         }
       },
       {
@@ -2622,11 +2569,6 @@
           "value" : "0"
         },
         "Anthologies_et_manuels" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Ouvrages_littéraires" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
@@ -2665,6 +2607,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "0"
         }
       },
       {
@@ -2687,11 +2634,6 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
-        },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "22"
         },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -2727,6 +2669,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "20"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "22"
         }
       },
       {
@@ -2749,11 +2696,6 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
-        },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "53"
         },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -2789,6 +2731,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "22"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "53"
         }
       },
       {
@@ -2812,15 +2759,10 @@
           "type" : "literal",
           "value" : "0"
         },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "43"
-        },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "2"
+          "value" : "0"
         },
         "Autres" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -2848,6 +2790,11 @@
           "value" : "0"
         },
         "Autres_essais" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "43"
+        },
+        "Ouvrages_littéraires" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "43"
@@ -2873,11 +2820,6 @@
           "type" : "literal",
           "value" : "0"
         },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
@@ -2912,6 +2854,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "0"
         }
       },
       {
@@ -2934,11 +2881,6 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
-        },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "1"
         },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -2974,6 +2916,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "1"
         }
       },
       {
@@ -2996,11 +2943,6 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "55"
-        },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "14"
         },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -3036,6 +2978,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "14"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "14"
         }
       },
       {
@@ -3058,11 +3005,6 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "3"
-        },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "18"
         },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -3098,6 +3040,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "18"
         }
       },
       {
@@ -3116,11 +3063,6 @@
           "value" : "0"
         },
         "Anthologies_et_manuels" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Ouvrages_littéraires" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
@@ -3156,6 +3098,11 @@
           "value" : "0"
         },
         "Autres_essais" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
@@ -3182,11 +3129,6 @@
           "type" : "literal",
           "value" : "60"
         },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "8"
-        },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
@@ -3200,7 +3142,7 @@
         "Textes_en_vers" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "0"
+          "value" : "13"
         },
         "Roman___récit_fictionnel" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -3221,6 +3163,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "8"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "21"
         }
       },
       {
@@ -3244,11 +3191,6 @@
           "type" : "literal",
           "value" : "0"
         },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
@@ -3262,7 +3204,7 @@
         "Textes_en_vers" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "0"
+          "value" : "8"
         },
         "Roman___récit_fictionnel" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -3283,6 +3225,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "8"
         }
       },
       {
@@ -3306,15 +3253,10 @@
           "type" : "literal",
           "value" : "7"
         },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "5"
+          "value" : "0"
         },
         "Autres" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -3342,6 +3284,11 @@
           "value" : "0"
         },
         "Autres_essais" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
@@ -3367,11 +3314,6 @@
           "type" : "literal",
           "value" : "0"
         },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "10"
-        },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
@@ -3406,6 +3348,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "10"
         }
       },
       {
@@ -3429,15 +3376,10 @@
           "type" : "literal",
           "value" : "0"
         },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "7"
-        },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "3"
+          "value" : "0"
         },
         "Autres" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -3468,6 +3410,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "1"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "7"
         }
       },
       {
@@ -3490,11 +3437,6 @@
           "type" : "literal",
           "value" : "0"
         },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
@@ -3526,6 +3468,11 @@
           "value" : "0"
         },
         "Autres_essais" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
@@ -3552,15 +3499,10 @@
           "type" : "literal",
           "value" : "0"
         },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "10"
-        },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "35"
+          "value" : "8"
         },
         "Autres" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -3588,6 +3530,11 @@
           "value" : "0"
         },
         "Autres_essais" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "10"
+        },
+        "Ouvrages_littéraires" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "10"
@@ -3613,11 +3560,6 @@
           "type" : "literal",
           "value" : "0"
         },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
@@ -3649,6 +3591,11 @@
           "value" : "0"
         },
         "Autres_essais" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
@@ -3675,11 +3622,6 @@
           "type" : "literal",
           "value" : "41"
         },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
@@ -3714,6 +3656,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "0"
         }
       },
       {
@@ -3737,15 +3684,10 @@
           "type" : "literal",
           "value" : "2"
         },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "16"
-        },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "10"
+          "value" : "8"
         },
         "Autres" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -3776,6 +3718,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "16"
         }
       },
       {
@@ -3799,15 +3746,10 @@
           "type" : "literal",
           "value" : "2"
         },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "3"
+          "value" : "0"
         },
         "Autres" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -3835,6 +3777,11 @@
           "value" : "0"
         },
         "Autres_essais" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
@@ -3861,11 +3808,6 @@
           "type" : "literal",
           "value" : "3"
         },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
@@ -3897,6 +3839,11 @@
           "value" : "0"
         },
         "Autres_essais" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
@@ -3923,11 +3870,6 @@
           "type" : "literal",
           "value" : "3"
         },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
@@ -3959,6 +3901,11 @@
           "value" : "0"
         },
         "Autres_essais" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
@@ -3985,11 +3932,6 @@
           "type" : "literal",
           "value" : "123"
         },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "14"
-        },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
@@ -4018,9 +3960,14 @@
         "Mémoires___biographies___histoire___etc" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "6"
+          "value" : "0"
         },
         "Autres_essais" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "8"
+        },
+        "Ouvrages_littéraires" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "8"
@@ -4047,15 +3994,10 @@
           "type" : "literal",
           "value" : "20"
         },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "16"
-        },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "3"
+          "value" : "2"
         },
         "Autres" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -4086,6 +4028,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "7"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "16"
         }
       },
       {
@@ -4104,11 +4051,6 @@
           "value" : "7"
         },
         "Anthologies_et_manuels" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Ouvrages_littéraires" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
@@ -4144,6 +4086,11 @@
           "value" : "0"
         },
         "Autres_essais" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
@@ -4170,15 +4117,10 @@
           "type" : "literal",
           "value" : "600"
         },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "66"
+          "value" : "60"
         },
         "Autres" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -4209,65 +4151,8 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
-        }
-      },
-      {
-        "publicationYear" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "1854"
-        },
-        "publicationPeriod" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "1854"
-        },
-        "Dictionnaires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Anthologies_et_manuels" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
         },
         "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Science_et_vulgarisation" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "2"
-        },
-        "Autres" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Textes_en_vers" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Roman___récit_fictionnel" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Esthétique___poétique___histoire_littéraire" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Mémoires___biographies___histoire___etc" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Autres_essais" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
@@ -4293,11 +4178,6 @@
           "type" : "literal",
           "value" : "55"
         },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
@@ -4332,6 +4212,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "0"
         }
       },
       {
@@ -4354,11 +4239,6 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
-        },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "9"
         },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -4388,9 +4268,14 @@
         "Mémoires___biographies___histoire___etc" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "9"
+          "value" : "0"
         },
         "Autres_essais" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
@@ -4417,15 +4302,10 @@
           "type" : "literal",
           "value" : "5"
         },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "1"
-        },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "6"
+          "value" : "29"
         },
         "Autres" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -4456,6 +4336,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "1"
         }
       },
       {
@@ -4478,11 +4363,6 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
-        },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "3"
         },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -4518,68 +4398,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "2"
-        }
-      },
-      {
-        "publicationYear" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "1858"
-        },
-        "publicationPeriod" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "1858"
-        },
-        "Dictionnaires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Anthologies_et_manuels" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
         },
         "Ouvrages_littéraires" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "0"
-        },
-        "Science_et_vulgarisation" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "10"
-        },
-        "Autres" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Textes_en_vers" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Roman___récit_fictionnel" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Esthétique___poétique___histoire_littéraire" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Mémoires___biographies___histoire___etc" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Autres_essais" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
+          "value" : "3"
         }
       },
       {
@@ -4603,11 +4426,6 @@
           "type" : "literal",
           "value" : "32"
         },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
@@ -4639,6 +4457,11 @@
           "value" : "0"
         },
         "Autres_essais" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
@@ -4664,11 +4487,6 @@
           "type" : "literal",
           "value" : "55"
         },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
@@ -4700,6 +4518,11 @@
           "value" : "0"
         },
         "Autres_essais" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
@@ -4726,11 +4549,6 @@
           "type" : "literal",
           "value" : "1"
         },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "42"
-        },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
@@ -4744,7 +4562,7 @@
         "Textes_en_vers" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "0"
+          "value" : "5"
         },
         "Roman___récit_fictionnel" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -4765,6 +4583,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "47"
         }
       },
       {
@@ -4788,11 +4611,6 @@
           "type" : "literal",
           "value" : "0"
         },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "5"
-        },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
@@ -4806,7 +4624,7 @@
         "Textes_en_vers" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "0"
+          "value" : "8"
         },
         "Roman___récit_fictionnel" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -4816,7 +4634,7 @@
         "Esthétique___poétique___histoire_littéraire" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "5"
+          "value" : "0"
         },
         "Mémoires___biographies___histoire___etc" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -4827,6 +4645,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "8"
         }
       },
       {
@@ -4850,15 +4673,10 @@
           "type" : "literal",
           "value" : "49"
         },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "8"
+          "value" : "6"
         },
         "Autres" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -4886,6 +4704,11 @@
           "value" : "0"
         },
         "Autres_essais" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
@@ -4912,11 +4735,6 @@
           "type" : "literal",
           "value" : "0"
         },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "2"
-        },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
@@ -4930,7 +4748,7 @@
         "Textes_en_vers" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "0"
+          "value" : "1"
         },
         "Roman___récit_fictionnel" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -4945,12 +4763,17 @@
         "Mémoires___biographies___histoire___etc" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "2"
+          "value" : "0"
         },
         "Autres_essais" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "1"
         }
       },
       {
@@ -4973,11 +4796,6 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "47"
-        },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
         },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -5010,6 +4828,11 @@
           "value" : "0"
         },
         "Autres_essais" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
@@ -5035,11 +4858,6 @@
           "type" : "literal",
           "value" : "0"
         },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
@@ -5071,6 +4889,11 @@
           "value" : "0"
         },
         "Autres_essais" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
@@ -5097,15 +4920,10 @@
           "type" : "literal",
           "value" : "22"
         },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "11"
+          "value" : "0"
         },
         "Autres" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -5133,6 +4951,11 @@
           "value" : "0"
         },
         "Autres_essais" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
@@ -5158,11 +4981,6 @@
           "type" : "literal",
           "value" : "0"
         },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
@@ -5197,6 +5015,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "0"
         }
       },
       {
@@ -5219,11 +5042,6 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "1"
-        },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "30"
         },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -5259,6 +5077,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "30"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "30"
         }
       },
       {
@@ -5278,11 +5101,6 @@
           "value" : "0"
         },
         "Anthologies_et_manuels" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Ouvrages_littéraires" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
@@ -5321,6 +5139,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "0"
         }
       },
       {
@@ -5343,11 +5166,6 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
-        },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "11"
         },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -5383,6 +5201,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "11"
         }
       },
       {
@@ -5406,15 +5229,10 @@
           "type" : "literal",
           "value" : "0"
         },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "38"
-        },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "5"
+          "value" : "4"
         },
         "Autres" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -5445,6 +5263,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "38"
         }
       },
       {
@@ -5468,11 +5291,6 @@
           "type" : "literal",
           "value" : "49"
         },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
@@ -5504,6 +5322,11 @@
           "value" : "0"
         },
         "Autres_essais" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
@@ -5529,11 +5352,6 @@
           "type" : "literal",
           "value" : "0"
         },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
@@ -5565,6 +5383,11 @@
           "value" : "0"
         },
         "Autres_essais" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
@@ -5591,11 +5414,6 @@
           "type" : "literal",
           "value" : "12"
         },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
@@ -5630,6 +5448,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "0"
         }
       },
       {
@@ -5652,11 +5475,6 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
-        },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "3"
         },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -5692,130 +5510,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "3"
-        }
-      },
-      {
-        "publicationYear" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "1875"
-        },
-        "publicationPeriod" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "1875"
-        },
-        "Dictionnaires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Anthologies_et_manuels" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
         },
         "Ouvrages_littéraires" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "6"
-        },
-        "Science_et_vulgarisation" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Autres" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Textes_en_vers" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Roman___récit_fictionnel" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Esthétique___poétique___histoire_littéraire" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Mémoires___biographies___histoire___etc" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "6"
-        },
-        "Autres_essais" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        }
-      },
-      {
-        "publicationYear" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "1876"
-        },
-        "publicationPeriod" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "1876"
-        },
-        "Dictionnaires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Anthologies_et_manuels" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "10"
-        },
-        "Science_et_vulgarisation" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Autres" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Textes_en_vers" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Roman___récit_fictionnel" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Esthétique___poétique___histoire_littéraire" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "10"
-        },
-        "Mémoires___biographies___histoire___etc" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Autres_essais" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
+          "value" : "3"
         }
       },
       {
@@ -5839,15 +5538,10 @@
           "type" : "literal",
           "value" : "42"
         },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "11"
+          "value" : "0"
         },
         "Autres" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -5878,6 +5572,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "0"
         }
       },
       {
@@ -5900,11 +5599,6 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
-        },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "8"
         },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -5940,6 +5634,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "8"
         }
       },
       {
@@ -5963,15 +5662,10 @@
           "type" : "literal",
           "value" : "0"
         },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "6"
-        },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "0"
+          "value" : "1"
         },
         "Autres" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -5996,31 +5690,9 @@
         "Mémoires___biographies___histoire___etc" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "6"
+          "value" : "3"
         },
         "Autres_essais" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        }
-      },
-      {
-        "publicationYear" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "1880"
-        },
-        "publicationPeriod" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "1880"
-        },
-        "Dictionnaires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Anthologies_et_manuels" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
@@ -6028,42 +5700,7 @@
         "Ouvrages_littéraires" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "1"
-        },
-        "Science_et_vulgarisation" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Autres" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Textes_en_vers" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "1"
-        },
-        "Roman___récit_fictionnel" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Esthétique___poétique___histoire_littéraire" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Mémoires___biographies___histoire___etc" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Autres_essais" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
+          "value" : "3"
         }
       },
       {
@@ -6086,11 +5723,6 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
-        },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "18"
         },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -6120,12 +5752,17 @@
         "Mémoires___biographies___histoire___etc" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "16"
+          "value" : "0"
         },
         "Autres_essais" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "2"
         }
       },
       {
@@ -6148,11 +5785,6 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
-        },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "6"
         },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -6188,6 +5820,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "6"
         }
       },
       {
@@ -6211,11 +5848,6 @@
           "type" : "literal",
           "value" : "9"
         },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "8"
-        },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
@@ -6250,6 +5882,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "8"
         }
       },
       {
@@ -6273,15 +5910,10 @@
           "type" : "literal",
           "value" : "0"
         },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "14"
+          "value" : "8"
         },
         "Autres" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -6312,6 +5944,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "0"
         }
       },
       {
@@ -6334,11 +5971,6 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
-        },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "2"
         },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -6374,6 +6006,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "2"
         }
       },
       {
@@ -6396,11 +6033,6 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
-        },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "29"
         },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -6436,68 +6068,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
-        }
-      },
-      {
-        "publicationYear" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "1887"
-        },
-        "publicationPeriod" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "1887"
-        },
-        "Dictionnaires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Anthologies_et_manuels" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
         },
         "Ouvrages_littéraires" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "14"
-        },
-        "Science_et_vulgarisation" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Autres" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Textes_en_vers" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Roman___récit_fictionnel" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Esthétique___poétique___histoire_littéraire" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "14"
-        },
-        "Mémoires___biographies___histoire___etc" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Autres_essais" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
+          "value" : "29"
         }
       },
       {
@@ -6520,11 +6095,6 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
-        },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "3"
         },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -6560,192 +6130,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
-        }
-      },
-      {
-        "publicationYear" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "1893"
-        },
-        "publicationPeriod" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "1893"
-        },
-        "Dictionnaires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Anthologies_et_manuels" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
         },
         "Ouvrages_littéraires" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "1"
-        },
-        "Science_et_vulgarisation" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Autres" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Textes_en_vers" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Roman___récit_fictionnel" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Esthétique___poétique___histoire_littéraire" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Mémoires___biographies___histoire___etc" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "1"
-        },
-        "Autres_essais" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        }
-      },
-      {
-        "publicationYear" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "1894"
-        },
-        "publicationPeriod" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "1894"
-        },
-        "Dictionnaires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Anthologies_et_manuels" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "2"
-        },
-        "Science_et_vulgarisation" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Autres" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Textes_en_vers" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Roman___récit_fictionnel" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Esthétique___poétique___histoire_littéraire" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "2"
-        },
-        "Mémoires___biographies___histoire___etc" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Autres_essais" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        }
-      },
-      {
-        "publicationYear" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "1896"
-        },
-        "publicationPeriod" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "1896"
-        },
-        "Dictionnaires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Anthologies_et_manuels" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "6"
-        },
-        "Science_et_vulgarisation" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Autres" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Textes_en_vers" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Roman___récit_fictionnel" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Esthétique___poétique___histoire_littéraire" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Mémoires___biographies___histoire___etc" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "6"
-        },
-        "Autres_essais" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
+          "value" : "3"
         }
       },
       {
@@ -6768,11 +6157,6 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
-        },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "16"
         },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -6808,68 +6192,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "4"
-        }
-      },
-      {
-        "publicationYear" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "1898"
-        },
-        "publicationPeriod" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "1898"
-        },
-        "Dictionnaires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Anthologies_et_manuels" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
         },
         "Ouvrages_littéraires" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "0"
-        },
-        "Science_et_vulgarisation" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "2"
-        },
-        "Autres" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Textes_en_vers" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Roman___récit_fictionnel" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Esthétique___poétique___histoire_littéraire" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Mémoires___biographies___histoire___etc" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Autres_essais" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
+          "value" : "16"
         }
       },
       {
@@ -6892,11 +6219,6 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
-        },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "3"
         },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -6932,6 +6254,11 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "3"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "3"
         }
       },
       {
@@ -6954,11 +6281,6 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
-        },
-        "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "9"
         },
         "Science_et_vulgarisation" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -6994,18 +6316,23 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
+        },
+        "Ouvrages_littéraires" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "9"
         }
       },
       {
         "publicationYear" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "1904"
+          "value" : "1926"
         },
         "publicationPeriod" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "1904"
+          "value" : "1926"
         },
         "Dictionnaires" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
@@ -7013,11 +6340,6 @@
           "value" : "0"
         },
         "Anthologies_et_manuels" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Ouvrages_littéraires" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
@@ -7056,65 +6378,8 @@
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
-        }
-      },
-      {
-        "publicationYear" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "1926"
-        },
-        "publicationPeriod" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "1926"
-        },
-        "Dictionnaires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Anthologies_et_manuels" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
         },
         "Ouvrages_littéraires" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Science_et_vulgarisation" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "4"
-        },
-        "Autres" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Textes_en_vers" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Roman___récit_fictionnel" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Esthétique___poétique___histoire_littéraire" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Mémoires___biographies___histoire___etc" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "0"
-        },
-        "Autres_essais" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "0"
