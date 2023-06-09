@@ -2,6 +2,7 @@
 
 library(shiny)
 library(tidyverse)
+library(shinyWidgets)
 load("long_cumsum.Rda")
 
 ui <- fluidPage(
