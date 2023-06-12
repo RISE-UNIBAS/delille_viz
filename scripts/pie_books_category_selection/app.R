@@ -1,5 +1,5 @@
 ## Book data, with category (de-)selection
-## works, but category names still have underscores in them
+## checked against other visualization, updating when deselecting should work properly
 
 library(shiny)
 library(shinyWidgets)
@@ -10,13 +10,22 @@ load("books_cumsum.Rda")
 books_cumsum <- books_cumsum %>% 
   filter(!(books == "Ouvrages_littéraires"))
 
+books_cumsum[books_cumsum$books == "Anthologies_et_manuels",1] <- "Anthologies et manuels"
+books_cumsum[books_cumsum$books == "Autres_essais",1] <- "Autres essais"
+books_cumsum[books_cumsum$books == "Esthétique_poétique_histoire_littéraire",1] <- "Esthétique, poétique, histoire littéraire"
+books_cumsum[books_cumsum$books == "Mémoires_biographies_histoire_etc",1] <- "Mémoires, biographies, histoire etc"
+books_cumsum[books_cumsum$books == "Roman_récit_fictionnel",1] <- "Roman, récit fictionnel"
+books_cumsum[books_cumsum$books == "Science_et_vulgarisation",1] <- "Science et vulgarisation"
+books_cumsum[books_cumsum$books == "Textes_en_vers",1] <- "Textes en vers"
+
+books_cumsum$books <- factor(books_cumsum$books, levels = c("Anthologies et manuels", "Autres", "Autres essais", "Dictionnaires", 
+                                                            "Esthétique, poétique, histoire littéraire", 
+                                                            "Mémoires, biographies, histoire etc", "Roman, récit fictionnel", 
+                                                            "Science et vulgarisation", "Textes en vers"))
 
 # make a color scheme so it updates consistently if a category is deselected
 myColors <- brewer.pal(9,"Set1") # pre-defined colors
-books_cumsum$books <- factor(books_cumsum$books, levels = c("Anthologies_et_manuels", "Autres", "Autres_essais", "Dictionnaires", 
-                                                            "Esthétique_poétique_histoire_littéraire", 
-                                                            "Mémoires_biographies_histoire_etc", "Roman_récit_fictionnel", 
-                                                            "Science_et_vulgarisation", "Textes_en_vers"))
+
 ## assigning factor levels by hand, otherwise the order changes and labels do not update correctly
 names(myColors) <- levels(books_cumsum$books)
 
