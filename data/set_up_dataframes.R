@@ -234,46 +234,73 @@ long_cumsum <- long_cumsum %>%
 
 ####### 6. citations-per-book-type-per-year-count ########
 
-book_yr <- fromJSON(file="citations-per-book-type-per-year-count.json")
+books <- fromJSON(file="citations-per-book-type-per-year-count.json")
 
-names(book_yr$results$bindings[[1]])
+names(books$results$bindings[[1]])
 
-book_yr_df <- tibble(year = character(),
-                         Dictionnaires = character(),
-                         Anthologies_et_manuels = character(),
-                         Ouvrages_littéraires = character(),
-                         Science_et_vulgarisation = character(),
-                         Autres = character(),
-                         Textes_en_vers = character(),
-                         Roman___récit_fictionnel = character(),
-                         Esthétique___poétique___histoire_littéraire = character(),
-                         Mémoires___biographies___histoire___etc = character(),
-                         Autres_essais = character())
+books_df <- tibble(year = character(),
+                   period = character(),
+                   Dictionnaires = character(),
+                   Anthologies_et_manuels = character(),
+                   Science_et_vulgarisation = character(),
+                   Autres = character(),
+                   Textes_en_vers = character(),
+                   Roman_récit_fictionnel = character(),
+                   Esthétique_poétique_histoire_littéraire = character(),
+                   Mémoires_biographies_histoire_etc = character(),
+                   Autres_essais = character(),
+                   Ouvrages_littéraires = character())
 
-for (i in 1:length(book_yr$results$bindings)) {
-  number <- book_yr$results$bindings[[i+1]]$publicationYear$value ## some issues with the first year atm, it's not correct like this
-  citation1 <- book_yr$results$bindings[[i]]$Dictionnaires$value
-  citation2 <- book_yr$results$bindings[[i]]$Anthologies_et_manuels$value
-  citation3 <- book_yr$results$bindings[[i]]$Ouvrages_littéraires$value
-  citation4 <- book_yr$results$bindings[[i]]$Science_et_vulgarisation$value
-  citation5 <- book_yr$results$bindings[[i]]$Autres$value
-  citation6 <- book_yr$results$bindings[[i]]$Textes_en_vers$value
-  citation7 <- book_yr$results$bindings[[i]]$Roman___récit_fictionnel$value
-  citation8 <- book_yr$results$bindings[[i]]$Esthétique___poétique___histoire_littéraire$value
-  citation9 <- book_yr$results$bindings[[i]]$Mémoires___biographies___histoire___etc$value
-  citation10 <- book_yr$results$bindings[[i]]$Autres_essais$value
-  book_yr_df[i,1] <- number
-  book_yr_df[i,2] <- citation1
-  book_yr_df[i,3] <- citation2
-  book_yr_df[i,4] <- citation3
-  book_yr_df[i,5] <- citation4
-  book_yr_df[i,6] <- citation5
-  book_yr_df[i,7] <- citation6
-  book_yr_df[i,8] <- citation7
-  book_yr_df[i,9] <- citation8
-  book_yr_df[i,10] <- citation9
-  book_yr_df[i,11] <- citation10
+for (i in 1:length(books$results$bindings)) {
+  year <- books$results$bindings[[i]]$publicationYear$value
+  period <- books$results$bindings[[i]]$publicationPeriod$value
+  dictionaries <- books$results$bindings[[i]]$Dictionnaires$value
+  anthologies <- books$results$bindings[[i]]$Anthologies_et_manuels$value
+  science_vulg <- books$results$bindings[[i]]$Science_et_vulgarisation$value
+  others <- books$results$bindings[[i]]$Autres$value
+  text_vers <- books$results$bindings[[i]]$Textes_en_vers$value
+  novels <- books$results$bindings[[i]]$Roman___récit_fictionnel$value
+  aesthetic <- books$results$bindings[[i]]$Esthétique___poétique___histoire_littéraire$value
+  memoirs <- books$results$bindings[[i]]$Mémoires___biographies___histoire___etc$value
+  other_essays <- books$results$bindings[[i]]$Autres_essais$value
+  literary <- books$results$bindings[[i]]$Ouvrages_littéraires$value
+  books_df[i,1] <- year
+  books_df[i,2] <- period
+  books_df[i,3] <- dictionaries
+  books_df[i,4] <- anthologies
+  books_df[i,5] <- science_vulg
+  books_df[i,6] <- others
+  books_df[i,7] <- text_vers
+  books_df[i,8] <- novels
+  books_df[i,9] <- aesthetic
+  books_df[i,10] <- memoirs
+  books_df[i,11] <- other_essays
+  books_df[i,12] <- literary # this is a catch all category!!
+  print(i)
 }
+
+books_df[,c(1,3:12)] <- sapply(books_df[,c(1,3:12)],as.numeric)
+books_df <- as.data.frame(books_df)
+
+books_df <- books_df[,-2] # deleting period for now
+
+long_books <- books_df %>% gather(books, citations, -c(year))
+
+long_books_agg <- long_books %>% 
+  group_by(year, books) %>% 
+  summarise(citations = sum(citations))
+
+### Make it cumulative
+books_cumsum <- long_books_agg %>% 
+  group_by(books) %>% 
+  mutate(cumsum_cite = cumsum(citations))
+
+books_cumsum <- books_cumsum %>% 
+  complete(year = full_seq(c(1798:1926), 1))
+
+books_cumsum <- books_cumsum %>% 
+  group_by(books) %>% 
+  fill(cumsum_cite)
 
 
 ##### Save data frames #####
@@ -287,3 +314,4 @@ save(long_period, file = "/Users/antheaalberto/Documents/GitHub/delille_viz/scri
 save(cite_year_df, file = "/Users/antheaalberto/Documents/GitHub/delille_viz/scripts/year_and_verse/cite_year_df.Rda")
 save(cite_year_cumsum, file = "/Users/antheaalberto/Documents/GitHub/delille_viz/scripts/year_and_verse_cumulative/cite_year_cumsum.Rda")
 save(long_cumsum, file = "/Users/antheaalberto/Documents/GitHub/delille_viz/scripts/pie_cumulative/long_cumsum.Rda")
+save(books_cumsum, file ="/Users/antheaalberto/Documents/GitHub/delille_viz/scripts/pie_books/books_cumsum.Rda")
