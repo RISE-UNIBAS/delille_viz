@@ -54,7 +54,7 @@ server <- function(input, output) {
     ggplot(s(), aes(x="", y=cumsum_cite, fill=books)) + geom_bar(width = 1, stat = "identity") +
       coord_polar("y", start=0) +
       scale_fill_manual(values = c("#83B692", "#F9ADA0", "#F9627D", "#5B3758",
-                                   "#413C58", "#A3C4BC", "#BFD7B5", "#E7EFC5", "#F2E7C9"),
+                                   "#413C58", "#A3C4BC", "#BFD7B5", "#E7EFC5", "#3AB795"),
                         labels = c("Anthologies et manuels", "Autres", "Autres essais", "Dictionnaires", "Esthétique, poétique, histoire, littéraire", 
                                    "Mémoires, biographies, histoire etc", "Roman, récit fictionnel", 
                                    "Science et vulgarisation", "Textes en vers"),
