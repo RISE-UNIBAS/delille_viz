@@ -315,3 +315,4 @@ save(cite_year_df, file = "/Users/antheaalberto/Documents/GitHub/delille_viz/scr
 save(cite_year_cumsum, file = "/Users/antheaalberto/Documents/GitHub/delille_viz/scripts/year_and_verse_cumulative/cite_year_cumsum.Rda")
 save(long_cumsum, file = "/Users/antheaalberto/Documents/GitHub/delille_viz/scripts/pie_cumulative/long_cumsum.Rda")
 save(books_cumsum, file ="/Users/antheaalberto/Documents/GitHub/delille_viz/scripts/pie_books/books_cumsum.Rda")
+save(long_books_agg, file = "/Users/antheaalberto/Documents/GitHub/delille_viz/scripts/books_range_plotly/long_books_agg.Rda")
